@@ -40,9 +40,11 @@ pnpm dev
 
 登录后点击“修改密码”，输入当前密码、新密码及确认新密码。新密码须为 12–128 个字符；有未保存的报告时须先保存。修改成功后，包括当前页面在内的所有旧会话失效，需要使用新密码重新登录。
 
-`ADMIN_PASSWORD_HASH` 仅用作初始密码。首次通过后台改密后，新的 scrypt 哈希与会话版本保存在私有存储的 `auth/admin-password` 记录中，后续登录优先读取这条记录。接口不回写 `.env.local`、Netlify 环境变量、GitHub 或初始密码说明文件；也不修改 `SESSION_SECRET`。再次部署不会把密码恢复为环境变量中的初始值。新增这个功能需要部署一次，此后的改密不触发部署。
+**Netlify 线上密码保存在 `ADMIN_PASSWORD` 环境变量中，值为明文。** 此变量使用 Production 上下文，范围须包含 Functions，不勾选 “Contains secret values”，以便你查看或直接修改。后台“修改密码”通过 Netlify API 同步更新这个变量；认证实时读取 API 中的最新值，不依赖部署时的环境快照。因此，忘记密码时在 Netlify 修改该变量后即可重新登录，无需重新部署。线上不再读取旧的 `ADMIN_PASSWORD_HASH` 或 Blobs 密码记录。
 
-本地私有存储在 `.local-data/staging/`；上线后使用站点级 Netlify Blobs 的 `seminar-private-v1` 存储。两处密码独立，不会自动同步；应保留私有存储。读取凭据失败或记录损坏时拒绝登录，不回退到初始密码。`setup:admin --rotate` 只更新初始环境配置，不覆盖已保存的后台密码。
+`NETLIFY_ENV_TOKEN` 是后端访问环境变量 API 的令牌，须保密；`NETLIFY_ACCOUNT_ID` 指定团队，`NETLIFY_SITE_ID` 指定本项目，所有读写均限定到这个站点的 `ADMIN_PASSWORD`。改密只更新生产环境的这个值，不改其他上下文、其他项目、GitHub 或 `SESSION_SECRET`，也不触发构建。环境变量 API 不可用时拒绝登录或改密，公开资料仍可读取。首次安装这个认证功能需要部署一次。
+
+本地开发仍使用初始 `ADMIN_PASSWORD_HASH` 和 `.local-data/staging/` 中的私有哈希记录，改密不回写 `.env.local`。本地与线上密码独立，不会自动同步；`setup:admin --rotate` 只更新本地初始配置，不覆盖本地已保存的后台密码。
 
 ```sh
 pnpm test           # 数据、前台逻辑、后端、安全和部署规则测试
@@ -61,7 +63,7 @@ pnpm test:e2e      # 浏览器验证，默认使用已安装的 Microsoft Edge
 2. 构建配置已写在 `netlify.toml`：构建命令 `pnpm build`，发布目录 `dist`，函数目录 `netlify/functions`。无需额外数据库。
 3. 在 GitHub 创建一个 [fine-grained personal access token](https://github.com/settings/personal-access-tokens/new)。Repository access 只选这个仓库，Repository permissions 中的 **Contents** 设为 **Read and write**；Metadata 为默认读取。设置适合的有效期，到期前替换令牌。
 4. 在 Netlify 的 Project configuration → Environment variables 配置下表中的变量，至少让 Functions 可用。首次设置后执行一次部署。
-5. 打开网站和 `/admin.html`。使用 `setup:admin` 生成的密码登录，上传讲义并保存报告。
+5. 打开网站和 `/admin.html`。使用 `ADMIN_PASSWORD` 中的密码登录，上传讲义并保存报告。
 
 | 环境变量 | 值或来源 |
 | --- | --- |
@@ -69,12 +71,15 @@ pnpm test:e2e      # 浏览器验证，默认使用已安装的 Microsoft Edge
 | `GITHUB_REPO` | `analysis-probability-seminar` |
 | `GITHUB_BRANCH` | `main` |
 | `GITHUB_TOKEN` | 刚创建的仓库专用令牌 |
-| `ADMIN_PASSWORD_HASH` | 本机 `.env.local` 中同名变量的完整值，包含 `$` 分隔符 |
+| `ADMIN_PASSWORD` | 可查看的明文管理员密码，12–128 个字符，Production 上下文 |
+| `NETLIFY_ENV_TOKEN` | Netlify 个人访问令牌，后端用于读取和更新密码变量；勾选秘密值 |
+| `NETLIFY_ACCOUNT_ID` | 本项目所属团队的 ID 或 slug |
+| `NETLIFY_SITE_ID` | 本项目的 Project ID（UUID）；也可使用平台自动提供的 `SITE_ID` |
 | `SESSION_SECRET` | 本机 `.env.local` 中同名变量的完整值 |
 
 不要给这些秘密变量添加 `VITE_` 前缀，不要把 `.env.local`、登录密码或 GitHub 令牌提交到仓库。GitHub 令牌仅由服务器使用。
 
-Netlify Blobs 用于私有密码哈希、会话、登录及改密限流和临时上传分片，使用平台自动提供的站点身份。最终 JSON 和讲义存放在 GitHub，Blobs 不是讲义文件源。每次上传初始化会清理过期分片；密码记录不会被上传清理任务删除。
+Netlify Blobs 用于私有会话、登录及改密限流、改密并发锁和临时上传分片，使用平台自动提供的站点身份。线上密码本身只保存在 Netlify 环境变量中。最终 JSON 和讲义存放在 GitHub，Blobs 不是讲义文件源。每次上传初始化会清理过期分片。
 
 可以从 Netlify 免费方案开始，但免费额度和请求、流量限制以你的账户当前方案为准。项目没有付费转换接口或额外数据库依赖。GitHub 原始文件在不同地区的访问表现不同；大量访问或资料增长时可保留这套页面，替换文件存储。
 
@@ -122,5 +127,6 @@ Netlify Blobs 用于私有密码哈希、会话、登录及改密限流和临时
 - [Netlify 跳过构建](https://docs.netlify.com/build/configure-builds/ignore-builds/)
 - [Netlify Functions 配置与请求限制](https://docs.netlify.com/build/functions/configuration/)
 - [Netlify Blobs](https://docs.netlify.com/build/data-and-storage/netlify-blobs/)
+- [Netlify 环境变量 API](https://docs.netlify.com/api-and-cli-guides/api-guides/get-started-with-api/#environment-variables)
 - [GitHub Git Database API](https://docs.github.com/en/rest/git)
 - [PDF.js](https://mozilla.github.io/pdf.js/)
