@@ -84,7 +84,6 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 9px;
   height: 44px;
   padding: 0 16px;
   border: 1px solid #d4e3eb;
@@ -96,9 +95,6 @@
   pointer-events: auto;
 }
 .filter-toggle:hover, .filter-toggle[aria-expanded="true"] { background: #e9f3f9; }
-.filter-toggle svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; }
-.filter-chevron { width: 6px; height: 6px; border-right: 1px solid currentColor; border-bottom: 1px solid currentColor; transform: translateY(-2px) rotate(45deg); }
-.filter-toggle[aria-expanded="true"] .filter-chevron { transform: translateY(2px) rotate(225deg); }
 .public-page .floating-filters .search-field { height: 40px; border: 0; background: transparent; border-radius: 6px; }
 .public-page .search-field input { font-size: 13px; }
 .public-page .search-field input::placeholder { color: #8796a5; }

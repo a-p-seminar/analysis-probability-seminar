@@ -53,8 +53,7 @@ export function ArchiveFilters({ years, year, month, query, onYearChange, onMont
     <div ref={anchor} className="filter-anchor" aria-hidden="true"/>
     <div className={`floating-filters${pinned ? ' is-pinned' : ''}`} style={{ minHeight: panelHeight || undefined }} onKeyDown={closeOnEscape}>
       {pinned && <button ref={toggle} type="button" className="filter-toggle" aria-expanded={open} aria-controls="archive-filters" onClick={() => setExpanded(value => !value)}>
-        <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 5h14M3 10h14M3 15h14"/><path d="M7 3v4M13 8v4M7 13v4"/></svg>
-        筛选<span className="filter-chevron" aria-hidden="true"/>
+        筛选
       </button>}
       <div ref={panel} id="archive-filters" className="filter-panel" role="search" aria-label="筛选报告" hidden={!open}>
         <label className="search-field"><span aria-hidden="true">⌕</span><input type="search" aria-label="搜索讲座、报告人或摘要" placeholder="搜索讲座、报告人、摘要…" value={query} onChange={event => onQueryChange(event.target.value)}/></label>
