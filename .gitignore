@@ -1,0 +1,14 @@
+node_modules/
+dist/
+dist-preview/
+.netlify/
+.local-data/
+.env
+.env.*
+!.env.example
+test-results/
+playwright-report/
+__pycache__/
+*.pyc
+*.log
+.DS_Store

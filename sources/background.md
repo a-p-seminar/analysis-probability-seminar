@@ -1,0 +1,15 @@
+# 主页背景与卡片参考
+
+按用户要求，主页在每次打开或刷新时随机选择武大或华师背景，各 50% 概率。同一页面内筛选、搜索、展开摘要不会重新选择；不写入浏览器存储，也不请求后台或触发部署。随机选择允许连续访问时选中同一所学校。
+
+- 武大当前背景：`public/images/whu-enhanced.png`，通过内置 ImageGen 做清晰度和细节增强；原图保留于 `public/images/whu.jpg`。
+- 图片来源：https://github.com/a-p-seminar/Seminar-of-Analysis-and-Probability/blob/main/images/whu.jpg
+- 华师当前背景：`public/images/ccnu-autumn-enhanced.png`。源图由用户在本对话中提供（校园秋景全景图）；先按用户要求通过内置 ImageGen 移除右下角中文及网址水印，修补周围植被，再进行清晰度增强。去水印版本保留于 `public/images/ccnu-autumn.png`。AI 修补和增强可能与原图局部细节不同。
+- 样式参考：https://github.com/a-p-seminar/Seminar-of-Analysis-and-Probability/blob/main/index.html
+- 使用白色遮罩和半透明内容面板；报告卡片采用半透明白底、8px 圆角、左侧色条及悬停阴影。
+
+图片权利归原权利人所有。
+
+华师图片编辑提示词：仅移除右下角中文和网址水印，用周围深绿色、金黄色植被及阴影地面自然补齐；尽量保留其余建筑、树冠、天空、视角、光线、色彩和全景构图，不裁剪，不添加文字或物体。
+
+画质增强提示词（内置 ImageGen）：武大照片改善屋顶、树叶、道路和台阶的清晰度，减少压缩痕迹和模糊，保留俯拍构图、自然色彩及建筑结构，避免过度锐化。华师照片适度改善前景树冠和既有建筑边缘，保留全景构图、秋色及近白色的雾霭天空，不改变远处城市轮廓，不添加山脉或新建筑。网页继续使用相同遮罩和随机选择逻辑。

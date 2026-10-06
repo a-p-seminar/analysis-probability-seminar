@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "site": {
+    "title": "武汉大学-华中师范大学联合分析与概率讨论班",
+    "titleEn": "Seminar of Analysis and Probability",
+    "subtitle": "武汉大学 · 华中师范大学",
+    "organizers": [
+      {
+        "name": "范爱华",
+        "nameEn": "Ai-Hua FAN",
+        "email": "ai-hua.fan@u-picardie.fr"
+      },
+      {
+        "name": "凡石磊",
+        "nameEn": "Shilei FAN",
+        "email": "slfan@ccnu.edu.cn"
+      },
+      {
+        "name": "廖灵敏",
+        "nameEn": "Lingmin LIAO",
+        "email": "lmliao@whu.edu.cn"
+      }
+    ],
+    "sources": [
+      "https://perso.math.u-pem.fr/liao.lingmin/SAP-WH.html",
+      "https://github.com/a-p-seminar/Seminar-of-Analysis-and-Probability"
+    ]
+  },
+  "talks": [
+    {
+      "date": "2026-08-05",
+      "speaker": "蒋赉",
+      "affiliation": "国科大杭州高等研究院",
+      "title": "Representations of rational numbers and Minkowski dimension",
+      "time": "10:00–11:00",
+      "location": "武大·雷军科技楼601报告厅",
+      "id": "2026-08-05-talk-08a315fc",
+      "abstract": "In this talk, we investigate the representations of rational numbers via continued fractions, Egyptian fractions, and Engel fractions. For each integer $m$, let $C_m, E_m, E_m^*$ denote the sets of rationals whose continued fraction, Egyptian fraction, and Engel fraction expansions have length $m$, respectively. Let $H_m$ be the set of Gaussian rationals with Hurwitz continued fraction expansions of length $m$. We compute the Minkowski dimensions of these sets, showing that they exhibit distinct global scaling properties. We further determine their Minkowski contents and apply our results to sumsets of decreasing sequences.",
+      "notes": "来源日期存在差异；此处保留讨论班目录日期。详见原始来源。",
+      "sourceUrls": [
+        "https://maths.whu.edu.cn/info/1115/168882.htm",
+        "https://github.com/a-p-seminar/Seminar-of-Analysis-and-Probability"
+      ],
+      "attachments": []
+    },
+    {
+      "date": "2026-04-02",
+      "speaker": "Yann Bugeaud",
+      "affiliation": "University of Strassbourg",
+      "title": "Multiplicative rational p-adic approximation",
+      "time": "10:45–11:45",
+      "location": "武大·数学与统计学院A644报告厅",
+      "id": "2026-04-02-yann-bugeaud-49efabe0",
+      "abstract": "Let p be a prime number and x an irrational p-adic number. The multiplicative irrationality exponent m(x) (resp. uniform multiplicative irrationality exponent u(x)) of x is the supremum of the real numbers m for which the inequalities 0 < |a b|^{1/2} < A and |b x - a|_p < A^{-m} have a solution in integers a, b for arbitrarily large real numbers A (resp., for every sufficiently large real number A). We show that these exponents of approximation can be expressed in terms of exponents of approximation attached to a sequence of rational numbers defined in terms of the Hensel expansion of x. We discuss the set of values taken by the exponents m and u at irrational p-adic numbers and compute the values of m and u at the Thue-Morse p-adic number.",
+      "notes": "",
+      "sourceUrls": [
+        "https://maths.whu.edu.cn/info/1115/164902.htm",
+        "https://github.com/a-p-seminar/Seminar-of-Analysis-and-Probability"
+      ],
+      "attachments": []
+    },
+    {
+      "date": "2025-09-09",
+      "speaker": "Maria Loukaki",
+      "affiliation": "克里特大学（Crete University）",
+      "title": "Chebotarev's theorem for groups of order $pq$ and an uncertainty principle",
+      "time": "2025年9月9日（周二）上午 11:00-12:00",
+      "location": "华师·国交2号楼315会议室",
+      "id": "2025-09-09-maria-loukaki-00c3bd02",
+      "abstract": "Let $p$ be a prime number and $\\zeta_p$ a primitive $p$-th root of unity. Chebotarev's theorem states that every square submatrix of the $p \\times p$ matrix $(\\zeta_p^{ij})_{i,j=0}^{p-1}$ is non-singular. In this talk we will show that a similar property holds for principal submatrices of $(\\zeta_n^{ij})_{i,j=0}^{n-1}$, when $n=pr$ is the product of two distinct primes, and $p$ is a large enough prime that has order $r-1$ in $\\mathbf{Z}_r^*$. As an application, an uncertainty principle for cyclic groups of order $n$ is established when $n=pr$ as described above.",
+      "notes": "",
+      "sourceUrls": [
+        "https://maths.ccnu.edu.cn/info/1310/33453.htm",
+        "https://github.com/a-p-seminar/Seminar-of-Analysis-and-Probability",
+        "https://maths.ccnu.edu.cn/info/1310/33443.htm",
+        "https://raw.githubusercontent.com/a-p-seminar/Seminar-of-Analysis-and-Probability/main/PPT/250909maria.pdf"
+      ],
+      "attachments": [
+        {
+          "id": "file-baf1950649bf1ce9",
+          "name": "250909maria.pdf",
+          "type": "pdf",
+          "path": "attachments/2025/250909maria.pdf",
+          "size": 769105
+        }
+      ]
+    },
+    {
+      "date": "2024-10-24",
+      "speaker": "周维祺",
+      "affiliation": "徐州工程学院",
+      "title": "On tiling sets and spectral sets in $Z_p^2\\times Z_p^2$",
+      "time": "2024-10-24 9:30-10:30",
+      "location": "华师·6号楼二楼报告厅",
+      "id": "2024-10-24-talk-df016b78",
+      "abstract": "I will provide a new perspective on classifying tiling\\spectral sets in Z_n\\times Z_n using symplectic forms. The method is taken from a similar problem concerning Gabor systems, and applies to Fourier systems as well. It can then be shown that tiling sets and spectral sets coincide if n is the square of a prime number.",
+      "notes": "",
+      "sourceUrls": [
+        "https://maths.ccnu.edu.cn/info/1045/30139.htm",
+        "https://perso.math.u-pem.fr/liao.lingmin/SAP-WH.html"
+      ],
+      "attachments": []
+    },
+    {
+      "date": "2023-03-08",
+      "speaker": "罗俊",
+      "affiliation": "中山大学",
+      "title": "广义若当区域上共形同胚的连续延拓问题",
+      "time": "15:00–16:00",
+      "location": "武大·理学院东北楼一楼报告厅（110)",
+      "id": "2023-03-08-talk-1a5924ad",
+      "abstract": "介绍广义若当区域的定义与非平凡刻画，推广经典的Carathodory定理：在合理的前提条件下，得到广义若当区域D上共形同胚可以连续延拓到D的边界的“充分必要条件”。同时，给出具体的例子，说明前提条件的合理性。",
+      "notes": "",
+      "sourceUrls": [
+        "http://maths.whu.edu.cn/info/1115/18976.htm",
+        "https://perso.math.u-pem.fr/liao.lingmin/SAP-WH.html",
+        "https://perso.math.u-pem.fr/liao.lingmin/SAP-WH/LUO_Jun.pdf",
+        "https://www.ams.org/journals/tran/2022-375-09/S0002-9947-2022-08702-X/home.html"
+      ],
+      "attachments": [
+        {
+          "id": "file-4b9b2444dc386bd4",
+          "name": "LUO_Jun.pdf",
+          "type": "pdf",
+          "path": "attachments/2023/LUO_Jun.pdf",
+          "size": 2139034
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "mode": "preview",
+  "note": "Only five selected real talks are published for initial frontend/backend review. Complete import remains local.",
+  "talkCount": 5,
+  "attachmentCount": 2,
+  "selectedIds": [
+    "2026-08-05-talk-08a315fc",
+    "2026-04-02-yann-bugeaud-49efabe0",
+    "2025-09-09-maria-loukaki-00c3bd02",
+    "2024-10-24-talk-df016b78",
+    "2023-03-08-talk-1a5924ad"
+  ],
+  "sources": [
+    "https://perso.math.u-pem.fr/liao.lingmin/SAP-WH.html",
+    "https://github.com/a-p-seminar/Seminar-of-Analysis-and-Probability"
+  ],
+  "attachments": [
+    {
+      "path": "attachments/2023/LUO_Jun.pdf",
+      "size": 2139034,
+      "sha256": "4b9b2444dc386bd4416f750f56e256f9be17874b490f1a672256f8ff3c9e6f1d",
+      "sourceUrl": "https://perso.math.u-pem.fr/liao.lingmin/SAP-WH/LUO_Jun.pdf"
+    },
+    {
+      "path": "attachments/2025/250909maria.pdf",
+      "size": 769105,
+      "sha256": "baf1950649bf1ce946efe2183c279625574cbde709ffe5e7fffc2f5b89cc85fb",
+      "sourceUrl": "https://raw.githubusercontent.com/a-p-seminar/Seminar-of-Analysis-and-Probability/main/PPT/250909maria.pdf"
+    }
+  ]
+}

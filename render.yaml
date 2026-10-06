@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: analysis-probability-seminar
+    runtime: static
+    repo: https://github.com/cimorn/analysis-probability-seminar
+    branch: main
+    buildCommand: corepack pnpm install --frozen-lockfile && corepack pnpm build:preview
+    staticPublishPath: dist-preview
+    autoDeployTrigger: commit
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+    headers:
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: /preview/content.json
+        name: Cache-Control
+        value: no-cache

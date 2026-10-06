@@ -1,0 +1,277 @@
+/* Public archive: centered introduction, right-hand curves and floating filters. */
+:root { background: #fff; }
+.public-page {
+  min-height: 100vh;
+  padding-top: 20px;
+  background: linear-gradient(rgba(255, 255, 255, .75), rgba(255, 255, 255, .75)), var(--campus-background) center center / cover fixed;
+  background-color: #fff;
+  --navy: #19344c;
+  --teal: #2c6b82;
+  --muted: #657585;
+  --line: #e5ebf0;
+  --masthead-size: clamp(18px, 1.5vw, 22px);
+}
+.public-page main {
+  width: min(1240px, calc(100% - 40px));
+  margin-inline: auto;
+  padding-inline: 30px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, .9);
+  box-shadow: 0 0 20px rgba(0, 0, 0, .1);
+}
+.public-page .page-width { width: min(1240px, calc(100% - 96px)); }
+.public-page main > .page-width { width: 100%; }
+.public-page main > .seminar-intro { width: min(1080px, 100%); }
+.seminar-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 26px 24px;
+  padding-block: 40px 30px;
+}
+.intro-copy { grid-column: 1; min-width: 0; text-align: center; }
+.intro-copy h1 {
+  margin: 12px 0 0;
+  font: 600 var(--masthead-size) / 1.55 var(--serif);
+  letter-spacing: .5px;
+  color: var(--navy);
+  text-wrap: balance;
+}
+.public-page .english-title { margin: 0; font: 600 var(--masthead-size) / 1.55 var(--serif); color: var(--navy); }
+.seminar-about { grid-row: 2; grid-column: 1; min-width: 0; }
+.seminar-about-toggle { display: none; }
+.seminar-venue-note { margin: 18px 0 0; color: #60758b; font: 13px / 1.8 var(--serif); text-align: center; }
+.organizers { display: flex; align-items: center; justify-content: center; gap: 24px; min-width: 0; }
+.organizers h2 { margin: 0; font-size: 13px; font-weight: 600; color: #405a73; white-space: nowrap; }
+.organizers h2 > span { display: block; font: italic 12px var(--serif); margin-top: 7px; color: #7d8da0; }
+.public-page .organizer-list { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; min-width: 0; }
+.public-page .organizer { gap: 9px; min-width: 0; }
+.organizer-name { display: flex; align-items: baseline; flex-wrap: wrap; gap: 6px 10px; }
+.public-page .organizer strong { font-size: 14px; font-weight: 600; color: #233d54; }
+.organizer-name > span { font-family: var(--serif); font-size: 13px; color: #60758b; white-space: nowrap; }
+.public-page .organizer > a { font-size: 12px; color: #526f91; line-height: 1.7; width: fit-content; overflow-wrap: anywhere; }
+.public-page .organizer > a:hover { color: #425bc0; text-decoration: underline; text-underline-offset: 3px; }
+.fractal-admin-link { grid-column: 2; grid-row: 1 / 3; justify-self: center; width: min(100%, 250px); display: block; border-radius: 12px; transition: background .15s, transform .15s; }
+.fractal-admin-link:hover { background: #f7f9fd; transform: translateY(-2px); }
+.fractal-admin-link:focus-visible { outline: 2px solid #698bcc; outline-offset: 5px; }
+.fractal-art { width: 100%; height: auto; display: block; }
+
+.public-page .archive-layout { display: block; padding-block: 22px 48px; scroll-margin-top: 100px; }
+.floating-filters {
+  position: sticky;
+  top: 16px;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 8px 10px 8px 6px;
+  border: 1px solid #e1e8f1;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, .97);
+  box-shadow: 0 5px 22px rgba(31, 57, 89, .06);
+  backdrop-filter: blur(12px);
+}
+.public-page .floating-filters .search-field { height: 40px; border: 0; background: transparent; border-radius: 6px; }
+.public-page .search-field input { font-size: 13px; }
+.public-page .search-field input::placeholder { color: #8796a5; }
+.date-filters { display: flex; gap: 8px; }
+.date-filter { display: flex; align-items: center; gap: 9px; padding-left: 12px; border: 1px solid #e3eaf3; border-radius: 7px; background: #f8fafd; }
+.date-filter > span { color: #7b8b9e; font-size: 11px; }
+.date-filter select { min-width: 99px; height: 38px; border: 0; padding: 0 8px 0 0; background: transparent; font-size: 12px; color: #355574; cursor: pointer; }
+.date-filter:focus-within { outline: 2px solid #698bcc; outline-offset: 2px; }
+.date-filter select:focus-visible { outline: 0; }
+.public-page .results-meta { font-size: 11px; color: #77899b; margin: 18px 1px 24px; min-height: 21px; }
+.public-page .year-heading { gap: 14px; margin-top: 20px; scroll-margin-top: 100px; }
+.public-page .year-heading h3 { font-family: var(--serif); font-size: 30px; font-weight: 500; margin: 0; color: #2c4760; }
+.public-page .year-heading > span { color: #8493a2; font-size: 11px; }
+.public-page .year-group + .year-group { margin-top: 27px; }
+.public-page .talk {
+  position: relative;
+  display: block;
+  margin-top: 16px;
+  padding: 25px 28px;
+  border: 0;
+  border-left: 4px solid #95a5a6;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, .94);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, .1);
+  backdrop-filter: blur(2px);
+  transition: transform .3s ease, box-shadow .3s ease, background .3s ease;
+  scroll-margin-top: 100px;
+}
+.public-page .talk:hover, .public-page .talk:focus-within { transform: translateY(-5px); box-shadow: 0 8px 16px rgba(0, 0, 0, .2); background: #fff; }
+.public-page .talk-content { min-width: 0; }
+.public-page .talk-title { margin: 0 0 12px; font-size: 20px; line-height: 1.48; letter-spacing: -.1px; color: #147e96; }
+.talk-title-link { color: inherit; text-decoration: none; }
+.talk-title-link:hover { color: #076b84; text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+.talk-title-link:focus-visible { outline: 2px solid #147e96; outline-offset: 3px; }
+.talk-speaker { display: flex; align-items: flex-start; gap: 7px; color: #3b5065; font-size: 14px; line-height: 1.8; margin: 0 0 6px; }
+.talk-speaker-info { min-width: 0; }
+.talk-speaker .metadata-icon, .talk-schedule .metadata-icon { margin-top: .4em; }
+.talk-datetime, .talk-location { display: inline-flex; align-items: flex-start; gap: 7px; min-width: 0; }
+.talk-affiliation strong { font-weight: 600; color: #344b62; }
+.public-page .talk-schedule { display: flex; flex-wrap: wrap; gap: 2px 24px; color: #687b8d; font-size: 13px; line-height: 1.9; margin: 0 0 5px; }
+.public-page .talk-abstract { font-size: 14px; line-height: 1.9; color: #44566a; }
+.talk-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 18px; }
+.abstract-toggle {
+  width: fit-content;
+  display: flex;
+  align-items: baseline;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  color: #3d6993;
+  font-size: 13px;
+  line-height: 1.7;
+  padding: 3px 0;
+  min-height: 28px;
+}
+.abstract-toggle:focus-visible { outline: 2px solid #698bcc; outline-offset: 5px; border-radius: 2px; }
+.abstract-toggle:hover { color: #4f5ab9; }
+.disclosure-icon { color: #8498c7; font-size: 16px; margin-right: 8px; font-weight: 500; transition: transform .15s; }
+.abstract-hint { color: #8796a6; font-size: 12px; }
+.abstract-toggle[aria-expanded="true"] .disclosure-icon { transform: rotate(45deg); }
+.public-page .abstract-text { width: 100%; max-width: none; margin: 4px 0 0; padding: 0; line-height: 1.95; text-align: justify; text-align-last: start; }
+.public-page .talk-links { margin: 0; gap: 6px 10px; min-width: 0; max-width: 100%; }
+.public-page .attachment-link { background: #f2f7fd; border-color: #dfeaf6; border-radius: 5px; color: #416991; font-size: 11px; line-height: 1.7; padding: 3px 9px; white-space: nowrap; }
+.public-page .attachment-link:hover { background: #eaf2fc; }
+
+@media (min-width: 1200px) {
+  /* Shift the desktop page right, while keeping at least 24px of edge space. */
+  .public-page { --desktop-shift: clamp(0px, calc((100vw - 1240px) / 2 - 24px), 48px); }
+  .public-page main {
+    position: relative;
+    left: calc((100vw - 100%) / 2 + var(--desktop-shift));
+  }
+}
+@media (max-width: 1199px) {
+  .public-page .page-width { width: calc(100% - 64px); }
+  .public-page { --masthead-size: 18px; }
+  .public-page main { padding-inline: 24px; }
+  .seminar-intro { gap: 26px 18px; padding-block: 32px 14px; }
+  .public-page .archive-layout { padding-top: 10px; }
+  .fractal-admin-link { grid-row: 1; }
+  .organizers { grid-column: 1 / -1; flex-direction: column; align-items: center; gap: 14px; }
+  .organizers h2 > span { display: inline; margin: 0 0 0 8px; }
+  .public-page .organizer-list { gap: 18px; width: min(680px, 100%); margin-inline: auto; }
+  .public-page .organizer { text-align: center; justify-items: center; }
+  .organizer-name { gap: 6px; justify-content: center; }
+  .public-page .organizer > a { font-size: 11px; justify-self: center; }
+  .public-page .talk-title { font-size: 18px; }
+  .public-page .talk-schedule { display: flex; flex-direction: column; gap: 1px; }
+}
+@media (max-width: 720px) {
+  .public-page .page-width { width: calc(100% - 36px); }
+  .public-page { --masthead-size: 14px; padding-top: 12px; }
+  .public-page main { width: calc(100% - 20px); padding-inline: 14px; }
+  .seminar-intro { gap: 25px 10px; padding-block: 27px 12px; }
+  .intro-copy { grid-column: 1; }
+  .intro-copy h1 { line-height: 1.6; margin-top: 10px; letter-spacing: .3px; }
+  .public-page .english-title { text-wrap: balance; }
+  .fractal-admin-link { grid-column: 2; grid-row: 1; }
+  .organizers { grid-column: 1 / -1; flex-direction: column; align-items: center; gap: 15px; }
+  .organizers h2 { font-size: 12px; text-align: center; }
+  .organizers h2 > span { display: inline; margin: 0 0 0 8px; }
+  .public-page .organizer-list { width: max-content; max-width: 100%; grid-template-columns: 1fr; gap: 12px; }
+  .public-page .organizer { display: grid; grid-template-columns: 136px minmax(0, 1fr); gap: 12px; align-items: baseline; justify-items: start; text-align: left; }
+  .organizer-name { flex-wrap: nowrap; justify-content: flex-start; gap: 7px; }
+  .public-page .organizer > a { justify-self: start; }
+  .public-page .organizer strong { font-size: 13px; white-space: nowrap; }
+  .organizer-name > span { font-size: 11px; }
+  .public-page .archive-layout { padding-block: 8px 32px; }
+  .floating-filters { top: 8px; flex-wrap: wrap; gap: 6px; padding: 6px 8px 8px; border-radius: 10px; }
+  .public-page .floating-filters .search-field { flex-basis: 100%; height: 34px; padding-inline: 7px; }
+  .public-page .search-field input { font-size: 12px; }
+  .date-filters { width: 100%; }
+  .date-filter { flex: 1; gap: 8px; }
+  .date-filter select { flex: 1; min-width: 0; font-size: 12px; height: 36px; }
+  .public-page .results-meta { font-size: 10px; margin-block: 14px 20px; }
+  .public-page .year-heading { scroll-margin-top: 125px; }
+  .public-page .year-heading h3 { font-size: 24px; }
+  .public-page .year-heading > span { font-size: 10px; }
+  .public-page .talk { margin-top: 13px; padding: 19px 18px; scroll-margin-top: 125px; }
+  .public-page .talk-title { font-size: 16px; line-height: 1.5; margin-bottom: 10px; }
+  .talk-speaker { font-size: 13px; }
+  .public-page .talk-schedule { font-size: 12px; margin-bottom: 5px; }
+  .public-page .talk-abstract { font-size: 13px; }
+}
+@media (max-width: 370px) {
+  .public-page { --masthead-size: 13px; }
+  .public-page .organizer { grid-template-columns: 1fr; gap: 3px; justify-items: center; text-align: center; }
+  .organizer-name { justify-content: center; }
+  .public-page .organizer > a { justify-self: center; }
+}
+@media (max-width: 1199px), (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+  .fractal-admin-link { width: min(100%, 180px); }
+  .seminar-about {
+    position: fixed;
+    z-index: 40;
+    right: max(16px, env(safe-area-inset-right));
+    bottom: max(16px, env(safe-area-inset-bottom));
+    width: min(420px, calc(100% - 32px));
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: flex-end;
+    gap: 12px;
+    pointer-events: none;
+  }
+  .seminar-about-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    min-height: 44px;
+    padding: 10px 18px;
+    border: 1px solid #d4e3eb;
+    border-radius: 24px;
+    background: #f7fbff;
+    color: #2c6b82;
+    box-shadow: 0 4px 18px #19344c1a;
+    font-size: 13px;
+    pointer-events: auto;
+  }
+  .seminar-about-toggle:hover, .seminar-about-toggle[aria-expanded="true"] { background: #e9f3f9; }
+  .seminar-about-panel {
+    display: none;
+    width: 100%;
+    max-height: calc(100dvh - 104px - env(safe-area-inset-bottom));
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: 24px 20px;
+    border: 1px solid #dce7ee;
+    border-radius: 16px;
+    background: #fff;
+    box-shadow: 0 12px 40px #19344c26;
+    pointer-events: auto;
+  }
+  .seminar-about.is-open .seminar-about-panel { display: block; }
+  .seminar-about .organizers { flex-direction: column; gap: 20px; }
+  .seminar-about .organizers h2 { text-align: center; font-size: 13px; }
+  .seminar-about .organizers h2 > span { display: inline; margin: 0 0 0 8px; }
+  .public-page .seminar-about .organizer-list { width: max-content; max-width: 100%; grid-template-columns: 1fr; gap: 16px; margin-inline: auto; }
+  .public-page .seminar-about .organizer { display: grid; grid-template-columns: 1fr; gap: 3px; justify-items: stretch; text-align: center; }
+  .seminar-about .organizer-name { display: grid; grid-template-columns: 3em minmax(0, 1fr); align-items: baseline; gap: 10px; text-align: left; }
+  .public-page .seminar-about .organizer > a { justify-self: center; font-size: 12px; }
+  .seminar-about .seminar-venue-note { margin-top: 22px; font-size: clamp(11px, 3vw, 13px); line-height: 1.9; text-align: center; }
+  .seminar-about .seminar-venue-note em > span { display: block; }
+  .public-page { padding-bottom: 84px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .public-page .talk { transition: none; }
+  .public-page .talk:hover, .public-page .talk:focus-within { transform: none; }
+}
+
+.status-section { margin-top: 24px; }
+.status-section + .status-section { margin-top: 38px; }
+.status-divider { display: flex; align-items: center; gap: 14px; }
+.status-divider h2 { margin: 0; font-size: 16px; font-weight: 600; color: #147e96; white-space: nowrap; }
+.status-divider > span { height: 1px; flex: 1; background: #d5e2e9; }
+.status-divider small { color: #8493a2; font-size: 11px; white-space: nowrap; }
+.status-ended .status-divider h2 { color: #61768a; }
+.public-page .status-section > .year-group { margin-top: 20px; }
+.archive-pagination { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 12px; margin: 32px 0 8px; color: #476782; font-size: 13px; }
+.archive-pagination button, .archive-pagination select { min-height: 40px; border: 1px solid #d5e2e9; border-radius: 7px; background: #f7fbff; color: inherit; padding: 6px 12px; }
+.archive-pagination button:hover:not(:disabled) { background: #e9f3f9; }
+.archive-pagination button:disabled { opacity: .4; cursor: default; }
+.archive-pagination label { display: flex; align-items: center; gap: 6px; }
+.archive-pagination select { padding-inline: 6px; }
