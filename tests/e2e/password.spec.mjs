@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 const initialPassword = 'test-only-not-a-production-password';
-const replacement = 'test-only-updated-administrator-password';
+const replacement = 'ap';
 
 test('administrator changes a password, reauthenticates and keeps unsaved reports safe', async ({ page, browser }) => {
   await page.goto('/admin.html');

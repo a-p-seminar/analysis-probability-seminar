@@ -38,7 +38,7 @@ pnpm dev
 
 ### 后台修改密码
 
-登录后点击“修改密码”，输入当前密码、新密码及确认新密码。新密码须为 12–128 个字符；有未保存的报告时须先保存。修改成功后，包括当前页面在内的所有旧会话失效，需要使用新密码重新登录。
+登录后点击“修改密码”，输入当前密码、新密码及确认新密码。新密码没有字符数限制，不能为空或全为空格；有未保存的报告时须先保存。修改成功后，包括当前页面在内的所有旧会话失效，需要使用新密码重新登录。
 
 **Netlify 线上密码保存在 `ADMIN_PASSWORD` 环境变量中，值为明文。** 此变量使用 Production 上下文，范围须包含 Functions，不勾选 “Contains secret values”，以便你查看或直接修改。后台“修改密码”通过 Netlify API 同步更新这个变量；认证实时读取 API 中的最新值，不依赖部署时的环境快照。因此，忘记密码时在 Netlify 修改该变量后即可重新登录，无需重新部署。线上不再读取旧的 `ADMIN_PASSWORD_HASH` 或 Blobs 密码记录。
 
@@ -71,7 +71,7 @@ pnpm test:e2e      # 浏览器验证，默认使用已安装的 Microsoft Edge
 | `GITHUB_REPO` | `analysis-probability-seminar` |
 | `GITHUB_BRANCH` | `main` |
 | `GITHUB_TOKEN` | 刚创建的仓库专用令牌 |
-| `ADMIN_PASSWORD` | 可查看的明文管理员密码，12–128 个字符，Production 上下文 |
+| `ADMIN_PASSWORD` | 可查看的明文管理员密码，没有字符数限制，非空，Production 上下文 |
 | `NETLIFY_ENV_TOKEN` | Netlify 个人访问令牌，后端用于读取和更新密码变量；勾选秘密值 |
 | `NETLIFY_ACCOUNT_ID` | 本项目所属团队的 ID 或 slug |
 | `NETLIFY_SITE_ID` | 本项目的 Project ID（UUID）；也可使用平台自动提供的 `SITE_ID` |

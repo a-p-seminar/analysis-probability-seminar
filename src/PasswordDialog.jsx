@@ -48,9 +48,9 @@ export function PasswordDialog({ onClose, onChanged, onSessionExpired }) {
     <p id="password-dialog-note">修改后，所有已登录页面都需要使用新密码重新登录。</p>
     <form className="login-form" onSubmit={submit}>
       <fieldset disabled={busy}>
-        <label>当前密码<input type="password" autoComplete="current-password" required maxLength={1024} value={currentPassword} onChange={event => setCurrentPassword(event.target.value)} autoFocus/></label>
-        <div className="password-field"><label>新密码<input type="password" autoComplete="new-password" required minLength={12} maxLength={128} value={newPassword} onChange={event => setNewPassword(event.target.value)} aria-describedby="new-password-hint"/></label><small id="new-password-hint">12–128 个字符，可使用字母、数字和符号。</small></div>
-        <label>确认新密码<input type="password" autoComplete="new-password" required minLength={12} maxLength={128} value={confirmation} onChange={event => setConfirmation(event.target.value)}/></label>
+        <label>当前密码<input type="password" autoComplete="current-password" required value={currentPassword} onChange={event => setCurrentPassword(event.target.value)} autoFocus/></label>
+        <div className="password-field"><label>新密码<input type="password" autoComplete="new-password" required value={newPassword} onChange={event => setNewPassword(event.target.value)} aria-describedby="new-password-hint"/></label><small id="new-password-hint">不限制长度，不能为空或全为空格。</small></div>
+        <label>确认新密码<input type="password" autoComplete="new-password" required value={confirmation} onChange={event => setConfirmation(event.target.value)}/></label>
       </fieldset>
       {error && <div className="notice error" role="alert">{error}</div>}
       <div className="button-row"><button type="button" className="outline-button" disabled={busy} onClick={close}>取消</button><button type="submit" className="primary-button" disabled={busy}>{busy ? '正在修改…' : '保存新密码'}</button></div>

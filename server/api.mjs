@@ -39,7 +39,7 @@ export function createApi({ repository, store, env = process.env, passwords = cr
         if (origin !== url.origin || request.headers.get('sec-fetch-site') === 'cross-site') throw new ApiError(403, 'Requests must come from this website.');
       }
       if (method === 'POST' && path === '/api/login') {
-        await rateLimit(context.ip); const data = await readJson(request, 4096);
+        await rateLimit(context.ip); const data = await readJson(request);
         const credential = await passwords.read();
         if (!await verifyPassword(data?.password, credential.hash)) throw new ApiError(401, 'Invalid password.');
         if ((await passwords.read()).version !== credential.version) throw new ApiError(409, '密码已更新，请使用新密码重新登录。');
@@ -53,7 +53,7 @@ export function createApi({ repository, store, env = process.env, passwords = cr
       if (method === 'POST' && path === '/api/logout') { await store.delete(`sessions/${session.id}`); return json({ authenticated: false }, 200, { 'set-cookie': sessionCookie('', production, 0) }); }
       if (method === 'POST' && path === '/api/admin/password') {
         await rateLimit(context.ip, 'password-change');
-        await passwords.change(await readJson(request, 8192), session.credentialVersion);
+        await passwords.change(await readJson(request), session.credentialVersion);
         return json({ authenticated: false, passwordChanged: true }, 200, { 'set-cookie': sessionCookie('', production, 0) });
       }
       if (method === 'GET' && path === '/api/admin/content') return json(await repository.read());

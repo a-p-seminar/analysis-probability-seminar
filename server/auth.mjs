@@ -1,17 +1,18 @@
 import { createHmac, randomBytes, scrypt, timingSafeEqual } from 'node:crypto';
 import { promisify } from 'node:util';
+import { newPasswordError } from '../shared/password-policy.mjs';
 
 const derive = promisify(scrypt);
 const options = { N: 32768, r: 8, p: 1, maxmem: 64 * 1024 * 1024 };
 export async function hashPassword(password) {
-  if (typeof password !== 'string' || password.length < 12) throw new Error('Use a password of at least 12 characters.');
+  if (newPasswordError(password)) throw new Error('Password must not be blank.');
   const salt = randomBytes(16).toString('hex');
   const key = await derive(password, salt, 64, options);
   return `scrypt$32768$8$1$${salt}$${key.toString('hex')}`;
 }
 export function validPasswordHash(value) { return /^scrypt\$32768\$8\$1\$[a-f0-9]{32}\$[a-f0-9]{128}$/.test(value || ''); }
 export async function verifyPassword(password, hash) {
-  if (!validPasswordHash(hash) || typeof password !== 'string' || password.length > 1024) return false;
+  if (!validPasswordHash(hash) || newPasswordError(password)) return false;
   const [, , , , salt, key] = hash.split('$');
   return timingSafeEqual(await derive(password, salt, 64, options), Buffer.from(key, 'hex'));
 }

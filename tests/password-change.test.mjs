@@ -67,8 +67,8 @@ test('password changes require a session, same origin, correct current password 
   for (const origin of ['', 'https://foreign.example']) assert.equal((await f.request('/api/admin/password', { method: 'POST', cookie, body, headers: { origin } })).status, 403);
   for (const invalid of [
     { ...body, currentPassword: 'wrong current password' },
-    { ...body, newPassword: 'short' },
-    { ...body, newPassword: 'x'.repeat(129) },
+    { ...body, newPassword: '' },
+    { ...body, newPassword: '   ' },
     { ...body, newPassword: initialPassword },
   ]) assert.equal((await f.request('/api/admin/password', { method: 'POST', cookie, body: invalid })).status, 400);
   assert.equal(await getJson(f.store, 'auth/admin-password'), null);
@@ -85,6 +85,19 @@ test('concurrent password changes can only commit one new credential', async t =
   const saved = await getJson(f.store, 'auth/admin-password');
   assert.ok(await verifyPassword(passwords[winner], saved.value.hash));
   assert.ok(!await verifyPassword(passwords[1 - winner], saved.value.hash));
+});
+
+test('short and long passwords can be saved and used to reauthenticate', async t => {
+  const f = await setup(t);
+  let currentPassword = initialPassword, cookie = await f.login();
+  for (const next of ['ap', 'x'.repeat(129), 'x'.repeat(2048), 'x'.repeat(9000)]) {
+    assert.equal((await f.request('/api/admin/password', { cookie, method: 'POST', body: { currentPassword, newPassword: next } })).status, 200);
+    assert.equal((await f.request('/api/admin/content', { cookie })).status, 401);
+    const response = await f.request('/api/login', { method: 'POST', body: { password: next } });
+    assert.equal(response.status, 200);
+    cookie = response.headers.get('set-cookie').split(';')[0];
+    currentPassword = next;
+  }
 });
 
 test('failed password guesses are throttled across API instances', async t => {

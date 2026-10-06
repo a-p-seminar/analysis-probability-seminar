@@ -9,8 +9,8 @@ import { createNetlifyPasswordSource } from '../server/netlify-password-source.m
 import { createLocalStore } from '../server/local-store.mjs';
 import { getJson, putJson } from '../server/private-store.mjs';
 
-const initial = 'environment test password 123!';
-const replacement = 'replacement environment password 456!';
+const initial = 'ap';
+const replacement = 'b';
 const siteId = '12345678-1234-1234-1234-123456789abc';
 async function setup(t) {
   const root = await mkdtemp(join(tmpdir(), 'seminar-env-password-'));
@@ -90,7 +90,7 @@ test('invalid or unauthenticated password changes never write the environment', 
   assert.equal((await f.request('/api/admin/password', { method: 'POST', body })).status, 401);
   const cookie = await f.login();
   assert.equal((await f.request('/api/admin/password', { method: 'POST', body, cookie, origin: 'https://foreign.example' })).status, 403);
-  for (const invalid of [{ ...body, currentPassword: 'incorrect password' }, { ...body, newPassword: 'short' }, { ...body, newPassword: initial }]) {
+  for (const invalid of [{ ...body, currentPassword: 'incorrect password' }, { ...body, newPassword: '' }, { ...body, newPassword: initial }]) {
     assert.equal((await f.request('/api/admin/password', { method: 'POST', cookie, body: invalid })).status, 400);
   }
   assert.equal(f.calls.filter(c => c.method === 'PATCH').length, 0);
