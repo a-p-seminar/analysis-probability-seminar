@@ -21,28 +21,34 @@ test('report times require both complete choices and a strictly later end time',
   for (const [start, end] of [['10:00', ''], ['', '11:00'], ['25:00', '11:00'], ['10:00', '11:60']]) assert.match(reportTimes.timeRangeError(start, end), /请选择完整/);
 });
 
-test('bilingual institutions normalize legacy parentheses and support either language alone', () => {
+test('one institution field normalizes multiple and bilingual units with slashes', () => {
   assert.equal(typeof model.displayAffiliation, 'function');
-  assert.equal(model.displayAffiliation({ affiliation: '克里特大学（Crete University）' }), '克里特大学 · Crete University');
-  assert.deepEqual(model.splitAffiliation({ affiliation: 'University of Strasbourg' }), { affiliationZh: '', affiliationEn: 'University of Strasbourg' });
-  assert.equal(model.displayAffiliation({ affiliationZh: ' 武汉大学 ', affiliationEn: ' Wuhan University ' }), '武汉大学 · Wuhan University');
-  assert.equal(model.displayAffiliation({ affiliationZh: '', affiliationEn: 'Crete University', affiliation: 'old' }), 'Crete University');
-  assert.equal(model.displayAffiliation({ affiliationZh: '', affiliationEn: '', affiliation: 'old' }), '');
-  assert.deepEqual(model.splitAffiliation({ affiliation: '中国科学院（北京）' }), { affiliationZh: '中国科学院（北京）', affiliationEn: '' });
+  assert.equal(model.displayAffiliation({ affiliation: '克里特大学（Crete University）' }), '克里特大学/Crete University');
+  assert.equal(model.displayAffiliation({ affiliation: ' 华南理工大学 / 东巴黎大学 · Université Paris Cité ' }), '华南理工大学/东巴黎大学/Université Paris Cité');
+  assert.equal(model.displayAffiliation({ affiliation: '北京大学，北京国际数学研究中心' }), '北京大学/北京国际数学研究中心');
+  assert.equal(model.displayAffiliation({ affiliationZh: ' 武汉大学 ', affiliationEn: ' Wuhan University ' }), '武汉大学/Wuhan University');
+  assert.equal(model.displayAffiliation({ affiliation: 'New Institute', affiliationZh: 'Old Institute', affiliationEn: 'Old English' }), 'New Institute');
+  assert.equal(model.displayAffiliation({ affiliation: '', affiliationZh: 'Old Institute' }), '');
+  assert.equal(model.displayAffiliation({ affiliation: '中国科学院（北京）' }), '中国科学院（北京）');
+  assert.equal(model.displayAffiliation({ affiliation: 'Budapest University of Technology and Economics' }), 'Budapest University of Technology and Economics');
 });
 
-test('legacy editor records acquire bilingual fields and time choices without mutating source data', () => {
+test('legacy editor records use a single institution field and discard stale language fields when saved', () => {
   assert.equal(typeof model.editableTalk, 'function');
   const original = { affiliation: '克里特大学（Crete University）', date: '2025-09-09', time: '（周二）下午 2:00–3:30', extra: 'keep' };
   const draft = model.editableTalk(original);
-  assert.equal(draft.affiliationZh, '克里特大学');
-  assert.equal(draft.affiliationEn, 'Crete University');
+  assert.equal(draft.affiliation, '克里特大学/Crete University');
+  assert.equal(draft.affiliationZh, undefined);
+  assert.equal(draft.affiliationEn, undefined);
   assert.equal(draft.startTime, '14:00');
   assert.equal(draft.endTime, '15:30');
   assert.equal(original.startTime, undefined);
   const saved = model.serializeTalk({ ...draft, endTime: '16:45' });
   assert.equal(saved.time, '14:00-16:45');
-  assert.equal(saved.affiliation, '克里特大学 · Crete University');
+  assert.equal(saved.affiliation, '克里特大学/Crete University');
+  const updated = model.serializeTalk({ ...draft, affiliation: ' A / B / C ', affiliationZh: 'stale' });
+  assert.equal(updated.affiliation, 'A/B/C');
+  assert.equal(updated.affiliationZh, undefined);
   assert.equal(saved.extra, 'keep');
   assert.equal(model.talkEndTime(saved), Date.parse('2025-09-09T08:45:00Z'));
   assert.equal(model.talkEndTime({ ...saved, time: '09:00-10:00' }), Date.parse('2025-09-09T08:45:00Z'));
@@ -71,19 +77,26 @@ test('missing or malformed time falls back to midnight after the Beijing report 
   }
 });
 
-test('pagination combines upcoming then ended records in pages of ten without gaps or mutations', () => {
-  assert.equal(typeof model.paginateTalks, 'function');
+test('all matching reports are sorted by Beijing status without pagination or mutations', () => {
+  assert.equal(typeof model.sortArchiveTalks, 'function');
   const records = Array.from({ length: 23 }, (_, i) => ({ id: String(i), date: `2026-10-${String(i + 1).padStart(2, '0')}`, time: '10:00–11:00' }));
   const now = Date.parse('2026-10-04T05:00:00Z');
-  const pages = [1, 2, 3].map(page => model.paginateTalks(records, now, page));
-  assert.deepEqual(pages.map(page => page.talks.length), [10, 10, 3]);
-  assert.deepEqual(pages[0].talks.map(t => t.date), records.slice(4, 14).map(t => t.date));
-  assert.deepEqual(pages[2].talks.map(t => t.id), ['2', '1', '0']);
-  assert.equal(new Set(pages.flatMap(page => page.talks.map(t => t.id))).size, 23);
-  assert.equal(model.paginateTalks(records, now, 99).page, 3);
-  assert.equal(model.paginateTalks([], now, 3).page, 1);
-  assert.deepEqual(model.paginateTalks([], now).talks, []);
+  const sorted = model.sortArchiveTalks(records, now);
+  assert.equal(sorted.length, 23);
+  assert.deepEqual(sorted.slice(0, 19).map(t => t.date), records.slice(4).map(t => t.date));
+  assert.deepEqual(sorted.slice(19).map(t => t.id), ['3', '2', '1', '0']);
+  assert.equal(new Set(sorted.map(t => t.id)).size, 23);
+  assert.deepEqual(model.sortArchiveTalks([], now), []);
   assert.equal(records[0].id, '0');
+});
+
+test('month grouping separates months and years without losing records', () => {
+  assert.equal(typeof model.groupTalksByMonth, 'function');
+  const records = ['2026-06-30', '2026-06-01', '2026-05-12', '2025-06-01'].map((date, i) => ({ id: String(i), date }));
+  const groups = model.groupTalksByMonth(records);
+  assert.deepEqual(groups.map(group => group.month), ['2026-06', '2026-05', '2025-06']);
+  assert.deepEqual(groups.map(group => group.talks.length), [2, 1, 1]);
+  assert.deepEqual(groups.flatMap(group => group.talks), records);
 });
 const talks = [
   { id: 'old', date: '2024-09-01', title: 'An old talk', speaker: 'A', abstract: 'first' },
@@ -227,6 +240,32 @@ test('report cards use the first safe meeting URL and leave unlinked records wit
   assert.match(linked, /class="talk-title-link"[^>]*href="https:\/\/example.com\/meeting"[^>]*target="_blank"[^>]*rel="noopener noreferrer"/);
   assert.ok(!linked.includes('https://example.com/reference'));
   for (const urls of [[], ['#'], ['javascript:alert(1)']]) assert.ok(!render(urls).includes('class="talk-title-link"'));
+});
+
+test('campus-only locations are hidden while a real venue retains its campus and icon', async () => {
+  const { ArchiveRecord } = await import('../src/ArchiveRecord.mjs');
+  const { createElement } = await import('react');
+  const { renderToStaticMarkup } = await import('react-dom/server');
+  const render = location => renderToStaticMarkup(createElement(ArchiveRecord, { talk: { ...talks[1], location } }));
+  for (const location of ['', '武大', ' 华师 ', '武大 · ', '华师·']) assert.ok(!render(location).includes('class="talk-location"'), location);
+  assert.match(render('武大·雷军科技楼601报告厅'), /class="talk-location"[\s\S]*?武大 · 雷军科技楼601报告厅/);
+  assert.match(render('Lecture Hall 601'), /class="talk-location"[\s\S]*?Lecture Hall 601/);
+});
+
+test('PDF links show PDF for one document and Roman numerals for multiple documents', async () => {
+  const { ArchiveRecord } = await import('../src/ArchiveRecord.mjs');
+  const { createElement } = await import('react');
+  const { renderToStaticMarkup } = await import('react-dom/server');
+  const files = Array.from({ length: 4 }, (_, i) => ({ id: `pdf-${i}`, name: `file-${i}.pdf`, type: 'pdf', url: `https://example.com/file-${i}.pdf`, size: 10 }));
+  const render = attachments => renderToStaticMarkup(createElement(ArchiveRecord, { talk: { ...talks[1], attachments } }));
+  assert.match(render(files.slice(0, 1)), /aria-label="PDF：file-0.pdf"[^>]*>PDF<\/a>/);
+  const multiple = render(files);
+  for (const [i, numeral] of ['I', 'II', 'III', 'IV'].entries()) assert.match(multiple, new RegExp(`aria-label="PDF ${numeral}：file-${i}.pdf"[^>]*>PDF ${numeral}<\\/a>`));
+  assert.ok(!multiple.includes('讲义 · PPT'));
+  assert.ok(multiple.includes('/viewer.html?file='));
+  const mixed = render([...files.slice(0, 1), { id: 'pptx', name: 'deck.pptx', type: 'pptx', url: 'https://example.com/deck.pptx', size: 10 }]);
+  assert.match(mixed, /aria-label="PDF：file-0.pdf"[^>]*>PDF<\/a>/);
+  assert.match(mixed, /download="deck.pptx"[^>]*>PPTX<\/a>/);
 });
 
 test('uploads every byte in declared chunks and exposes an attachment only after completion', async () => {

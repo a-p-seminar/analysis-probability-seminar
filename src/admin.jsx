@@ -189,8 +189,7 @@ function Admin() {
               <label className="full-field">报告标题 <span>*</span><input required value={draft.title} onChange={e => field('title', e.target.value)} placeholder="完整报告标题，支持 TeX 公式"/></label>
               <div className="field-grid report-meta-grid">
                 <label><span className="field-label"><MetadataIcon type="person"/>报告人<span className="field-required" aria-hidden="true">*</span></span><input required value={draft.speaker} onChange={e => field('speaker', e.target.value)}/></label>
-                <label><span className="field-label">中文单位<span className="field-optional">（选填）</span></span><input aria-label="中文单位" value={draft.affiliationZh || ''} onChange={e => field('affiliationZh', e.target.value)} placeholder="例如 克里特大学"/></label>
-                <label><span className="field-label">英文单位<span className="field-optional">（选填）</span></span><input aria-label="英文单位" value={draft.affiliationEn || ''} onChange={e => field('affiliationEn', e.target.value)} placeholder="例如 Crete University"/></label>
+                <label className="institution-field"><span className="field-label">单位<span className="field-optional">（选填）</span></span><input aria-label="单位" value={draft.affiliation || ''} onChange={e => field('affiliation', e.target.value)} placeholder="例如 克里特大学/Crete University"/></label>
                 <label><span className="field-label"><MetadataIcon type="calendar"/>日期<span className="field-required" aria-hidden="true">*</span></span><input type="date" required value={draft.date} onChange={e => field('date', e.target.value)}/></label>
                 <TimeSelect label="开始时间" value={draft.startTime || ''} onChange={value => changeTime('startTime', value)}/>
                 <TimeSelect label="结束时间" value={draft.endTime || ''} onChange={value => changeTime('endTime', value)}/>

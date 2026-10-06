@@ -39,7 +39,7 @@ test(`admin date and time controls stay inside three separate columns${iosNative
         const label = input.closest('label').getBoundingClientRect();
         return { x: rect.x, right: rect.right, y: rect.y, width: rect.width, height: rect.height, labelX: label.x, labelRight: label.right };
       }));
-      const controls = boxes.slice(3);
+      const controls = boxes.slice(2);
       for (const box of controls) {
         expect(box.x, `left edge at ${width}px, date=${value}`).toBeGreaterThanOrEqual(box.labelX - 1);
         expect(box.right, `right edge at ${width}px, date=${value}`).toBeLessThanOrEqual(box.labelRight + 1);

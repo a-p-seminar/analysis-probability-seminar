@@ -1,3 +1,6 @@
+import { reportAffiliation as displayAffiliation } from '../shared/report-affiliation.mjs';
+export { displayAffiliation };
+
 export function filterTalks(talks, { year = '', month = '', query = '', dateFrom = '', dateTo = '' } = {}) {
   const terms = query.trim().toLocaleLowerCase().split(/\s+/).filter(Boolean);
   return talks.filter(talk => (!year || talk.date.slice(0, 4) === year)
@@ -18,25 +21,17 @@ export function groupTalks(talks) {
   return [...groups].sort(([a], [b]) => b.localeCompare(a)).map(([year, items]) => ({ year, talks: items }));
 }
 
+export function groupTalksByMonth(talks) {
+  const groups = new Map();
+  for (const talk of talks) {
+    const month = talk.date.slice(0, 7);
+    if (!groups.has(month)) groups.set(month, []);
+    groups.get(month).push(talk);
+  }
+  return [...groups].sort(([a], [b]) => b.localeCompare(a)).map(([month, items]) => ({ month, talks: items }));
+}
+
 const DAY_MS = 86_400_000;
-
-export function splitAffiliation(talk) {
-  if (talk.affiliationZh !== undefined || talk.affiliationEn !== undefined) {
-    return { affiliationZh: (talk.affiliationZh || '').trim(), affiliationEn: (talk.affiliationEn || '').trim() };
-  }
-  const value = (talk.affiliation || '').trim();
-  const parts = value.match(/^(.*?)\s*[（(]([^()（）]+)[）)]\s*$/u) || value.match(/^(.*?)\s+·\s+(.+)$/u);
-  if (parts && /\p{Script=Han}/u.test(parts[1]) && /[A-Za-z]/.test(parts[2]) && !/\p{Script=Han}/u.test(parts[2])) {
-    return { affiliationZh: parts[1].trim(), affiliationEn: parts[2].trim() };
-  }
-  return /\p{Script=Han}/u.test(value) ? { affiliationZh: value, affiliationEn: '' } : { affiliationZh: '', affiliationEn: value };
-}
-
-export function displayAffiliation(talk) {
-  const { affiliationZh, affiliationEn } = splitAffiliation(talk);
-  return [affiliationZh, affiliationEn].filter(Boolean).join(' · ');
-}
-
 const clockTime = minutes => `${String(Math.floor(minutes / 60)).padStart(2, '0')}:${String(minutes % 60).padStart(2, '0')}`;
 
 export function reportTime(talk) {
@@ -45,11 +40,15 @@ export function reportTime(talk) {
 
 export function editableTalk(talk) {
   const range = parseTimeRange(reportTime(talk));
-  return { ...structuredClone(talk), ...splitAffiliation(talk), startTime: range ? clockTime(range.start) : '', endTime: range ? clockTime(range.end) : '' };
+  const draft = { ...structuredClone(talk), affiliation: displayAffiliation(talk), startTime: range ? clockTime(range.start) : '', endTime: range ? clockTime(range.end) : '' };
+  delete draft.affiliationZh; delete draft.affiliationEn;
+  return draft;
 }
 
 export function serializeTalk(talk) {
-  return { ...talk, affiliation: displayAffiliation(talk), time: reportTime(talk) };
+  const result = { ...talk, affiliation: displayAffiliation(talk), time: reportTime(talk) };
+  delete result.affiliationZh; delete result.affiliationEn;
+  return result;
 }
 
 // Dates and time ranges are always Beijing wall time, regardless of the visitor's timezone.
@@ -82,13 +81,11 @@ export function talkStatus(talk, now = Date.now()) {
   return now >= talkEndTime(talk) ? 'ended' : 'upcoming';
 }
 
-export function paginateTalks(talks, now = Date.now(), requestedPage = 1) {
+export function sortArchiveTalks(talks, now = Date.now()) {
   const sorted = talks.map(talk => ({ talk, end: talkEndTime(talk), status: talkStatus(talk, now) }))
     .sort((a, b) => a.status !== b.status ? (a.status === 'upcoming' ? -1 : 1)
       : (a.status === 'upcoming' ? a.end - b.end : b.end - a.end) || a.talk.id.localeCompare(b.talk.id));
-  const pages = Math.max(1, Math.ceil(sorted.length / 10));
-  const page = Math.max(1, Math.min(pages, requestedPage));
-  return { page, pages, talks: sorted.slice((page - 1) * 10, page * 10).map(item => item.talk) };
+  return sorted.map(item => item.talk);
 }
 
 export function safeHttpUrl(value) {
@@ -128,7 +125,7 @@ export function safePdfUrl(value, name, origin) {
 }
 
 export function newTalk() {
-  return { id: `talk-${globalThis.crypto.randomUUID()}`, date: '', time: '', startTime: '', endTime: '', title: '', speaker: '', affiliation: '', affiliationZh: '', affiliationEn: '', abstract: '', location: '', notes: '', sourceUrls: [], attachments: [] };
+  return { id: `talk-${globalThis.crypto.randomUUID()}`, date: '', time: '', startTime: '', endTime: '', title: '', speaker: '', affiliation: '', abstract: '', location: '', notes: '', sourceUrls: [], attachments: [] };
 }
 
 export function upsertTalk(content, record) {
@@ -154,8 +151,14 @@ export function displayDate(date) {
 }
 
 export function splitLocation(location = '') {
-  const match = location.match(/^(武大|华师)(?:·(.*))?$/);
+  const match = location.trim().match(/^(武大|华师)\s*(?:·\s*(.*))?$/);
   return match ? { campus: match[1], venue: match[2] || '' } : { campus: '武大', venue: location };
+}
+
+export function displayLocation(location = '') {
+  const value = location.trim();
+  return /^(武大|华师|武汉大学|华中师范大学)\s*(?:·\s*)?$/.test(value)
+    ? '' : value.replace(/^(武大|华师)\s*·\s*/, '$1 · ');
 }
 
 export function formatLocation(campus, venue = '') {

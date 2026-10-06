@@ -1,7 +1,7 @@
 import { createElement as h, useState } from 'react';
 import katex from 'katex';
 import { MetadataIcon } from './MetadataIcon.mjs';
-import { attachmentUrl, displayAffiliation, displayDate, displayTime, formatSize, reportTime, safeHttpUrl, visibleAttachments } from './archive-model.mjs';
+import { attachmentUrl, displayAffiliation, displayDate, displayLocation, displayTime, formatSize, reportTime, safeHttpUrl, visibleAttachments } from './archive-model.mjs';
 
 // Infer only recognizable TeX runs in titles; normal words and filenames stay text.
 // Explicit delimiters remain the preferred way to enter more complex formulas.
@@ -39,10 +39,21 @@ export function MathText({ text = '', autoMath = false }) {
   });
 }
 
+function romanNumber(value) {
+  let result = '';
+  for (const [number, symbol] of [[100, 'C'], [90, 'XC'], [50, 'L'], [40, 'XL'], [10, 'X'], [9, 'IX'], [5, 'V'], [4, 'IV'], [1, 'I']]) {
+    while (value >= number) { result += symbol; value -= number; }
+  }
+  return result;
+}
+
 export function ArchiveRecord({ talk }) {
   const [abstractOpen, setAbstractOpen] = useState(false);
   const files = visibleAttachments(talk);
   const affiliation = displayAffiliation(talk);
+  const location = displayLocation(talk.location);
+  const pdfCount = files.filter(file => file.type.toLowerCase() === 'pdf').length;
+  let pdfIndex = 0;
   const meetingUrl = (talk.sourceUrls || []).map(safeHttpUrl).find(Boolean);
   return h('article', { className: 'talk', id: talk.id, 'aria-labelledby': `title-${talk.id}` },
     h('div', { className: 'talk-content' },
@@ -56,9 +67,9 @@ export function ArchiveRecord({ talk }) {
         h('span', { className: 'talk-datetime' }, h(MetadataIcon, { type: 'calendar' }),
           h('span', null, h('time', { dateTime: talk.date }, displayDate(talk.date)),
             reportTime(talk) ? ` ${displayTime(talk.date, reportTime(talk))}` : '')),
-        talk.location ? h('span', { className: 'talk-location' },
+        location ? h('span', { className: 'talk-location' },
           h(MetadataIcon, { type: 'location' }),
-          h('span', null, talk.location.replace(/^(武大|华师)\s*·\s*/, '$1 · '))) : null),
+          h('span', null, location)) : null),
       talk.abstract || files.length ? h('div', { className: 'talk-abstract' },
         h('div', { className: 'talk-actions' },
           talk.abstract ? h('button', {
@@ -67,13 +78,16 @@ export function ArchiveRecord({ talk }) {
           }, h('span', { className: 'disclosure-icon', 'aria-hidden': true }, '+'), '摘要',
           h('span', { className: 'abstract-hint' }, abstractOpen ? '（点击收起）' : '（点击展开）')) : null,
           files.length ? h('div', { className: 'talk-links' },
-            ...files.map(file => h('a', {
+            ...files.map(file => {
+              const label = file.type.toLowerCase() === 'pdf' && pdfCount > 1 ? `PDF ${romanNumber(++pdfIndex)}` : file.type.toUpperCase();
+              return h('a', {
               key: file.id || file.name, className: 'attachment-link',
               href: file.type.toLowerCase() === 'pdf' ? `/viewer.html?file=${encodeURIComponent(attachmentUrl(file))}&name=${encodeURIComponent(file.name)}` : attachmentUrl(file),
               target: '_blank', rel: 'noopener noreferrer', download: file.type.toLowerCase() === 'pdf' ? undefined : file.name,
               title: `${file.name}${file.size ? ` · ${formatSize(file.size)}` : ''}`,
-              'aria-label': `讲义 · PPT：${file.name}`,
-            }, '讲义 · PPT')),
+              'aria-label': `${label}：${file.name}`,
+            }, label);
+            }),
           ) : null,
         ),
         talk.abstract ? h('div', { className: 'abstract-text', id: `abstract-${talk.id}`, hidden: !abstractOpen }, h(MathText, { text: talk.abstract })) : null,

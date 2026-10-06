@@ -7361,5 +7361,799 @@
       "maths.whu.edu.cn",
       "maths.ccnu.edu.cn"
     ]
+  },
+  "archiveDisplayUpdate": {
+    "updatedAt": "2026-10-06T08:27:53.532Z",
+    "parent": "1c5fa649ee017796055ab465f3a723fbffaff226",
+    "affiliationChanges": [
+      {
+        "talkId": "talk-3294b44b-5eb7-4ba6-a3f1-e6879f149b4d",
+        "before": {
+          "affiliation": "测试",
+          "affiliationZh": "测试",
+          "affiliationEn": ""
+        },
+        "after": "测试"
+      },
+      {
+        "talkId": "talk-b4832df7-f9f6-4b45-8cc8-951f32b996a9",
+        "before": {
+          "affiliation": "上海数学与交叉学科研究院",
+          "affiliationZh": "上海数学与交叉学科研究院",
+          "affiliationEn": ""
+        },
+        "after": "上海数学与交叉学科研究院"
+      },
+      {
+        "talkId": "2026-07-18-bill-mance-de7b2df1",
+        "before": {
+          "affiliation": "Adam Mickiewicz University in Poznań",
+          "affiliationZh": "",
+          "affiliationEn": "Adam Mickiewicz University in Poznań"
+        },
+        "after": "Adam Mickiewicz University in Poznań"
+      },
+      {
+        "talkId": "2026-05-29-talk-1c6f7583",
+        "before": {
+          "affiliation": "大湾区大学",
+          "affiliationZh": "大湾区大学",
+          "affiliationEn": ""
+        },
+        "after": "大湾区大学"
+      },
+      {
+        "talkId": "2026-04-23-michal-rams-6a32549c",
+        "before": {
+          "affiliation": "波兰科学院数学研究所",
+          "affiliationZh": "波兰科学院数学研究所",
+          "affiliationEn": ""
+        },
+        "after": "波兰科学院数学研究所"
+      },
+      {
+        "talkId": "2026-04-20-talk-b21924de",
+        "before": {
+          "affiliation": "清华大学",
+          "affiliationZh": "清华大学",
+          "affiliationEn": ""
+        },
+        "after": "清华大学"
+      },
+      {
+        "talkId": "2026-04-02-karoly-simon-5c59cd14",
+        "before": {
+          "affiliation": "Budapest University of Technology and Economics",
+          "affiliationZh": "",
+          "affiliationEn": "Budapest University of Technology and Economics"
+        },
+        "after": "Budapest University of Technology and Economics"
+      },
+      {
+        "talkId": "2026-03-30-talk-ac37c120",
+        "before": {
+          "affiliation": "中国科学院数学与系统科学研究院",
+          "affiliationZh": "中国科学院数学与系统科学研究院",
+          "affiliationEn": ""
+        },
+        "after": "中国科学院数学与系统科学研究院"
+      },
+      {
+        "talkId": "2026-03-11-talk-b73f559b",
+        "before": {
+          "affiliation": "国科大杭州高等研究院",
+          "affiliationZh": "国科大杭州高等研究院",
+          "affiliationEn": ""
+        },
+        "after": "国科大杭州高等研究院"
+      },
+      {
+        "talkId": "2026-01-16-michal-rams-1d1e2f8b",
+        "before": {
+          "affiliation": "波兰科学院数学研究所",
+          "affiliationZh": "波兰科学院数学研究所",
+          "affiliationEn": ""
+        },
+        "after": "波兰科学院数学研究所"
+      },
+      {
+        "talkId": "2026-01-16-rene-pfitscher-ca7419a4",
+        "before": {
+          "affiliation": "中国科学技术大学",
+          "affiliationZh": "中国科学技术大学",
+          "affiliationEn": ""
+        },
+        "after": "中国科学技术大学"
+      },
+      {
+        "talkId": "2025-12-27-dong-han-kim-1685d770",
+        "before": {
+          "affiliation": "Dongguk University",
+          "affiliationZh": "",
+          "affiliationEn": "Dongguk University"
+        },
+        "after": "Dongguk University"
+      },
+      {
+        "talkId": "2025-12-27-talk-7ae8ec70",
+        "before": {
+          "affiliation": "华南理工大学",
+          "affiliationZh": "华南理工大学",
+          "affiliationEn": ""
+        },
+        "after": "华南理工大学"
+      },
+      {
+        "talkId": "2025-12-27-talk-7c761524",
+        "before": {
+          "affiliation": "湖南大学",
+          "affiliationZh": "湖南大学",
+          "affiliationEn": ""
+        },
+        "after": "湖南大学"
+      },
+      {
+        "talkId": "2025-12-27-talk-afb31c8a",
+        "before": {
+          "affiliation": "复旦大学",
+          "affiliationZh": "复旦大学",
+          "affiliationEn": ""
+        },
+        "after": "复旦大学"
+      },
+      {
+        "talkId": "2025-12-19-matteo-ruggiero-9bae180d",
+        "before": {
+          "affiliation": "Université Paris Cité",
+          "affiliationZh": "",
+          "affiliationEn": "Université Paris Cité"
+        },
+        "after": "Université Paris Cité"
+      },
+      {
+        "talkId": "2025-12-03-fran-ois-vigneron-3dfb3b81",
+        "before": {
+          "affiliation": "Université de Reims Champagne-Ardenne",
+          "affiliationZh": "",
+          "affiliationEn": "Université de Reims Champagne-Ardenne"
+        },
+        "after": "Université de Reims Champagne-Ardenne"
+      },
+      {
+        "talkId": "2025-10-28-talk-708941bf",
+        "before": {
+          "affiliation": "清华大学",
+          "affiliationZh": "清华大学",
+          "affiliationEn": ""
+        },
+        "after": "清华大学"
+      },
+      {
+        "talkId": "2025-10-27-talk-d477d988",
+        "before": {
+          "affiliation": "南开大学",
+          "affiliationZh": "南开大学",
+          "affiliationEn": ""
+        },
+        "after": "南开大学"
+      },
+      {
+        "talkId": "2025-10-27-talk-efdac6ed",
+        "before": {
+          "affiliation": "苏州大学",
+          "affiliationZh": "苏州大学",
+          "affiliationEn": ""
+        },
+        "after": "苏州大学"
+      },
+      {
+        "talkId": "2025-09-23-gergely-kiss-6cf6870e",
+        "before": {
+          "affiliation": "Budapest Corvinus University and Rényi Institute",
+          "affiliationZh": "",
+          "affiliationEn": "Budapest Corvinus University and Rényi Institute"
+        },
+        "after": "Budapest Corvinus University/Rényi Institute"
+      },
+      {
+        "talkId": "2025-09-09-maria-loukaki-00c3bd02",
+        "before": {
+          "affiliation": "克里特大学（Crete University）"
+        },
+        "after": "克里特大学/Crete University"
+      },
+      {
+        "talkId": "2025-09-09-mihalis-kolountzakis-a5120e59",
+        "before": {
+          "affiliation": "克里特大学 · Crete University",
+          "affiliationZh": "克里特大学",
+          "affiliationEn": "Crete University"
+        },
+        "after": "克里特大学/Crete University"
+      },
+      {
+        "talkId": "2025-08-30-talk-962825a5",
+        "before": {
+          "affiliation": "汕头大学",
+          "affiliationZh": "汕头大学",
+          "affiliationEn": ""
+        },
+        "after": "汕头大学"
+      },
+      {
+        "talkId": "2025-07-31-talk-1dd0736b",
+        "before": {
+          "affiliation": "大湾区大学",
+          "affiliationZh": "大湾区大学",
+          "affiliationEn": ""
+        },
+        "after": "大湾区大学"
+      },
+      {
+        "talkId": "2025-07-16-talk-84e7de02",
+        "before": {
+          "affiliation": "中国科学院数学与系统科学研究院",
+          "affiliationZh": "中国科学院数学与系统科学研究院",
+          "affiliationEn": ""
+        },
+        "after": "中国科学院数学与系统科学研究院"
+      },
+      {
+        "talkId": "2025-05-13-talk-eeaffd2a",
+        "before": {
+          "affiliation": "厦门大学",
+          "affiliationZh": "厦门大学",
+          "affiliationEn": ""
+        },
+        "after": "厦门大学"
+      },
+      {
+        "talkId": "2025-04-17-talk-8564b650",
+        "before": {
+          "affiliation": "清华大学",
+          "affiliationZh": "清华大学",
+          "affiliationEn": ""
+        },
+        "after": "清华大学"
+      },
+      {
+        "talkId": "2025-04-10-mathieu-helfter-4b0616ef",
+        "before": {
+          "affiliation": "维也纳大学",
+          "affiliationZh": "维也纳大学",
+          "affiliationEn": ""
+        },
+        "after": "维也纳大学"
+      },
+      {
+        "talkId": "2025-03-26-sanju-velani-f4b8883a",
+        "before": {
+          "affiliation": "York",
+          "affiliationZh": "",
+          "affiliationEn": "York"
+        },
+        "after": "York"
+      },
+      {
+        "talkId": "2025-03-18-talk-76fbfd3c",
+        "before": {
+          "affiliation": "北京大学，北京国际数学研究中心",
+          "affiliationZh": "北京大学，北京国际数学研究中心",
+          "affiliationEn": ""
+        },
+        "after": "北京大学/北京国际数学研究中心"
+      },
+      {
+        "talkId": "2025-03-14-j-r-me-buzzi-fa2d1c6a",
+        "before": {
+          "affiliation": "Université Paris-Saclay",
+          "affiliationZh": "",
+          "affiliationEn": "Université Paris-Saclay"
+        },
+        "after": "Université Paris-Saclay"
+      },
+      {
+        "talkId": "2025-03-14-lo-c-merel-4c5dc45f",
+        "before": {
+          "affiliation": "Université Paris Cité",
+          "affiliationZh": "",
+          "affiliationEn": "Université Paris Cité"
+        },
+        "after": "Université Paris Cité"
+      },
+      {
+        "talkId": "2025-02-26-talk-86000c92",
+        "before": {
+          "affiliation": "中科院杭州高等研究院",
+          "affiliationZh": "中科院杭州高等研究院",
+          "affiliationEn": ""
+        },
+        "after": "中科院杭州高等研究院"
+      },
+      {
+        "talkId": "2025-02-25-talk-24c505ad",
+        "before": {
+          "affiliation": "大湾区大学",
+          "affiliationZh": "大湾区大学",
+          "affiliationEn": ""
+        },
+        "after": "大湾区大学"
+      },
+      {
+        "talkId": "2024-12-27-talk-1f508008",
+        "before": {
+          "affiliation": "法国东巴黎大学",
+          "affiliationZh": "法国东巴黎大学",
+          "affiliationEn": ""
+        },
+        "after": "法国东巴黎大学"
+      },
+      {
+        "talkId": "2024-12-27-talk-acd99b7c",
+        "before": {
+          "affiliation": "匈牙利布达佩斯经济与技术大学",
+          "affiliationZh": "匈牙利布达佩斯经济与技术大学",
+          "affiliationEn": ""
+        },
+        "after": "匈牙利布达佩斯经济与技术大学"
+      },
+      {
+        "talkId": "2024-12-30-talk-d64f5f6d",
+        "before": {
+          "affiliation": "南京理工大学",
+          "affiliationZh": "南京理工大学",
+          "affiliationEn": ""
+        },
+        "after": "南京理工大学"
+      },
+      {
+        "talkId": "2024-12-27-fran-ois-vigneron-5a9e2494",
+        "before": {
+          "affiliation": "法国兰斯大学",
+          "affiliationZh": "法国兰斯大学",
+          "affiliationEn": ""
+        },
+        "after": "法国兰斯大学"
+      },
+      {
+        "talkId": "2024-11-25-jacques-peyri-re-7ab0c300",
+        "before": {
+          "affiliation": "法国巴黎-萨克雷大学",
+          "affiliationZh": "法国巴黎-萨克雷大学",
+          "affiliationEn": ""
+        },
+        "after": "法国巴黎-萨克雷大学"
+      },
+      {
+        "talkId": "2024-10-24-talk-fe6d407d",
+        "before": {
+          "affiliation": "西安电子科技大学",
+          "affiliationZh": "西安电子科技大学",
+          "affiliationEn": ""
+        },
+        "after": "西安电子科技大学"
+      },
+      {
+        "talkId": "2024-10-09-talk-a60c26b2",
+        "before": {
+          "affiliation": "苏州大学",
+          "affiliationZh": "苏州大学",
+          "affiliationEn": ""
+        },
+        "after": "苏州大学"
+      },
+      {
+        "talkId": "2024-10-08-talk-f633ab64",
+        "before": {
+          "affiliation": "苏州大学",
+          "affiliationZh": "苏州大学",
+          "affiliationEn": ""
+        },
+        "after": "苏州大学"
+      },
+      {
+        "talkId": "2024-10-01-talk-065ea768",
+        "before": {
+          "affiliation": "上海数学中心",
+          "affiliationZh": "上海数学中心",
+          "affiliationEn": ""
+        },
+        "after": "上海数学中心"
+      },
+      {
+        "talkId": "2024-08-11-edouard-daviaud-072ab5a0",
+        "before": {
+          "affiliation": "香港中文大学",
+          "affiliationZh": "香港中文大学",
+          "affiliationEn": ""
+        },
+        "after": "香港中文大学"
+      },
+      {
+        "talkId": "2024-08-11-gerardo-gonzalez-robert-d9e79d6f",
+        "before": {
+          "affiliation": "La Trobe University",
+          "affiliationZh": "",
+          "affiliationEn": "La Trobe University"
+        },
+        "after": "La Trobe University"
+      },
+      {
+        "talkId": "2024-08-11-talk-d825e588",
+        "before": {
+          "affiliation": "武汉理工大学",
+          "affiliationZh": "武汉理工大学",
+          "affiliationEn": ""
+        },
+        "after": "武汉理工大学"
+      },
+      {
+        "talkId": "2024-05-22-talk-297f5789",
+        "before": {
+          "affiliation": "Claremont Graduate University",
+          "affiliationZh": "",
+          "affiliationEn": "Claremont Graduate University"
+        },
+        "after": "Claremont Graduate University"
+      },
+      {
+        "talkId": "2024-05-22-talk-4588c34c",
+        "before": {
+          "affiliation": "苏州大学",
+          "affiliationZh": "苏州大学",
+          "affiliationEn": ""
+        },
+        "after": "苏州大学"
+      },
+      {
+        "talkId": "2024-04-29-talk-0bd9c014",
+        "before": {
+          "affiliation": "香港中文大学",
+          "affiliationZh": "香港中文大学",
+          "affiliationEn": ""
+        },
+        "after": "香港中文大学"
+      },
+      {
+        "talkId": "2024-04-12-talk-f0323274",
+        "before": {
+          "affiliation": "北京联合大学",
+          "affiliationZh": "北京联合大学",
+          "affiliationEn": ""
+        },
+        "after": "北京联合大学"
+      },
+      {
+        "talkId": "2024-04-11-talk-c63b5499",
+        "before": {
+          "affiliation": "清华大学",
+          "affiliationZh": "清华大学",
+          "affiliationEn": ""
+        },
+        "after": "清华大学"
+      },
+      {
+        "talkId": "2024-03-28-talk-27efd811",
+        "before": {
+          "affiliation": "中科院数学与系统科学研究院",
+          "affiliationZh": "中科院数学与系统科学研究院",
+          "affiliationEn": ""
+        },
+        "after": "中科院数学与系统科学研究院"
+      },
+      {
+        "talkId": "2024-03-28-talk-784f123d",
+        "before": {
+          "affiliation": "中南财经政法大学",
+          "affiliationZh": "中南财经政法大学",
+          "affiliationEn": ""
+        },
+        "after": "中南财经政法大学"
+      },
+      {
+        "talkId": "2024-01-26-antoine-marnat-eecec06a",
+        "before": {
+          "affiliation": "东巴黎大学",
+          "affiliationZh": "东巴黎大学",
+          "affiliationEn": ""
+        },
+        "after": "东巴黎大学"
+      },
+      {
+        "talkId": "2024-01-05-gerardo-gonzalez-robert-1393d38f",
+        "before": {
+          "affiliation": "La Trobe University",
+          "affiliationZh": "",
+          "affiliationEn": "La Trobe University"
+        },
+        "after": "La Trobe University"
+      },
+      {
+        "talkId": "2024-01-05-nikita-shulga-57a14596",
+        "before": {
+          "affiliation": "La Trobe University",
+          "affiliationZh": "",
+          "affiliationEn": "La Trobe University"
+        },
+        "after": "La Trobe University"
+      },
+      {
+        "talkId": "2024-01-05-talk-76f2d5e3",
+        "before": {
+          "affiliation": "华南理工大学",
+          "affiliationZh": "华南理工大学",
+          "affiliationEn": ""
+        },
+        "after": "华南理工大学"
+      },
+      {
+        "talkId": "2024-01-05-talk-e37f2352",
+        "before": {
+          "affiliation": "国科大杭州高等研究院",
+          "affiliationZh": "国科大杭州高等研究院",
+          "affiliationEn": ""
+        },
+        "after": "国科大杭州高等研究院"
+      },
+      {
+        "talkId": "2024-01-05-talk-f6336153",
+        "before": {
+          "affiliation": "奥卢大学",
+          "affiliationZh": "奥卢大学",
+          "affiliationEn": ""
+        },
+        "after": "奥卢大学"
+      },
+      {
+        "talkId": "2023-12-01-talk-3a3aa403",
+        "before": {
+          "affiliation": "重庆大学",
+          "affiliationZh": "重庆大学",
+          "affiliationEn": ""
+        },
+        "after": "重庆大学"
+      },
+      {
+        "talkId": "2023-11-28-talk-2530d839",
+        "before": {
+          "affiliation": "之江实验室",
+          "affiliationZh": "之江实验室",
+          "affiliationEn": ""
+        },
+        "after": "之江实验室"
+      },
+      {
+        "talkId": "2023-11-28-talk-5900f3e9",
+        "before": {
+          "affiliation": "尼斯大学",
+          "affiliationZh": "尼斯大学",
+          "affiliationEn": ""
+        },
+        "after": "尼斯大学"
+      },
+      {
+        "talkId": "2023-11-28-talk-8ec5612a",
+        "before": {
+          "affiliation": "北京航空航天大学",
+          "affiliationZh": "北京航空航天大学",
+          "affiliationEn": ""
+        },
+        "after": "北京航空航天大学"
+      },
+      {
+        "talkId": "2023-11-28-talk-dfa9a76a",
+        "before": {
+          "affiliation": "华中师范大学",
+          "affiliationZh": "华中师范大学",
+          "affiliationEn": ""
+        },
+        "after": "华中师范大学"
+      },
+      {
+        "talkId": "2023-11-21-arnaud-le-ny-29acf05b",
+        "before": {
+          "affiliation": "东巴黎大学",
+          "affiliationZh": "东巴黎大学",
+          "affiliationEn": ""
+        },
+        "after": "东巴黎大学"
+      },
+      {
+        "talkId": "2023-11-01-talk-c246fd78",
+        "before": {
+          "affiliation": "南开大学",
+          "affiliationZh": "南开大学",
+          "affiliationEn": ""
+        },
+        "after": "南开大学"
+      },
+      {
+        "talkId": "2023-10-11-talk-78a87d60",
+        "before": {
+          "affiliation": "清华大学",
+          "affiliationZh": "清华大学",
+          "affiliationEn": ""
+        },
+        "after": "清华大学"
+      },
+      {
+        "talkId": "2023-10-06-toka-diagana-bf7714e3",
+        "before": {
+          "affiliation": "The University of Alabama in Huntsville",
+          "affiliationZh": "",
+          "affiliationEn": "The University of Alabama in Huntsville"
+        },
+        "after": "The University of Alabama in Huntsville"
+      },
+      {
+        "talkId": "2023-08-08-talk-b3850fd4",
+        "before": {
+          "affiliation": "华南理工大学",
+          "affiliationZh": "华南理工大学",
+          "affiliationEn": ""
+        },
+        "after": "华南理工大学"
+      },
+      {
+        "talkId": "2023-07-19-talk-2f636582",
+        "before": {
+          "affiliation": "复旦大学",
+          "affiliationZh": "复旦大学",
+          "affiliationEn": ""
+        },
+        "after": "复旦大学"
+      },
+      {
+        "talkId": "2023-07-19-talk-fb1d0c4b",
+        "before": {
+          "affiliation": "巴黎索邦大学",
+          "affiliationZh": "巴黎索邦大学",
+          "affiliationEn": ""
+        },
+        "after": "巴黎索邦大学"
+      },
+      {
+        "talkId": "2023-04-26-talk-2a69039b",
+        "before": {
+          "affiliation": "华南理工大学 /东巴黎大学",
+          "affiliationZh": "华南理工大学 /东巴黎大学",
+          "affiliationEn": ""
+        },
+        "after": "华南理工大学/东巴黎大学"
+      },
+      {
+        "talkId": "2023-04-26-talk-f8456d6e",
+        "before": {
+          "affiliation": "中国科学技术大学",
+          "affiliationZh": "中国科学技术大学",
+          "affiliationEn": ""
+        },
+        "after": "中国科学技术大学"
+      },
+      {
+        "talkId": "2023-04-18-talk-2973ee37",
+        "before": {
+          "affiliation": "武汉大学",
+          "affiliationZh": "武汉大学",
+          "affiliationEn": ""
+        },
+        "after": "武汉大学"
+      },
+      {
+        "talkId": "2023-04-13-talk-ceb42439",
+        "before": {
+          "affiliation": "石溪大学",
+          "affiliationZh": "石溪大学",
+          "affiliationEn": ""
+        },
+        "after": "石溪大学"
+      },
+      {
+        "talkId": "2023-04-06-talk-b01ecf9b",
+        "before": {
+          "affiliation": "中科院数学研究所",
+          "affiliationZh": "中科院数学研究所",
+          "affiliationEn": ""
+        },
+        "after": "中科院数学研究所"
+      },
+      {
+        "talkId": "2023-03-29-talk-8abcc589",
+        "before": {
+          "affiliation": "华中科技大学",
+          "affiliationZh": "华中科技大学",
+          "affiliationEn": ""
+        },
+        "after": "华中科技大学"
+      },
+      {
+        "talkId": "2023-03-22-talk-844b3723",
+        "before": {
+          "affiliation": "复旦大学",
+          "affiliationZh": "复旦大学",
+          "affiliationEn": ""
+        },
+        "after": "复旦大学"
+      },
+      {
+        "talkId": "2023-03-08-talk-2c275e52",
+        "before": {
+          "affiliation": "北京理工大学",
+          "affiliationZh": "北京理工大学",
+          "affiliationEn": ""
+        },
+        "after": "北京理工大学"
+      },
+      {
+        "talkId": "2023-03-08-talk-c7435a68",
+        "before": {
+          "affiliation": "武汉理工大学",
+          "affiliationZh": "武汉理工大学",
+          "affiliationEn": ""
+        },
+        "after": "武汉理工大学"
+      },
+      {
+        "talkId": "2023-03-01-talk-31dc8915",
+        "before": {
+          "affiliation": "武汉大学",
+          "affiliationZh": "武汉大学",
+          "affiliationEn": ""
+        },
+        "after": "武汉大学"
+      },
+      {
+        "talkId": "2023-03-01-talk-68c6b81e",
+        "before": {
+          "affiliation": "九州大学",
+          "affiliationZh": "九州大学",
+          "affiliationEn": ""
+        },
+        "after": "九州大学"
+      },
+      {
+        "talkId": "2023-02-18-talk-5d4127d1",
+        "before": {
+          "affiliation": "南京大学",
+          "affiliationZh": "南京大学",
+          "affiliationEn": ""
+        },
+        "after": "南京大学"
+      },
+      {
+        "talkId": "2023-02-18-talk-96e2552a",
+        "before": {
+          "affiliation": "苏州大学",
+          "affiliationZh": "苏州大学",
+          "affiliationEn": ""
+        },
+        "after": "苏州大学"
+      },
+      {
+        "talkId": "2023-02-15-talk-645ce3f4",
+        "before": {
+          "affiliation": "华中师范大学",
+          "affiliationZh": "华中师范大学",
+          "affiliationEn": ""
+        },
+        "after": "华中师范大学"
+      },
+      {
+        "talkId": "2023-02-03-talk-d43cd44a",
+        "before": {
+          "affiliation": "巴黎六大",
+          "affiliationZh": "巴黎六大",
+          "affiliationEn": ""
+        },
+        "after": "巴黎六大"
+      }
+    ],
+    "institutionField": "affiliation",
+    "separator": "/",
+    "publicGrouping": "YYYY-MM within Beijing-time upcoming/ended sections",
+    "pagination": false,
+    "hideCampusOnlyLocations": true,
+    "pdfLabels": "PDF; multiple PDFs: PDF I, PDF II, ...",
+    "otherReportFieldsAndFilesPreserved": true
   }
 }

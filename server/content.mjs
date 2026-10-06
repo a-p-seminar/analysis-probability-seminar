@@ -1,5 +1,6 @@
 import { ApiError } from './errors.mjs';
 import { timeRangeError } from '../shared/report-time.mjs';
+import { reportAffiliation } from '../shared/report-affiliation.mjs';
 
 const fail = message => { throw new ApiError(400, message); };
 const object = value => value && typeof value === 'object' && !Array.isArray(value);
@@ -24,11 +25,9 @@ export async function validateContent(input, repository) {
     if (typeof talk.date !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(talk.date) || talk.date.slice(0, 4) === '0000' || !Number.isFinite(Date.parse(`${talk.date}T00:00:00Z`)) || new Date(`${talk.date}T00:00:00Z`).toISOString().slice(0, 10) !== talk.date) fail('Invalid calendar date.');
     field(talk.title, 'talk title', true); field(talk.speaker, 'speaker', true);
     for (const name of ['time', 'affiliation', 'affiliationZh', 'affiliationEn', 'startTime', 'endTime', 'location', 'notes']) field(talk[name], name);
-    if (talk.affiliationZh !== undefined || talk.affiliationEn !== undefined) {
-      talk.affiliationZh = (talk.affiliationZh || '').trim();
-      talk.affiliationEn = (talk.affiliationEn || '').trim();
-      talk.affiliation = [talk.affiliationZh, talk.affiliationEn].filter(Boolean).join(' · ');
-    }
+    talk.affiliation = reportAffiliation(talk);
+    field(talk.affiliation, 'affiliation');
+    delete talk.affiliationZh; delete talk.affiliationEn;
     if (talk.startTime !== undefined || talk.endTime !== undefined) {
       const timeError = timeRangeError(talk.startTime, talk.endTime);
       if (timeError) fail(timeError);

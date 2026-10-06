@@ -72,6 +72,7 @@
 .admin-page .editor-fields, .admin-page .field-grid { gap: 14px; }
 .admin-page .report-meta-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .admin-page .report-meta-grid > label { min-width: 0; }
+.admin-page .report-meta-grid .institution-field { grid-column: span 2; }
 /* iOS native date/time styling forces content-box sizing and a minimum width.
    Keep the native pickers, but size their fields with the same CSS as other inputs. */
 .admin-page :is(input[type="date"], input[type="time"]) {

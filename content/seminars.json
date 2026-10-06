@@ -36,8 +36,6 @@
       "title": "测试",
       "speaker": "测试",
       "affiliation": "测试",
-      "affiliationZh": "测试",
-      "affiliationEn": "",
       "abstract": "测试",
       "location": "武大·测试",
       "notes": "",
@@ -61,8 +59,6 @@
       "title": "Maximal Gaps for Dilated Lacunary Integer Sequences",
       "speaker": "杨博寒",
       "affiliation": "上海数学与交叉学科研究院",
-      "affiliationZh": "上海数学与交叉学科研究院",
-      "affiliationEn": "",
       "abstract": "Let $(a_n)$ be a lacunary sequence and let $G_N(x)$ denote the maximal gap of the finite orbit ${a_1x,\\ldots,a_Nx}\\subset\\mathbb T$. The maximal gap is equivalent to the finite-time covering radius of the orbit and may be viewed as a deterministic analogue of the classical random covering problem. I will present almost-sure asymptotics for $G_N(x)$ with respect to Lebesgue measure. In particular, we show that $G_N(x)$ has the optimal order $(\\log N)/N$. This is joint work with Yuval Peres.",
       "location": "武大·雷军科技楼349报告厅",
       "notes": "",
@@ -101,9 +97,7 @@
       ],
       "attachments": [],
       "startTime": "16:00",
-      "endTime": "17:00",
-      "affiliationZh": "",
-      "affiliationEn": "Adam Mickiewicz University in Poznań"
+      "endTime": "17:00"
     },
     {
       "date": "2026-05-29",
@@ -120,9 +114,7 @@
       ],
       "attachments": [],
       "startTime": "10:00",
-      "endTime": "11:00",
-      "affiliationZh": "大湾区大学",
-      "affiliationEn": ""
+      "endTime": "11:00"
     },
     {
       "date": "2026-04-23",
@@ -139,9 +131,7 @@
       ],
       "attachments": [],
       "startTime": "10:30",
-      "endTime": "11:30",
-      "affiliationZh": "波兰科学院数学研究所",
-      "affiliationEn": ""
+      "endTime": "11:30"
     },
     {
       "date": "2026-04-20",
@@ -158,9 +148,7 @@
       ],
       "attachments": [],
       "startTime": "16:00",
-      "endTime": "17:00",
-      "affiliationZh": "清华大学",
-      "affiliationEn": ""
+      "endTime": "17:00"
     },
     {
       "date": "2026-04-02",
@@ -177,9 +165,7 @@
       ],
       "attachments": [],
       "startTime": "09:30",
-      "endTime": "10:30",
-      "affiliationZh": "",
-      "affiliationEn": "Budapest University of Technology and Economics"
+      "endTime": "10:30"
     },
     {
       "date": "2026-04-02",
@@ -209,9 +195,7 @@
       "sourceUrls": [
         "https://maths.ccnu.edu.cn/info/1045/35793.htm"
       ],
-      "attachments": [],
-      "affiliationZh": "中国科学院数学与系统科学研究院",
-      "affiliationEn": ""
+      "attachments": []
     },
     {
       "date": "2026-03-11",
@@ -228,9 +212,7 @@
       ],
       "attachments": [],
       "startTime": "15:30",
-      "endTime": "16:30",
-      "affiliationZh": "国科大杭州高等研究院",
-      "affiliationEn": ""
+      "endTime": "16:30"
     },
     {
       "date": "2026-01-16",
@@ -247,9 +229,7 @@
       ],
       "attachments": [],
       "startTime": "09:30",
-      "endTime": "10:30",
-      "affiliationZh": "波兰科学院数学研究所",
-      "affiliationEn": ""
+      "endTime": "10:30"
     },
     {
       "date": "2026-01-16",
@@ -266,9 +246,7 @@
       ],
       "attachments": [],
       "startTime": "10:45",
-      "endTime": "11:45",
-      "affiliationZh": "中国科学技术大学",
-      "affiliationEn": ""
+      "endTime": "11:45"
     },
     {
       "date": "2025-12-27",
@@ -285,9 +263,7 @@
       ],
       "attachments": [],
       "startTime": "09:30",
-      "endTime": "10:30",
-      "affiliationZh": "",
-      "affiliationEn": "Dongguk University"
+      "endTime": "10:30"
     },
     {
       "date": "2025-12-27",
@@ -304,9 +280,7 @@
       ],
       "attachments": [],
       "startTime": "10:45",
-      "endTime": "11:45",
-      "affiliationZh": "华南理工大学",
-      "affiliationEn": ""
+      "endTime": "11:45"
     },
     {
       "date": "2025-12-27",
@@ -323,9 +297,7 @@
       ],
       "attachments": [],
       "startTime": "14:30",
-      "endTime": "15:30",
-      "affiliationZh": "湖南大学",
-      "affiliationEn": ""
+      "endTime": "15:30"
     },
     {
       "date": "2025-12-27",
@@ -342,9 +314,7 @@
       ],
       "attachments": [],
       "startTime": "15:45",
-      "endTime": "16:45",
-      "affiliationZh": "复旦大学",
-      "affiliationEn": ""
+      "endTime": "16:45"
     },
     {
       "date": "2025-12-19",
@@ -361,9 +331,7 @@
       ],
       "attachments": [],
       "startTime": "10:00",
-      "endTime": "11:00",
-      "affiliationZh": "",
-      "affiliationEn": "Université Paris Cité"
+      "endTime": "11:00"
     },
     {
       "date": "2025-12-03",
@@ -380,9 +348,7 @@
       ],
       "attachments": [],
       "startTime": "10:00",
-      "endTime": "11:30",
-      "affiliationZh": "",
-      "affiliationEn": "Université de Reims Champagne-Ardenne"
+      "endTime": "11:30"
     },
     {
       "date": "2025-10-28",
@@ -399,9 +365,7 @@
       ],
       "attachments": [],
       "startTime": "10:00",
-      "endTime": "11:30",
-      "affiliationZh": "清华大学",
-      "affiliationEn": ""
+      "endTime": "11:30"
     },
     {
       "date": "2025-10-27",
@@ -426,9 +390,7 @@
         }
       ],
       "startTime": "10:45",
-      "endTime": "11:45",
-      "affiliationZh": "南开大学",
-      "affiliationEn": ""
+      "endTime": "11:45"
     },
     {
       "date": "2025-10-27",
@@ -453,14 +415,12 @@
         }
       ],
       "startTime": "09:30",
-      "endTime": "10:30",
-      "affiliationZh": "苏州大学",
-      "affiliationEn": ""
+      "endTime": "10:30"
     },
     {
       "date": "2025-09-23",
       "speaker": "Gergely Kiss",
-      "affiliation": "Budapest Corvinus University and Rényi Institute",
+      "affiliation": "Budapest Corvinus University/Rényi Institute",
       "title": "Weak tiling and the Coven-Meyerowitz conjecture",
       "time": "14:30-15:30",
       "location": "华师·国交2号楼315会议室",
@@ -472,14 +432,12 @@
       ],
       "attachments": [],
       "startTime": "14:30",
-      "endTime": "15:30",
-      "affiliationZh": "",
-      "affiliationEn": "Budapest Corvinus University and Rényi Institute"
+      "endTime": "15:30"
     },
     {
       "date": "2025-09-09",
       "speaker": "Maria Loukaki",
-      "affiliation": "克里特大学（Crete University）",
+      "affiliation": "克里特大学/Crete University",
       "title": "Chebotarev's theorem for groups of order $pq$ and an uncertainty principle",
       "time": "2025年9月9日（周二）上午 11:00-12:00",
       "location": "华师·国交2号楼315会议室",
@@ -502,7 +460,7 @@
     {
       "date": "2025-09-09",
       "speaker": "Mihalis Kolountzakis",
-      "affiliation": "克里特大学 · Crete University",
+      "affiliation": "克里特大学/Crete University",
       "title": "Common Fundamental Domains",
       "time": "09:30-10:30",
       "location": "华师·国交2号楼 315会议室",
@@ -522,9 +480,7 @@
         }
       ],
       "startTime": "09:30",
-      "endTime": "10:30",
-      "affiliationZh": "克里特大学",
-      "affiliationEn": "Crete University"
+      "endTime": "10:30"
     },
     {
       "date": "2025-08-30",
@@ -541,9 +497,7 @@
       ],
       "attachments": [],
       "startTime": "10:00",
-      "endTime": "11:00",
-      "affiliationZh": "汕头大学",
-      "affiliationEn": ""
+      "endTime": "11:00"
     },
     {
       "date": "2025-07-31",
@@ -560,9 +514,7 @@
       ],
       "attachments": [],
       "startTime": "09:30",
-      "endTime": "10:30",
-      "affiliationZh": "大湾区大学",
-      "affiliationEn": ""
+      "endTime": "10:30"
     },
     {
       "date": "2025-07-16",
@@ -580,9 +532,7 @@
       "attachments": [],
       "biography": "报告人简介：陈绍示,主要研究符号计算、机器证明与组合理论。在符号计算旗舰会议 ISSAC 与数学期刊 Foundations of Computational Mathematics, Algebra and Number Theory, Selecta Mathematica等发表论文40余篇。目前担任Journal of Symbolic Computation, Annals of Combinatorics, Journal of Difference Equations and Applications, Journal of Systems Science and Complexity, 和《系统科学与数学》等杂志编委，还担任国际符号与代数计算专业委员会秘书长与中国数学会计算机数学专业委员会秘书长. 曾获得第二届 “吴文俊计算机数学青年学者奖”(2019)，第46届国际符号与代数计算年会(ISSAC2021)“杰出论文奖”，与国际计算机代数应用大会(ACA2022)“青年学者奖”。2022年入选中国科学院青年创新促进会优秀会员。",
       "startTime": "10:00",
-      "endTime": "12:00",
-      "affiliationZh": "中国科学院数学与系统科学研究院",
-      "affiliationEn": ""
+      "endTime": "12:00"
     },
     {
       "date": "2025-05-13",
@@ -600,9 +550,7 @@
       "attachments": [],
       "biography": "报告人简介：朱玉峻，厦门大学数学科学学院教授，博士生导师。从事动力系统领域的研究，主要研究内容为动力系统的拓扑性质和统计性质。主持国家自然科学基金多项，入选教育部新世纪优秀人才支持计划。在 Adv. Math., Trans. Amer. Math. Soc., Ergodic Theory Dynam. Systems, J. Differential Equations等期刊上发表论文40多篇。",
       "startTime": "14:00",
-      "endTime": "15:30",
-      "affiliationZh": "厦门大学",
-      "affiliationEn": ""
+      "endTime": "15:30"
     },
     {
       "date": "2025-04-17",
@@ -620,9 +568,7 @@
       "attachments": [],
       "biography": "报告人简介：文志英，清华大学教授，原数学系主任。研究领域主要包括分形几何、动力系统及有限自动机理论。1987年及1994年获国家教委科技进步二等奖，1997年获保钢教育奖特等奖，2001年获教育部自然科学一等奖，1993年起享受政府特殊津贴。在国内外著名学术刊物上发表论文百余篇，专著2部。先后担任十余种学术期刊编委；高教出版社“研究生丛书”，上海科教出版社“非线性科学丛书”、Springer “Mathematics Series for Graduate Students”丛书编委。多次应邀至法国、德国、荷兰、意大利及加拿大作为客座教授，并多次在国际会议上作学术报告。",
       "startTime": "15:00",
-      "endTime": "17:00",
-      "affiliationZh": "清华大学",
-      "affiliationEn": ""
+      "endTime": "17:00"
     },
     {
       "date": "2025-04-10",
@@ -639,9 +585,7 @@
       ],
       "attachments": [],
       "startTime": "10:00",
-      "endTime": "12:00",
-      "affiliationZh": "维也纳大学",
-      "affiliationEn": ""
+      "endTime": "12:00"
     },
     {
       "date": "2025-03-26",
@@ -659,14 +603,12 @@
       "attachments": [],
       "biography": "报告人简介：Sanju Velani教授主要从事数论、分形几何、动力系统与遍历理论等领域的研究，取得了多项突破性成果。他提出了收缩靶问题、建立了质量转移原理，推动了度量数论与分形几何的蓬勃发展。他在数学四大杂志中发表论文6篇（其中Annals of Mathematics 3篇、Inventiones Mathematicae 2篇、Acta Mathematica 1篇），曾获得160万英镑的英国EPSRC项目资助。他领导的英国约克大学的研究团队，是世界上丢番图逼近研究方向最富盛名的团队。",
       "startTime": "10:00",
-      "endTime": "12:00",
-      "affiliationZh": "",
-      "affiliationEn": "York"
+      "endTime": "12:00"
     },
     {
       "date": "2025-03-18",
       "speaker": "时向辉",
-      "affiliation": "北京大学，北京国际数学研究中心",
+      "affiliation": "北京大学/北京国际数学研究中心",
       "title": "Ergodic theory of expanding Thurston maps and their subsystems",
       "time": "10:00-12:00",
       "location": "武大·雷军科技楼601报告厅",
@@ -678,9 +620,7 @@
       ],
       "attachments": [],
       "startTime": "10:00",
-      "endTime": "12:00",
-      "affiliationZh": "北京大学，北京国际数学研究中心",
-      "affiliationEn": ""
+      "endTime": "12:00"
     },
     {
       "date": "2025-03-14",
@@ -698,9 +638,7 @@
       "attachments": [],
       "biography": "报告人简介：Jérôme Buzzi 主要研究动力系统, 特别是光滑动力系统的遍历理论. 他是法国国家科学研究中心（CNRS）的高级研究员, 目前在奥赛工作, 此前曾在第戎, 马赛和巴黎综合理工学院任职. 他曾就读于巴黎高等师范学院, 并于1995 年在巴黎第十一大学（现巴黎萨克雷大学）获得博士学位. 在Ann. of Math., Invent. Math. 等高水平期刊发表论文五十多篇.",
       "startTime": "15:00",
-      "endTime": "16:00",
-      "affiliationZh": "",
-      "affiliationEn": "Université Paris-Saclay"
+      "endTime": "16:00"
     },
     {
       "date": "2025-03-14",
@@ -726,9 +664,7 @@
       ],
       "biography": "报告人简介：Loïc Merel 是巴黎西岱大学的教授. 他于1993 年在Joseph Oesterlé 教授的指导下获得博士学位. 他的研究领域涉及模形式, L 函数, Galois 表示, Langlands 纲领等.他曾于1996 年证明定义在固定数域上椭圆曲线的扭子群一致有限的重要结果, 并于1998 年受邀作ICM 45 分钟报告. 他还获得EMS Prize (1996), the Blumenthal Award (1997) 以及Grand Prix Jacques Herbrand (1998) 等奖项.",
       "startTime": "16:30",
-      "endTime": "17:30",
-      "affiliationZh": "",
-      "affiliationEn": "Université Paris Cité"
+      "endTime": "17:30"
     },
     {
       "date": "2025-02-26",
@@ -745,9 +681,7 @@
       ],
       "attachments": [],
       "startTime": "15:30",
-      "endTime": "17:30",
-      "affiliationZh": "中科院杭州高等研究院",
-      "affiliationEn": ""
+      "endTime": "17:30"
     },
     {
       "date": "2025-02-25",
@@ -764,9 +698,7 @@
       ],
       "attachments": [],
       "startTime": "10:00",
-      "endTime": "12:00",
-      "affiliationZh": "大湾区大学",
-      "affiliationEn": ""
+      "endTime": "12:00"
     },
     {
       "date": "2024-12-27",
@@ -783,9 +715,7 @@
       ],
       "attachments": [],
       "startTime": "16:30",
-      "endTime": "17:30",
-      "affiliationZh": "法国东巴黎大学",
-      "affiliationEn": ""
+      "endTime": "17:30"
     },
     {
       "date": "2024-12-27",
@@ -802,9 +732,7 @@
       ],
       "attachments": [],
       "startTime": "15:15",
-      "endTime": "16:15",
-      "affiliationZh": "匈牙利布达佩斯经济与技术大学",
-      "affiliationEn": ""
+      "endTime": "16:15"
     },
     {
       "date": "2024-12-30",
@@ -821,9 +749,7 @@
       ],
       "attachments": [],
       "startTime": "14:00",
-      "endTime": "15:00",
-      "affiliationZh": "南京理工大学",
-      "affiliationEn": ""
+      "endTime": "15:00"
     },
     {
       "date": "2024-12-27",
@@ -840,9 +766,7 @@
       ],
       "attachments": [],
       "startTime": "15:00",
-      "endTime": "18:00",
-      "affiliationZh": "法国兰斯大学",
-      "affiliationEn": ""
+      "endTime": "18:00"
     },
     {
       "date": "2024-11-25",
@@ -859,9 +783,7 @@
       ],
       "attachments": [],
       "startTime": "15:30",
-      "endTime": "16:30",
-      "affiliationZh": "法国巴黎-萨克雷大学",
-      "affiliationEn": ""
+      "endTime": "16:30"
     },
     {
       "date": "2024-10-24",
@@ -893,9 +815,7 @@
       ],
       "attachments": [],
       "startTime": "14:30",
-      "endTime": "16:30",
-      "affiliationZh": "西安电子科技大学",
-      "affiliationEn": ""
+      "endTime": "16:30"
     },
     {
       "date": "2024-10-09",
@@ -912,9 +832,7 @@
       ],
       "attachments": [],
       "startTime": "09:30",
-      "endTime": "11:30",
-      "affiliationZh": "苏州大学",
-      "affiliationEn": ""
+      "endTime": "11:30"
     },
     {
       "date": "2024-10-08",
@@ -931,9 +849,7 @@
       ],
       "attachments": [],
       "startTime": "09:30",
-      "endTime": "11:30",
-      "affiliationZh": "苏州大学",
-      "affiliationEn": ""
+      "endTime": "11:30"
     },
     {
       "date": "2024-10-01",
@@ -950,9 +866,7 @@
       ],
       "attachments": [],
       "startTime": "10:00",
-      "endTime": "12:00",
-      "affiliationZh": "上海数学中心",
-      "affiliationEn": ""
+      "endTime": "12:00"
     },
     {
       "date": "2024-08-11",
@@ -969,9 +883,7 @@
       ],
       "attachments": [],
       "startTime": "15:40",
-      "endTime": "16:40",
-      "affiliationZh": "香港中文大学",
-      "affiliationEn": ""
+      "endTime": "16:40"
     },
     {
       "date": "2024-08-11",
@@ -988,9 +900,7 @@
       ],
       "attachments": [],
       "startTime": "14:30",
-      "endTime": "15:30",
-      "affiliationZh": "",
-      "affiliationEn": "La Trobe University"
+      "endTime": "15:30"
     },
     {
       "date": "2024-08-11",
@@ -1007,9 +917,7 @@
       ],
       "attachments": [],
       "startTime": "16:50",
-      "endTime": "17:50",
-      "affiliationZh": "武汉理工大学",
-      "affiliationEn": ""
+      "endTime": "17:50"
     },
     {
       "date": "2024-05-22",
@@ -1034,9 +942,7 @@
         }
       ],
       "startTime": "15:00",
-      "endTime": "16:00",
-      "affiliationZh": "",
-      "affiliationEn": "Claremont Graduate University"
+      "endTime": "16:00"
     },
     {
       "date": "2024-05-22",
@@ -1061,9 +967,7 @@
         }
       ],
       "startTime": "16:30",
-      "endTime": "17:30",
-      "affiliationZh": "苏州大学",
-      "affiliationEn": ""
+      "endTime": "17:30"
     },
     {
       "date": "2024-04-29",
@@ -1086,9 +990,7 @@
           "path": "attachments/2024/240429_丰德军_Dimension_file-141a52a4e3001b01.pdf",
           "size": 540766
         }
-      ],
-      "affiliationZh": "香港中文大学",
-      "affiliationEn": ""
+      ]
     },
     {
       "date": "2024-04-12",
@@ -1113,9 +1015,7 @@
         }
       ],
       "startTime": "15:00",
-      "endTime": "17:00",
-      "affiliationZh": "北京联合大学",
-      "affiliationEn": ""
+      "endTime": "17:00"
     },
     {
       "date": "2024-04-11",
@@ -1130,9 +1030,7 @@
       "sourceUrls": [
         "https://maths.whu.edu.cn/info/1114/125511.htm"
       ],
-      "attachments": [],
-      "affiliationZh": "清华大学",
-      "affiliationEn": ""
+      "attachments": []
     },
     {
       "date": "2024-03-28",
@@ -1157,9 +1055,7 @@
         }
       ],
       "startTime": "16:00",
-      "endTime": "18:00",
-      "affiliationZh": "中科院数学与系统科学研究院",
-      "affiliationEn": ""
+      "endTime": "18:00"
     },
     {
       "date": "2024-03-28",
@@ -1176,9 +1072,7 @@
       ],
       "attachments": [],
       "startTime": "15:10",
-      "endTime": "16:00",
-      "affiliationZh": "中南财经政法大学",
-      "affiliationEn": ""
+      "endTime": "16:00"
     },
     {
       "date": "2024-01-26",
@@ -1195,9 +1089,7 @@
       ],
       "attachments": [],
       "startTime": "10:30",
-      "endTime": "12:00",
-      "affiliationZh": "东巴黎大学",
-      "affiliationEn": ""
+      "endTime": "12:00"
     },
     {
       "date": "2024-01-05",
@@ -1214,9 +1106,7 @@
       ],
       "attachments": [],
       "startTime": "10:00",
-      "endTime": "10:50",
-      "affiliationZh": "",
-      "affiliationEn": "La Trobe University"
+      "endTime": "10:50"
     },
     {
       "date": "2024-01-05",
@@ -1233,9 +1123,7 @@
       ],
       "attachments": [],
       "startTime": "11:00",
-      "endTime": "11:50",
-      "affiliationZh": "",
-      "affiliationEn": "La Trobe University"
+      "endTime": "11:50"
     },
     {
       "date": "2024-01-05",
@@ -1252,9 +1140,7 @@
       ],
       "attachments": [],
       "startTime": "15:30",
-      "endTime": "16:20",
-      "affiliationZh": "华南理工大学",
-      "affiliationEn": ""
+      "endTime": "16:20"
     },
     {
       "date": "2024-01-05",
@@ -1271,9 +1157,7 @@
       ],
       "attachments": [],
       "startTime": "14:30",
-      "endTime": "15:20",
-      "affiliationZh": "国科大杭州高等研究院",
-      "affiliationEn": ""
+      "endTime": "15:20"
     },
     {
       "date": "2024-01-05",
@@ -1290,9 +1174,7 @@
       ],
       "attachments": [],
       "startTime": "16:40",
-      "endTime": "17:30",
-      "affiliationZh": "奥卢大学",
-      "affiliationEn": ""
+      "endTime": "17:30"
     },
     {
       "date": "2023-12-01",
@@ -1309,9 +1191,7 @@
       ],
       "attachments": [],
       "startTime": "10:00",
-      "endTime": "11:00",
-      "affiliationZh": "重庆大学",
-      "affiliationEn": ""
+      "endTime": "11:00"
     },
     {
       "date": "2023-11-28",
@@ -1336,9 +1216,7 @@
         }
       ],
       "startTime": "11:15",
-      "endTime": "12:00",
-      "affiliationZh": "之江实验室",
-      "affiliationEn": ""
+      "endTime": "12:00"
     },
     {
       "date": "2023-11-28",
@@ -1363,9 +1241,7 @@
         }
       ],
       "startTime": "14:30",
-      "endTime": "15:30",
-      "affiliationZh": "尼斯大学",
-      "affiliationEn": ""
+      "endTime": "15:30"
     },
     {
       "date": "2023-11-28",
@@ -1382,9 +1258,7 @@
       ],
       "attachments": [],
       "startTime": "15:45",
-      "endTime": "17:00",
-      "affiliationZh": "北京航空航天大学",
-      "affiliationEn": ""
+      "endTime": "17:00"
     },
     {
       "date": "2023-11-28",
@@ -1409,9 +1283,7 @@
         }
       ],
       "startTime": "10:00",
-      "endTime": "11:00",
-      "affiliationZh": "华中师范大学",
-      "affiliationEn": ""
+      "endTime": "11:00"
     },
     {
       "date": "2023-11-21",
@@ -1436,9 +1308,7 @@
         }
       ],
       "startTime": "10:00",
-      "endTime": "12:00",
-      "affiliationZh": "东巴黎大学",
-      "affiliationEn": ""
+      "endTime": "12:00"
     },
     {
       "date": "2023-11-01",
@@ -1459,9 +1329,7 @@
           "path": "attachments/2023/231101_董长光_Introduction_file-c4fa6e7c0dff623f.pdf",
           "size": 700005
         }
-      ],
-      "affiliationZh": "南开大学",
-      "affiliationEn": ""
+      ]
     },
     {
       "date": "2023-10-11",
@@ -1476,9 +1344,7 @@
       "sourceUrls": [
         "http://maths.whu.edu.cn/info/1114/120421.htm"
       ],
-      "attachments": [],
-      "affiliationZh": "清华大学",
-      "affiliationEn": ""
+      "attachments": []
     },
     {
       "date": "2023-10-06",
@@ -1503,9 +1369,7 @@
         }
       ],
       "startTime": "15:00",
-      "endTime": "17:00",
-      "affiliationZh": "",
-      "affiliationEn": "The University of Alabama in Huntsville"
+      "endTime": "17:00"
     },
     {
       "date": "2023-08-08",
@@ -1533,9 +1397,7 @@
           "path": "attachments/2023/230808_胡张楠_Hausdorff_file-e9e60c7685bb6c27.pdf",
           "size": 585568
         }
-      ],
-      "affiliationZh": "华南理工大学",
-      "affiliationEn": ""
+      ]
     },
     {
       "date": "2023-07-19",
@@ -1548,9 +1410,7 @@
       "abstract": "We study dynamical systems generated by skew products:\n$$T:[0,1)\\times\\mathbb{C}\\to[0,1)\\times\\mathbb{C}$$\n$$T(x,y)=(bx\\bmod 1,\\gamma y+\\phi(x))$$\nwhere integer $b\\geq 2$, $\\gamma\\in\\mathbb{C}$ such that $0<|\\gamma|<1$ and $\\phi$ is a real analytic $\\mathbb{Z}$-periodic function. Let $\\Delta\\in[0,1)$ such that $\\gamma=|\\gamma|e^{2\\pi i\\Delta}$. For the case $\\Delta\\notin\\mathbb{Q}$, we prove the following dichotomy for the solenoidal attractor $K_{b,\\gamma}^{\\phi}$ for $T$: Either $K_{b,\\gamma}^{\\phi}$ is a graph of real analytic function, or the Hausdorff dimension of $K_{b,\\gamma}^{\\phi}$ is equal to $\\min\\{3,1+\\frac{\\log b}{\\log 1/|\\gamma|}\\}$. Furthermore, given $b$ and $\\phi$, the former alternative only happens for countable many $\\gamma$ unless $\\phi$ is constant.",
       "notes": "",
       "sourceUrls": [],
-      "attachments": [],
-      "affiliationZh": "复旦大学",
-      "affiliationEn": ""
+      "attachments": []
     },
     {
       "date": "2023-07-19",
@@ -1563,14 +1423,12 @@
       "abstract": "",
       "notes": "",
       "sourceUrls": [],
-      "attachments": [],
-      "affiliationZh": "巴黎索邦大学",
-      "affiliationEn": ""
+      "attachments": []
     },
     {
       "date": "2023-04-26",
       "speaker": "何育彬",
-      "affiliation": "华南理工大学 /东巴黎大学",
+      "affiliation": "华南理工大学/东巴黎大学",
       "title": "Quantitative recurrence properties for piecewise expanding maps on [0,1]^d",
       "time": "11:00-12:00",
       "location": "武大·理学院东北楼四楼报告厅（404)",
@@ -1590,9 +1448,7 @@
         }
       ],
       "startTime": "11:00",
-      "endTime": "12:00",
-      "affiliationZh": "华南理工大学 /东巴黎大学",
-      "affiliationEn": ""
+      "endTime": "12:00"
     },
     {
       "date": "2023-04-26",
@@ -1617,9 +1473,7 @@
         }
       ],
       "startTime": "10:00",
-      "endTime": "11:00",
-      "affiliationZh": "中国科学技术大学",
-      "affiliationEn": ""
+      "endTime": "11:00"
     },
     {
       "date": "2023-04-18",
@@ -1636,9 +1490,7 @@
       ],
       "attachments": [],
       "startTime": "10:00",
-      "endTime": "12:00",
-      "affiliationZh": "武汉大学",
-      "affiliationEn": ""
+      "endTime": "12:00"
     },
     {
       "date": "2023-04-13",
@@ -1663,9 +1515,7 @@
         }
       ],
       "startTime": "10:00",
-      "endTime": "12:00",
-      "affiliationZh": "石溪大学",
-      "affiliationEn": ""
+      "endTime": "12:00"
     },
     {
       "date": "2023-04-06",
@@ -1682,9 +1532,7 @@
       ],
       "attachments": [],
       "startTime": "10:00",
-      "endTime": "11:00",
-      "affiliationZh": "中科院数学研究所",
-      "affiliationEn": ""
+      "endTime": "11:00"
     },
     {
       "date": "2023-03-29",
@@ -1709,9 +1557,7 @@
         }
       ],
       "startTime": "10:00",
-      "endTime": "11:00",
-      "affiliationZh": "华中科技大学",
-      "affiliationEn": ""
+      "endTime": "11:00"
     },
     {
       "date": "2023-03-22",
@@ -1732,9 +1578,7 @@
           "path": "attachments/2023/230322_侯晓博_Multi-_file-8224804c6c583b70.pdf",
           "size": 361798
         }
-      ],
-      "affiliationZh": "复旦大学",
-      "affiliationEn": ""
+      ]
     },
     {
       "date": "2023-03-08",
@@ -1782,9 +1626,7 @@
         }
       ],
       "startTime": "14:00",
-      "endTime": "15:00",
-      "affiliationZh": "北京理工大学",
-      "affiliationEn": ""
+      "endTime": "15:00"
     },
     {
       "date": "2023-03-08",
@@ -1816,9 +1658,7 @@
         }
       ],
       "startTime": "14:00",
-      "endTime": "15:00",
-      "affiliationZh": "武汉理工大学",
-      "affiliationEn": ""
+      "endTime": "15:00"
     },
     {
       "date": "2023-03-01",
@@ -1843,9 +1683,7 @@
         }
       ],
       "startTime": "10:40",
-      "endTime": "11:40",
-      "affiliationZh": "武汉大学",
-      "affiliationEn": ""
+      "endTime": "11:40"
     },
     {
       "date": "2023-03-01",
@@ -1862,9 +1700,7 @@
       ],
       "attachments": [],
       "startTime": "09:30",
-      "endTime": "10:30",
-      "affiliationZh": "九州大学",
-      "affiliationEn": ""
+      "endTime": "10:30"
     },
     {
       "date": "2023-02-18",
@@ -1889,9 +1725,7 @@
         }
       ],
       "startTime": "11:00",
-      "endTime": "12:00",
-      "affiliationZh": "南京大学",
-      "affiliationEn": ""
+      "endTime": "12:00"
     },
     {
       "date": "2023-02-18",
@@ -1916,9 +1750,7 @@
         }
       ],
       "startTime": "10:00",
-      "endTime": "11:00",
-      "affiliationZh": "苏州大学",
-      "affiliationEn": ""
+      "endTime": "11:00"
     },
     {
       "date": "2023-02-15",
@@ -1933,9 +1765,7 @@
       "sourceUrls": [
         "http://maths.whu.edu.cn/info/1114/18893.htm"
       ],
-      "attachments": [],
-      "affiliationZh": "华中师范大学",
-      "affiliationEn": ""
+      "attachments": []
     },
     {
       "date": "2023-02-03",
@@ -1948,9 +1778,7 @@
       "abstract": "",
       "notes": "",
       "sourceUrls": [],
-      "attachments": [],
-      "affiliationZh": "巴黎六大",
-      "affiliationEn": ""
+      "attachments": []
     }
   ]
 }

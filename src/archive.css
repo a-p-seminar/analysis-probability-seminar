@@ -83,6 +83,7 @@
 .public-page .results-meta { font-size: 11px; color: #77899b; margin: 18px 1px 24px; min-height: 21px; }
 .public-page .year-heading { gap: 14px; margin-top: 20px; scroll-margin-top: 100px; }
 .public-page .year-heading h3 { font-family: var(--serif); font-size: 30px; font-weight: 500; margin: 0; color: #2c4760; }
+.public-page .month-heading h3 { font-size: 26px; }
 .public-page .year-heading > span { color: #8493a2; font-size: 11px; }
 .public-page .year-group + .year-group { margin-top: 27px; }
 .public-page .talk {
@@ -269,9 +270,3 @@
 .status-divider small { color: #8493a2; font-size: 11px; white-space: nowrap; }
 .status-ended .status-divider h2 { color: #61768a; }
 .public-page .status-section > .year-group { margin-top: 20px; }
-.archive-pagination { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 12px; margin: 32px 0 8px; color: #476782; font-size: 13px; }
-.archive-pagination button, .archive-pagination select { min-height: 40px; border: 1px solid #d5e2e9; border-radius: 7px; background: #f7fbff; color: inherit; padding: 6px 12px; }
-.archive-pagination button:hover:not(:disabled) { background: #e9f3f9; }
-.archive-pagination button:disabled { opacity: .4; cursor: default; }
-.archive-pagination label { display: flex; align-items: center; gap: 6px; }
-.archive-pagination select { padding-inline: 6px; }

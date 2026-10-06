@@ -19,11 +19,17 @@ test('content saves reject an end time equal to or earlier than the start time',
   }
 });
 
-test('structured institution and time fields are validated and synchronize legacy public fields', async () => {
-  const fixture = { schemaVersion: 1, site: { title: 'Seminar' }, talks: [{ id: 'fields', date: '2026-10-05', speaker: 'Speaker', title: 'Title', attachments: [], affiliationZh: '克里特大学', affiliationEn: 'Crete University', startTime: '14:00', endTime: '15:30', time: 'old', affiliation: 'old' }] };
+test('legacy institution fields migrate to a single slash-separated field and time remains validated', async () => {
+  const fixture = { schemaVersion: 1, site: { title: 'Seminar' }, talks: [{ id: 'fields', date: '2026-10-05', speaker: 'Speaker', title: 'Title', attachments: [], affiliationZh: '克里特大学', affiliationEn: 'Crete University', startTime: '14:00', endTime: '15:30', time: 'old' }] };
   const saved = await validateContent(fixture, {});
   assert.equal(saved.talks[0].time, '14:00-15:30');
-  assert.equal(saved.talks[0].affiliation, '克里特大学 · Crete University');
+  assert.equal(saved.talks[0].affiliation, '克里特大学/Crete University');
+  assert.equal(saved.talks[0].affiliationZh, undefined);
+  assert.equal(saved.talks[0].affiliationEn, undefined);
+  const changed = structuredClone(fixture); changed.talks[0].affiliation = ' New University / New Institute ';
+  assert.equal((await validateContent(changed, {})).talks[0].affiliation, 'New University/New Institute');
+  changed.talks[0].affiliation = '';
+  assert.equal((await validateContent(changed, {})).talks[0].affiliation, '');
   for (const changes of [{ startTime: '25:00' }, { endTime: '' }, { affiliationEn: {} }, { endTime: '15:60' }, { startTime: '14:00junk' }]) {
     const invalid = structuredClone(fixture);
     Object.assign(invalid.talks[0], changes);

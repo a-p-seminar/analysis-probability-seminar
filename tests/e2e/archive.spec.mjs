@@ -215,7 +215,7 @@ test('only the report title opens its meeting link, with independent abstract an
   expect(popup.url()).toBe(meetingUrl);
   await popup.close();
   const attachment = page.locator('.attachment-link').first();
-  await expect(attachment).toHaveText('讲义 · PPT');
+  await expect(attachment).toHaveText('PDF');
   const handoutCard = page.locator('article.talk').filter({ has: attachment }).first();
   await expect(handoutCard.getByRole('button', { name: /摘要/ })).toHaveAttribute('aria-expanded', 'false');
   const attachmentUrl = new URL(await attachment.getAttribute('href'), page.url()).href;
@@ -272,8 +272,7 @@ test('admin publishes full records, uploads actual multipart PDF and updates arc
   const renamedName = '261004_本地测试报告人_浏览器测试-Full report and attachment.pdf';
   await page.getByLabel('报告标题').fill(title);
   await page.getByLabel('报告人', { exact: false }).fill('本地测试报告人');
-  await page.getByLabel('中文单位', { exact: true }).fill('测试大学');
-  await page.getByLabel('英文单位', { exact: true }).fill('Test University');
+  await page.getByLabel('单位', { exact: true }).fill('测试大学/Test University');
   await expect(page.locator('input[type="time"]')).toHaveCount(2);
   await page.getByLabel('开始时间', { exact: true }).fill('10:15');
   await expect(page.getByLabel('结束时间', { exact: true })).toHaveValue('11:15');
@@ -304,12 +303,11 @@ test('admin publishes full records, uploads actual multipart PDF and updates arc
   const card = archive.locator('article.talk').filter({ has: archive.getByRole('heading', { name: title }) });
   await expect(card).toBeVisible();
   await expect(card).toContainText('华师 · 测试报告厅');
-  await expect(card).toContainText('测试大学 · Test University');
+  await expect(card).toContainText('测试大学/Test University');
   await expect(card).toContainText('2026-10-04 10:15-11:45');
   await page.reload();
   await page.locator('.admin-record').filter({ hasText: title }).click();
-  await expect(page.getByLabel('中文单位', { exact: true })).toHaveValue('测试大学');
-  await expect(page.getByLabel('英文单位', { exact: true })).toHaveValue('Test University');
+  await expect(page.getByLabel('单位', { exact: true })).toHaveValue('测试大学/Test University');
   await expect(page.getByLabel('开始时间', { exact: true })).toHaveValue('10:15');
   await expect(page.getByLabel('结束时间', { exact: true })).toHaveValue('11:45');
   await page.locator('.field-grid').screenshot({ path: 'C:/Users/cimorn/AppData/Local/Temp/seminar-admin-bilingual-time.png' });
