@@ -12,6 +12,8 @@ Render's first deployment completed successfully on commit `178780b21d7a1940dc98
 
 Browser verification then found that the initial server served `.mjs` workers as `application/octet-stream`. Commit `a3d6d271c8081924e23861ef3e9c414d29d29eed` corrects the MIME type; commit `ce7c3b99f8d245246baeb170f020fba3b1bac4e2` refreshes the worker URL to bypass cached incorrect responses. The latter is the current PDF reader release.
 
+The current release is live. Browser verification confirmed the PDF's rendered first page and thumbnail, extracted text, and enabled download/print controls. The frontend year filter also displayed the expected 13 reports for 2026.
+
 Netlify `stop_builds` was confirmed `true`; no Netlify deployment was requested. GitHub checks remain manual only.
 
 Removed 11 retired or unreferenced files, including the Cloudflare implementation, original unused background assets and the unreferenced test PDF. The 91 report records and all 30 referenced attachment Git blob hashes remained unchanged. Local cleanup copies are saved under the ignored `.local-data/multi-hosting-2026-10-06/cleanup-backup/` directory.

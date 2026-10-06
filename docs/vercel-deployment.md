@@ -20,7 +20,7 @@ signed sessions expire after eight hours.
 | `SESSION_SECRET` | Independent random secret, at least 32 characters. |
 | `UPSTASH_REDIS_REST_URL` | HTTPS REST endpoint from the connected database. |
 | `UPSTASH_REDIS_REST_TOKEN` | Private database read/write token. |
-| `ADMIN_PASSWORD` | Plain, production-only, nonblank; initially `ap`. |
+| `ADMIN_PASSWORD` | Your chosen nonblank password; plain and production-only. Keep its value outside GitHub. |
 | `VERCEL_ADMIN_PASSWORD_ENV_ID` | ID of this project's password variable. |
 | `VERCEL_ENV_TOKEN` | Private Vercel API token authorized for this project. |
 | `VERCEL_TEAM_ID` | Owning team, if applicable. |

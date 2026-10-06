@@ -12,7 +12,7 @@ For automatic code deployments, first authorize Render's GitHub app for this rep
 | `GITHUB_BRANCH` | `main` |
 | `GITHUB_TOKEN` | Repository-scoped Contents read/write token; private. |
 | `SESSION_SECRET` | Independent random secret, at least 32 characters. |
-| `ADMIN_PASSWORD` | Nonblank plaintext password, initially `ap`. |
+| `ADMIN_PASSWORD` | Your chosen nonblank plaintext password; keep its value outside GitHub. |
 | `RENDER_ENV_TOKEN` | Private Render API credential for this service's password. |
 
 Render supplies `RENDER_SERVICE_ID`, `RENDER_EXTERNAL_URL`, `RENDER` and `PORT`. Passwords are read from Render's live environment API. Editing `ADMIN_PASSWORD` in the dashboard or in the admin password dialog invalidates old sessions; it does not require a new website build. Credentials stay outside GitHub and frontend assets. Each hosting provider keeps an independent password and session.
