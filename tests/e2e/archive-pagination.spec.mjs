@@ -15,9 +15,9 @@ test('all reports, month dividers and filters work together on mobile', async ({
   await expect(page.locator('.english-title')).toHaveText('Seminar of Analysis and Probability');
   await expect(page.locator('article.talk')).toHaveCount(23);
   await expect(page.locator('article.talk').first()).toContainText('月份报告 5');
-  await expect(page.getByRole('heading', { name: '即将举行 (forthcoming)：', exact: true })).toBeVisible();
-  await expect(page.getByRole('heading', { name: '已经举行 (past)：', exact: true })).toBeVisible();
-  await expect(page.getByRole('region', { name: '即将举行 (forthcoming)：', exact: true }).getByRole('heading', { name: '2026-10', exact: true })).toBeVisible();
+  await expect(page.getByRole('heading', { name: '即将举行 (forthcoming)', exact: true })).toBeVisible();
+  await expect(page.getByRole('heading', { name: '已经举行 (past)', exact: true })).toBeVisible();
+  await expect(page.getByRole('region', { name: '即将举行 (forthcoming)', exact: true }).getByRole('heading', { name: '2026-10', exact: true })).toBeVisible();
   await expect(page.locator('.archive-pagination')).toHaveCount(0);
   await page.getByLabel('搜索讲座、报告人或摘要').fill('月份报告 23');
   await expect(page.locator('article.talk')).toHaveCount(1);
@@ -31,9 +31,9 @@ test('a report moves to ended at its Beijing end time without a reload', async (
   await page.clock.install({ time: new Date('2026-10-01T02:59:59Z') });
   await page.route('**/api/content', route => route.fulfill({ json: { content: { ...sample, talks: [records[0]] }, revision: 'test' } }));
   await page.goto('/');
-  await expect(page.getByRole('heading', { name: '即将举行 (forthcoming)：', exact: true })).toBeVisible();
+  await expect(page.getByRole('heading', { name: '即将举行 (forthcoming)', exact: true })).toBeVisible();
   await page.clock.runFor(2000);
-  await expect(page.getByRole('heading', { name: '已经举行 (past)：', exact: true })).toBeVisible();
-  await expect(page.getByRole('heading', { name: '即将举行 (forthcoming)：', exact: true })).toHaveCount(0);
+  await expect(page.getByRole('heading', { name: '已经举行 (past)', exact: true })).toBeVisible();
+  await expect(page.getByRole('heading', { name: '即将举行 (forthcoming)', exact: true })).toHaveCount(0);
   await expect(page.locator('article.talk')).toHaveCount(1);
 });

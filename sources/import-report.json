@@ -8155,5 +8155,70 @@
     "hideCampusOnlyLocations": true,
     "pdfLabels": "PDF; multiple PDFs: PDF I, PDF II, ...",
     "otherReportFieldsAndFilesPreserved": true
+  },
+  "announcementUpdate": {
+    "updatedAt": "2026-10-06T09:23:36.043Z",
+    "parent": "fc209c2c84ab39022794faea87012514508a58c0",
+    "addedReport": "2026-09-16-mumtaz-hussain-b6e97bdc",
+    "removedTestReport": "talk-3294b44b-5eb7-4ba6-a3f1-e6879f149b4d",
+    "checkedReports": [
+      {
+        "talkId": "2026-09-16-mumtaz-hussain-b6e97bdc",
+        "speaker": "Mumtaz Hussain",
+        "title": "Diophantine Differences: What Survives?",
+        "date": "2026-09-16",
+        "time": "15:30-16:30",
+        "sourceUrl": "https://maths.whu.edu.cn/info/1115/169442.htm",
+        "added": true
+      },
+      {
+        "talkId": "talk-b4832df7-f9f6-4b45-8cc8-951f32b996a9",
+        "speaker": "杨博寒",
+        "title": "Maximal Gaps for Dilated Lacunary Integer Sequences",
+        "date": "2026-09-23",
+        "time": "15:30-16:30",
+        "sourceUrl": "https://maths.whu.edu.cn/info/1115/169642.htm",
+        "added": false
+      },
+      {
+        "talkId": "2026-05-29-talk-1c6f7583",
+        "speaker": "许地生",
+        "title": "Anosov actions and Zimmer program",
+        "date": "2026-05-29",
+        "time": "10:00-11:00",
+        "sourceUrl": "https://maths.whu.edu.cn/info/1115/167272.htm",
+        "added": false
+      },
+      {
+        "talkId": "2026-07-18-bill-mance-de7b2df1",
+        "speaker": "Bill Mance",
+        "title": "Independence of notions from dynamics: a descriptive set theoretic approach",
+        "date": "2026-07-18",
+        "time": "16:00-17:00",
+        "sourceUrl": "https://maths.whu.edu.cn/info/1115/168712.htm",
+        "added": false
+      },
+      {
+        "talkId": "2026-08-05-talk-08a315fc",
+        "speaker": "蒋赉",
+        "title": "Representations of rational numbers and Minkowski dimension",
+        "date": "2026-08-05",
+        "time": "10:00–11:00",
+        "sourceUrl": "https://maths.whu.edu.cn/info/1115/168882.htm",
+        "added": false
+      }
+    ],
+    "totals": {
+      "reports": 91,
+      "referencedAttachments": 30,
+      "byYear": {
+        "2023": 28,
+        "2024": 26,
+        "2025": 24,
+        "2026": 13
+      }
+    },
+    "existingReportsPreserved": true,
+    "attachmentFilesPreserved": true
   }
 }

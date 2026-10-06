@@ -52,7 +52,7 @@ function Archive() {
   const sorted = useMemo(() => sortArchiveTalks(filtered, now), [filtered, now]);
   const sections = useMemo(() => ['upcoming', 'ended'].map(status => {
     const groups = groupTalksByMonth(sorted.filter(talk => talkStatus(talk, now) === status));
-    return { status, label: status === 'upcoming' ? '即将举行 (forthcoming)：' : '已经举行 (past)：', groups: status === 'upcoming' ? groups.reverse() : groups };
+    return { status, label: status === 'upcoming' ? '即将举行 (forthcoming)' : '已经举行 (past)', groups: status === 'upcoming' ? groups.reverse() : groups };
   }).filter(section => section.groups.length), [sorted, now]);
   const reset = () => { setYear(''); setMonth(''); setQuery(''); };
   const site = content?.site;

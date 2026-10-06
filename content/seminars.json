@@ -28,29 +28,6 @@
   },
   "talks": [
     {
-      "id": "talk-3294b44b-5eb7-4ba6-a3f1-e6879f149b4d",
-      "date": "2026-10-14",
-      "time": "15:02-16:02",
-      "startTime": "15:02",
-      "endTime": "16:02",
-      "title": "测试",
-      "speaker": "测试",
-      "affiliation": "测试",
-      "abstract": "测试",
-      "location": "武大·测试",
-      "notes": "",
-      "sourceUrls": [],
-      "attachments": [
-        {
-          "id": "1da38d82-f4bf-4992-8df8-7ad69435c991",
-          "name": "261014_测试_测试_1da38d82-f4bf-4992-8df8-7ad69435c991.pdf",
-          "type": "pdf",
-          "size": 1258161,
-          "path": "attachments/2026/261014_测试_测试_1da38d82-f4bf-4992-8df8-7ad69435c991.pdf"
-        }
-      ]
-    },
-    {
       "id": "talk-b4832df7-f9f6-4b45-8cc8-951f32b996a9",
       "date": "2026-09-23",
       "time": "15:30-16:30",
@@ -64,6 +41,23 @@
       "notes": "",
       "sourceUrls": [
         "https://maths.whu.edu.cn/info/1115/169642.htm"
+      ],
+      "attachments": []
+    },
+    {
+      "id": "2026-09-16-mumtaz-hussain-b6e97bdc",
+      "date": "2026-09-16",
+      "time": "15:30-16:30",
+      "startTime": "15:30",
+      "endTime": "16:30",
+      "title": "Diophantine Differences: What Survives?",
+      "speaker": "Mumtaz Hussain",
+      "affiliation": "La Trobe University",
+      "abstract": "Many classical limsup and liminf sets in Diophantine approximation are well understood from a dimensional perspective. But what happens when one Diophantine set is removed from another? How large is what remains?\n\nIn this talk, I will discuss recent results on differences and intersections of Diophantine sets. In particular, we consider intersections of inhomogeneously badly approximable sets with well-approximable and exact-approximation sets, and investigate their size. These results reveal the rich structure that survives when competing Diophantine approximation conditions are imposed.",
+      "location": "武大·雷军科技楼644报告厅",
+      "notes": "",
+      "sourceUrls": [
+        "https://maths.whu.edu.cn/info/1115/169442.htm"
       ],
       "attachments": []
     },
