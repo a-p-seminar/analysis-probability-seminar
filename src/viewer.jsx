@@ -5,7 +5,8 @@ import workerUrl from 'pdfjs-dist/build/pdf.worker.min.mjs?url';
 import { safePdfUrl } from './archive-model.mjs';
 import './viewer.css';
 
-GlobalWorkerOptions.workerSrc = workerUrl;
+// Bypass the incorrect module MIME response cached by the first Render release.
+GlobalWorkerOptions.workerSrc = `${workerUrl}?module=1`;
 
 function PdfPage({ pdf, number, scale, defaultDimensions, thumbnail = false, onError }) {
   const wrapper = useRef(null);
