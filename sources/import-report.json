@@ -62,7 +62,7 @@
       "time": "周一下午16点30",
       "location": "武大",
       "talkId": "2024-12-27-talk-1f508008",
-      "publishedDate": "2024-12-30"
+      "publishedDate": "2024-12-27"
     },
     {
       "source": "sap-wh",
@@ -81,7 +81,7 @@
       "time": "周一下午15点15",
       "location": "武大",
       "talkId": "2024-12-27-talk-acd99b7c",
-      "publishedDate": "2024-12-30"
+      "publishedDate": "2024-12-27"
     },
     {
       "source": "sap-wh",
@@ -3786,18 +3786,24 @@
       {
         "talkId": "2024-12-27-talk-1f508008",
         "field": "date",
-        "before": "2024-12-27",
-        "after": "2024-12-30",
+        "before": "2024-12-30",
+        "after": "2024-12-27",
         "sourceUrl": "https://maths.whu.edu.cn/info/1115/131231.htm",
-        "reason": "Matching official announcement has consistent start and end dates."
+        "reason": "User explicitly requested retaining the original seminar archive date instead of the school announcement date.",
+        "archiveDate": "2024-12-27",
+        "officialAnnouncementDate": "2024-12-30",
+        "resolution": "Original seminar archive date retained by user instruction."
       },
       {
         "talkId": "2024-12-27-talk-acd99b7c",
         "field": "date",
-        "before": "2024-12-27",
-        "after": "2024-12-30",
+        "before": "2024-12-30",
+        "after": "2024-12-27",
         "sourceUrl": "https://maths.whu.edu.cn/info/1115/131241.htm",
-        "reason": "Matching official announcement has consistent start and end dates."
+        "reason": "User explicitly requested retaining the original seminar archive date instead of the school announcement date.",
+        "archiveDate": "2024-12-27",
+        "officialAnnouncementDate": "2024-12-30",
+        "resolution": "Original seminar archive date retained by user instruction."
       },
       {
         "talkId": "2023-11-01-talk-c246fd78",
@@ -6076,5 +6082,14 @@
   "preservedAdditionalIds": [
     "talk-b4832df7-f9f6-4b45-8cc8-951f32b996a9",
     "talk-3294b44b-5eb7-4ba6-a3f1-e6879f149b4d"
-  ]
+  ],
+  "datePreference": {
+    "updatedAt": "2026-10-06T08:01:05.773Z",
+    "rule": "For Zhang Qian and Ma Caiyun, keep the original seminar archive date.",
+    "talkIds": [
+      "2024-12-27-talk-1f508008",
+      "2024-12-27-talk-acd99b7c"
+    ],
+    "date": "2024-12-27"
+  }
 }
