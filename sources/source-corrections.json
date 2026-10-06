@@ -1,0 +1,39 @@
+[
+  {
+    "talkId": "2026-03-11-talk-b73f559b",
+    "excludeUrls": [
+      "https://maths.whu.edu.cn/info/1115/163442.htm"
+    ],
+    "addUrls": [
+      "https://maths.whu.edu.cn/info/1115/163842.htm"
+    ],
+    "reason": "The GitHub archive swaps this announcement with Rene Pfitscher. Correct URL verified by announcement title and speaker."
+  },
+  {
+    "talkId": "2026-01-16-rene-pfitscher-ca7419a4",
+    "excludeUrls": [
+      "https://maths.whu.edu.cn/info/1115/163842.htm"
+    ],
+    "addUrls": [
+      "https://maths.whu.edu.cn/info/1115/163442.htm"
+    ],
+    "reason": "The GitHub archive swaps this announcement with Qiu Yanqi. Correct URL verified by announcement title and speaker."
+  },
+  {
+    "talkId": "2025-09-09-maria-loukaki-00c3bd02",
+    "excludeUrls": [
+      "https://maths.ccnu.edu.cn/info/1310/33443.htm"
+    ],
+    "addUrls": [
+      "https://maths.ccnu.edu.cn/info/1310/33453.htm"
+    ],
+    "reason": "The archive incorrectly links Mihalis Kolountzakis. The correct adjacent announcement links from that page and explicitly matches Maria Loukaki, title and date."
+  },
+  {
+    "talkId": "2024-03-28-talk-27efd811",
+    "addUrls": [
+      "https://maths.ccnu.edu.cn/info/1045/29379.htm"
+    ],
+    "reason": "The old archive links only the PDF. The official CCNU announcement was independently found and matches title, speaker and exact date."
+  }
+]

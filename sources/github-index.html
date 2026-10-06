@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Seminar of Analysis and Probability- WHU & CCNU</title>
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --past-color: #95a5a6;
+            --info-color: #9b59b6;
+            --card-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            --card-hover-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: 
+                linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)),
+                url('images/whu.jpg') no-repeat center center fixed;
+            background-size: cover;
+            position: relative;
+        }
+        
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.5);
+            z-index: -1;
+        }
+        
+        .content-wrapper {
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: var(--secondary-color);
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 10px 30px;
+            border-radius: 5px;
+        }
+        
+        h2 {
+            color: var(--primary-color);
+            margin-top: 40px;
+            font-size: 1.8em;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 8px 15px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+        
+        /* 新增信息卡片样式 */
+        .info-card {
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 25px auto;
+            box-shadow: var(--card-shadow);
+            border-left: 4px solid var(--info-color);
+            max-width: 900px;
+            backdrop-filter: blur(2px);
+        }
+        
+        .info-item {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #e0e0e0;
+        }
+        
+        .info-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .info-title {
+            font-weight: 600;
+            color: var(--info-color);
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .info-title i {
+            margin-right: 10px;
+            font-size: 1.1em;
+        }
+        
+        .info-content {
+            color: var(--secondary-color);
+            line-height: 1.5;
+        }
+        
+        .chinese {
+            font-weight: 500;
+        }
+        
+        .english {
+            color: #5c6b7e;
+            font-style: italic;
+            margin-top: 5px;
+        }
+        
+        .email-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .email-link:hover {
+            color: #e74c3c;
+            text-decoration: underline;
+        }
+        
+        .reports-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .report-card {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--primary-color);
+            backdrop-filter: blur(2px);
+        }
+        
+        .report-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--card-hover-shadow);
+            background: rgba(255, 255, 255, 1);
+        }
+        
+        .report-card.upcoming {
+            border-left-color: var(--primary-color);
+        }
+        
+        .report-card.past {
+            border-left-color: var(--past-color);
+        }
+        
+        .report-title {
+            font-size: 1.3em;
+            margin: 0 0 15px 0;
+            color: var(--secondary-color);
+        }
+        
+        .report-meta {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .report-meta i {
+            margin-right: 10px;
+            color: var(--primary-color);
+            width: 20px;
+            text-align: center;
+        }
+        
+        .past .report-meta i {
+            color: var(--past-color);
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 4px;
+            text-decoration: none;
+            margin-top: 15px;
+            transition: background 0.3s;
+            font-size: 0.9em;
+        }
+        
+        .btn:hover {
+            background: #2980b9;
+        }
+        
+        .past .btn {
+            background: var(--past-color);
+        }
+        
+        .past .btn:hover {
+            background: #7f8c8d;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.7em;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-left: 10px;
+        }
+        
+        .upcoming-badge {
+            background: #e3f2fd;
+            color: var(--primary-color);
+        }
+        
+        .past-badge {
+            background: #eceff1;
+            color: var(--past-color);
+        }
+        
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .logo img {
+            height: 180px;
+            opacity: 0.9;
+        }
+
+        .buttons-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        /* 新增的报告人信息样式 */
+        .report-speaker {
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .report-speaker i {
+            color: var(--primary-color);
+            margin-right: 10px;
+        }
+        
+        .past .report-speaker i {
+            color: var(--past-color);
+        }
+        
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <div class="content-wrapper">
+        <div class="logo">
+            <img src="images/whu.png" alt="WHU Logo">
+        </div>
+        
+        <h1>Seminar of Analysis and Probability </h1>
+        
+        <!-- 信息卡片 -->
+        <div class="info-card">
+            <div class="info-item">
+                <div class="info-title">
+                    <i class="fas fa-map-marker-alt"></i> 地点 / Venue
+                </div>
+                <div class="info-content">
+                    <div class="chinese">武汉大学,华中师范大学（轮流）</div>
+                    <div class="english">The talks will take place at Wuhan University and Central China Normal University in turn.</div>
+                </div>
+            </div>
+            
+            <div class="info-item">
+                <div class="info-title">
+                    <i class="fas fa-users"></i> 组织者 / Organizers
+                </div>
+                <div class="info-content">
+                    <div class="chinese">范爱华，凡石磊，廖灵敏</div>
+                    <div class="english">
+                        Ai-Hua FAN (<a href="mailto:ai-hua.fan@u-picardie.fr" class="email-link">ai-hua.fan@u-picardie.fr</a>), 
+                        Shilei FAN (<a href="mailto:slfan@ccnu.edu.cn" class="email-link">slfan@ccnu.edu.cn</a>), 
+                        Lingmin LIAO (<a href="mailto:lmliao@whu.edu.cn" class="email-link">lmliao@whu.edu.cn</a>)
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="display: block; width: 100%;">
+            <h2>即将举行</h2>
+        </div>
+
+        <div class="reports-container">
+
+
+            
+        </div>
+        
+        <h2>已经举行</h2>
+
+            <div class="report-card past">
+                <h3 class="report-title">Representations of rational numbers and Minkowski dimension <span class="status-badge past-badge">已结束</span></h3>
+                <div class="report-speaker">
+                    <i class="fas fa-user-tie"></i>
+                    <span>报告人:蒋赉（国科大杭州高等研究院）</span>
+                </div>
+                <div class="report-meta">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>2026年08月05日 </span>
+                </div>
+                <div class="buttons-group">
+                    <a href="https://maths.whu.edu.cn/info/1115/168882.htm" class="btn btn-view"><i class="fas fa-eye"></i> 查看链接</a>
+                    <a href="" class="btn"><i class="fas fa-download"></i> 下载PPT</a>
+                </div>
+            </div>
+
+            <div class="report-card past">
+                <h3 class="report-title">Independence of notions from dynamics: a descriptive set theoretic approach <span class="status-badge past-badge">已结束</span></h3>
+                <div class="report-speaker">
+                    <i class="fas fa-user-tie"></i>
+                    <span>报告人:Bill Mance（Adam Mickiewicz University in Poznań）</span>
+                </div>
+                <div class="report-meta">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>2026年07月18日  </span>
+                </div>
+                <div class="buttons-group">
+                    <a href="https://maths.whu.edu.cn/info/1115/168712.htm" class="btn btn-view"><i class="fas fa-eye"></i> 查看链接</a>
+                    <a href="" class="btn"><i class="fas fa-download"></i> 下载PPT</a>
+                </div>
+            </div>
+
+            <div class="report-card past">
+                <h3 class="report-title">Anosov actions and Zimmer program <span class="status-badge past-badge">已结束</span></h3>
+                <div class="report-speaker">
+                    <i class="fas fa-user-tie"></i>
+                    <span>报告人:许地生（大湾区大学）</span>
+                </div>
+                <div class="report-meta">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>2026年05月29日</span>
+                </div>
+                <div class="buttons-group">
+                    <a href="https://maths.whu.edu.cn/info/1115/167272.htm" class="btn btn-view"><i class="fas fa-eye"></i> 查看链接</a>
+                    <a href="" class="btn"><i class="fas fa-download"></i> 下载PPT</a>
+                </div>
+            </div>
+
+            <div class="report-card past">
+                <h3 class="report-title">Lyapunov spectrum for 2x2 matrix cocycles <span class="status-badge past-badge">已结束</span></h3>
+                <div class="report-speaker">
+                    <i class="fas fa-user-tie"></i>
+                    <span>报告人:Michal Rams （波兰科学院数学研究所）</span>
+                </div>
+                <div class="report-meta">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>2026年04月23日 </span>
+                </div>
+                <div class="buttons-group">
+                    <a href="https://maths.whu.edu.cn/info/1115/166372.htm" class="btn btn-view"><i class="fas fa-eye"></i> 查看链接</a>
+                    <a href="" class="btn"><i class="fas fa-download"></i> 下载PPT</a>
+                </div>
+            </div>
+
+            <div class="report-card past">
+                <h3 class="report-title">0.999…=1在什么意义下成立？ <span class="status-badge past-badge">已结束</span></h3>
+                <div class="report-speaker">
+                    <i class="fas fa-user-tie"></i>
+                    <span>报告人:文志英 教授（清华大学）</span>
+                </div>
+                <div class="report-meta">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>2026年04月20日 </span>
+                </div>
+                <div class="buttons-group">
+                    <a href="https://maths.whu.edu.cn/info/1115/166132.htm" class="btn btn-view"><i class="fas fa-eye"></i> 查看链接</a>
+                    <a href="" class="btn"><i class="fas fa-download"></i> 下载PPT</a>
+                </div>
+            </div>
+
+
+            <div class="report-card past">
+                <h3 class="report-title">Multiplicative rational p-adic approximation <span class="status-badge past-badge">已结束</span></h3>
+                <div class="report-speaker">
+                    <i class="fas fa-user-tie"></i>
+                    <span>报告人:Prof. Yann Bugeaud (University of Strassbourg)</span>
+                </div>
+                <div class="report-meta">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>2026年04月02日 </span>
+                </div>
+                <div class="buttons-group">
+                    <a href="https://maths.whu.edu.cn/info/1115/164902.htm" class="btn btn-view"><i class="fas fa-eye"></i> 查看链接</a>
+                    <a href="#" class="btn"><i class="fas fa-download"></i> 下载PPT</a>
+                </div>
+            </div>
+
+            <div class="report-card past">
+                <h3 class="report-title">Box-like self-affine IFS with rotations <span class="status-badge past-badge">已结束</span></h3>
+                <div class="report-speaker">
+                    <i class="fas fa-user-tie"></i>
+                    <span>报告人:Karoly Simon 匈牙利科学院院士 (Budapest University of Technology and Economics)</span>
+                </div>
+                <div class="report-meta">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>2026年04月02日  </span>
+                </div>
+                <div class="buttons-group">
+                    <a href="https://maths.whu.edu.cn/info/1115/164892.htm" class="btn btn-view"><i class="fas fa-eye"></i> 查看链接</a>
+                    <a href="#" class="btn"><i class="fas fa-download"></i> 下载PPT</a>
+                </div>
+            </div>
+
+
+          <div class="report-card past">
+                <h3 class="report-title">Symbolic Integration of Differential Forms: from Abel to Zeilberger <span class="status-badge past-badge">已结束</span></h3>
+                <div class="report-speaker">
+                    <i class="fas fa-user-tie"></i>
+                    <span>报告人：陈绍示（中国科学院数学与系统科学研究院）</span>
+                </div>
+                <div class="report-meta">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>2026年3月30日</span>
+                </div>
+                <div class="buttons-group">
+                    <a href="https://maths.ccnu.edu.cn/info/1045/35793.htm" class="btn btn-view"><i class="fas fa-eye"></i> 查看链接</a>
+                    <a href="#" class="btn"><i class="fas fa-download"></i> 下载PPT</a>
+                </div>
+            </div>
+
+          <div class="report-card past">
+                <h3 class="report-title">The optimal hypercontractivity for $\mathbb{Z}_3$ and biased Bernoulli random variables <span class="status-badge past-badge">已结束</span></h3>
+                <div class="report-speaker">
+                    <i class="fas fa-user-tie"></i>
+                    <span>报告人：邱彦奇 研究员（国科大杭州高等研究院）</span>
+                </div>
+                <div class="report-meta">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>2026年03月11日</span>
+                </div>
+                <div class="buttons-group">
+                    <a href="https://maths.whu.edu.cn/info/1115/163442.htm" class="btn btn-view"><i class="fas fa-eye"></i> 查看链接</a>
+                    <a href="#" class="btn"><i class="fas fa-download"></i> 下载PPT</a>
+                </div>
+            </div>
+
+
+        
+        <div class="report-card past">
+                <h3 class="report-title">Counting rational approximations on Grassmannians <span class="status-badge past-badge">已结束</span></h3>
+                <div class="report-speaker">
+                    <i class="fas fa-user-tie"></i>
+                    <span>报告人：Rene Pfitscher 博士后 （中国科学技术大学）</span>
+                </div>
+                <div class="report-meta">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>2026年01月16日</span>
+                </div>
+                <div class="buttons-group">
+                    <a href="https://maths.whu.edu.cn/info/1115/163842.htm" class="btn btn-view"><i class="fas fa-eye"></i> 查看链接</a>
+                    <a href="#" class="btn"><i class="fas fa-download"></i> 下载PPT</a>
+                </div>
+            </div>
+
+        
+        <div class="report-card past">
+              <h3 class="report-title">Hausdorff dimension for weighted products of multiple digits <span class="status-badge past-badge">已结束</span></h3>
+                <div class="report-speaker">
+                    <i class="fas fa-user-tie"></i>
+                    <span>报告人：Michal Rams （波兰科学院数学研究所）</span>
+                </div>
+                <div class="report-meta">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>2026年01月16日</span>
+                </div>
+                <div class="buttons-group">
+                    <a href="https://maths.whu.edu.cn/info/1115/163432.htm" class="btn btn-view"><i class="fas fa-eye"></i> 查看链接</a>
+                    <a href="#" class="btn"><i class="fas fa-download"></i> 下载PPT</a>
+                </div>
+            </div>
+
+        <div class="report-card past">
+                <h3 class="report-title">Mean topological dimension of induced amenable group actions <span class="status-badge past-badge">已结束</span></h3>
+                <div class="report-speaker">
+                    <i class="fas fa-user-tie"></i>
+                    <span>报告人:史汝西（复旦大学）</span>
+                </div>
+                <div class="report-meta">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>2025年12月27日 </span>
+                </div>
+                <div class="buttons-group">
+                    <a href="https://maths.whu.edu.cn/info/1115/162882.htm" class="btn btn-view"><i class="fas fa-eye"></i> 查看链接</a>
+                    <a href="" class="btn"><i class="fas fa-download"></i> 下载PPT</a>
+                </div>
+            </div>
+
+        <div class="report-card past">
+                <h3 class="report-title">On dimension of attractors of uncountable compact families of similarities <span class="status-badge past-badge">已结束</span></h3>
+                <div class="report-speaker">
+                    <i class="fas fa-user-tie"></i>
+                    <span>报告人:吴猛 教授（湖南大学）</span>
+                </div>
+                <div class="report-meta">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>2025年12月27日 </span>
+                </div>
+                <div class="buttons-group">
+                    <a href="https://maths.whu.edu.cn/info/1115/162872.htm" class="btn btn-view"><i class="fas fa-eye"></i> 查看链接</a>
+                    <a href="" class="btn"><i class="fas fa-download"></i> 下载PPT</a>
+                </div>
+            </div>
+
+            <div class="report-card past">
+                <h3 class="report-title">Diophantine approximation on the Hecke group H4 <span class="status-badge past-badge">已结束</span></h3>
+                <div class="report-speaker">
+                    <i class="fas fa-user-tie"></i>
+                    <span>报告人:Dong Han KIM (Dongguk University)</span>
+                </div>
+                <div class="report-meta">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>2025年12月27日 </span>
+                </div>
+                <div class="buttons-group">
+                    <a href="https://maths.whu.edu.cn/info/1115/162862.htm" class="btn btn-view"><i class="fas fa-eye"></i> 查看链接</a>
+                    <a href="PPT/251227donghankim.pdf" class="btn"><i class="fas fa-download"></i> 下载PPT</a>
+                </div>
+            </div>
+
+            <div class="report-card past">
+                <h3 class="report-title">Well and badly approximable sets on fractals <span class="status-badge past-badge">已结束</span></h3>
+                <div class="report-speaker">
+                    <i class="fas fa-user-tie"></i>
+                    <span>报告人:李兵 教授（华南理工大学）</span>
+                </div>
+                <div class="report-meta">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>2025年12月27日 </span>
+                </div>
+                <div class="buttons-group">
+                    <a href="https://maths.whu.edu.cn/info/1115/162852.htm" class="btn btn-view"><i class="fas fa-eye"></i> 查看链接</a>
+                    <a href="PPT/251227libing.pdf" class="btn"><i class="fas fa-download"></i> 下载PPT</a>
+                </div>
+            </div>
+
+            <div class="report-card past">
+                <h3 class="report-title">Polynomial skew-products with small relative degree <span class="status-badge past-badge">已结束</span></h3>
+                <div class="report-speaker">
+                    <i class="fas fa-user-tie"></i>
+                    <span>报告人:Matteo Ruggiero（Université Paris Cité）</span>
+                </div>
+                <div class="report-meta">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>2025年12月19日 </span>
+                </div>
+                <div class="buttons-group">
+                    <a href="https://maths.whu.edu.cn/info/1115/162322.htm" class="btn btn-view"><i class="fas fa-eye"></i> 查看链接</a>
+                    <a href="" class="btn"><i class="fas fa-download"></i> 下载PPT</a>
+                </div>
+            </div>
+
+        <div class="report-card past">
+                <h3 class="report-title">Titre EDP: Non-local models with turbulent hydrodynamic flavor <span class="status-badge past-badge">已结束</span></h3>
+                <div class="report-speaker">
+                    <i class="fas fa-user-tie"></i>
+                    <span>报告人:François Vigneron（Université de Reims Champagne-Ardenne）</span>
+                </div>
+                <div class="report-meta">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>2025年12月3日 </span>
+                </div>
+                <div class="buttons-group">
+                    <a href="https://maths.whu.edu.cn/info/1115/160182.htm" class="btn btn-view"><i class="fas fa-eye"></i> 查看链接</a>
+                    <a href="" class="btn"><i class="fas fa-download"></i> 下载PPT</a>
+                </div>
+            </div>
+
+         <div class="report-card past">
+                <h3 class="report-title">自动机序列诱导的Z与图上的游动性质 <span class="status-badge past-badge">已结束</span></h3>
+                <div class="report-speaker">
+                    <i class="fas fa-user-tie"></i>
+                    <span>报告人:文志英 教授（清华大学）</span>
+                </div>
+                <div class="report-meta">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>2025年10月28日 </span>
+                </div>
+                <div class="buttons-group">
+                    <a href="https://maths.whu.edu.cn/info/1115/149322.htm" class="btn btn-view"><i class="fas fa-eye"></i> 查看链接</a>
+                    <a href="" class="btn"><i class="fas fa-download"></i> 下载PPT</a>
+                </div>
+            </div>
+
+        
+
+        <div class="report-card past">
+                <h3 class="report-title">Homogeneous dynamics and its applications to number theory <span class="status-badge past-badge">已结束</span></h3>
+                <div class="report-speaker">
+                    <i class="fas fa-user-tie"></i>
+                    <span>报告人:张涵（苏州大学）</span>
+                </div>
+                <div class="report-meta">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>2025年10月27日 </span>
+                </div>
+                <div class="buttons-group">
+                    <a href="https://maths.whu.edu.cn/info/1115/149182.htm" class="btn btn-view"><i class="fas fa-eye"></i> 查看链接</a>
+                    <a href="PPT/251027zhanghan.pdf" class="btn"><i class="fas fa-download"></i> 下载PPT</a>
+                </div>
+            </div>
+
+        <div class="report-card past">
+                <h3 class="report-title">Multifractal Analysis of Spectral Measures for Sturmian Hamiltonians and the Almost Mathieu Operator <span class="status-badge past-badge">已结束</span></h3>
+                <div class="report-speaker">
+                    <i class="fas fa-user-tie"></i>
+                    <span>报告人: 曹杰（南开大学）</span>
+                </div>
+                <div class="report-meta">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>2025年10月27日 </span>
+                </div>
+                <div class="buttons-group">
+                    <a href="https://maths.whu.edu.cn/info/1115/149192.htm" class="btn btn-view"><i class="fas fa-eye"></i> 查看链接</a>
+                    <a href="PPT/251027caojie.pdf" class="btn"><i class="fas fa-download"></i> 下载PPT</a>
+                </div>
+            </div>
+
+        <div class="report-card past">
+                <h3 class="report-title">Weak tiling and the Coven-Meyerowitz conjecture <span class="status-badge past-badge">已结束</span></h3>
+                <div class="report-speaker">
+                    <i class="fas fa-user-tie"></i>
+                    <span>报告人: Gergely Kiss 教授 （Budapest Corvinus University and Rényi Institute）</span>
+                </div>
+                <div class="report-meta">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>2025年9月23日 </span>
+                </div>
+                <div class="buttons-group">
+                    <a href="https://maths.ccnu.edu.cn/info/1310/33703.htm" class="btn btn-view"><i class="fas fa-eye"></i> 查看链接</a>
+                    <a href="" class="btn"><i class="fas fa-download"></i> 下载PPT</a>
+                </div>
+            </div>
+
+        <div class="report-card past">
+                <h3 class="report-title">Chebotarev's theorem  for groups of order $pq$  and an uncertainty principle <span class="status-badge past-badge">已结束</span></h3>
+                <div class="report-speaker">
+                    <i class="fas fa-user-tie"></i>
+                    <span>报告人: Prof. Maria  Loukaki 克里特大学(Crete University）</span>
+                </div>
+                <div class="report-meta">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>2025年9月9日 </span>
+                </div>
+                <div class="buttons-group">
+                    <a href="https://maths.ccnu.edu.cn/info/1310/33443.htm" class="btn btn-view"><i class="fas fa-eye"></i> 查看链接</a>
+                    <a href="PPT/250909maria.pdf" class="btn"><i class="fas fa-download"></i> 下载PPT</a>
+                </div>
+            </div>
+
+         <div class="report-card past">
+                <h3 class="report-title">Common Fundamental Domains <span class="status-badge past-badge">已结束</span></h3>
+                <div class="report-speaker">
+                    <i class="fas fa-user-tie"></i>
+                    <span>报告人: Prof. Mihalis Kolountzakis 克里特大学（Crete University）</span>
+                </div>
+                <div class="report-meta">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>2025年9月9日 </span>
+                </div>
+                <div class="buttons-group">
+                    <a href="https://maths.ccnu.edu.cn/info/1310/33443.htm" class="btn btn-view"><i class="fas fa-eye"></i> 查看链接</a>
+                    <a href="PPT/250909mihalis.pdf" class="btn"><i class="fas fa-download"></i> 下载PPT</a>
+                </div>
+            </div>
+
+        <div class="report-card past">
+                <h3 class="report-title">A dimensional mass transference principle from balls to open sets and applications to dynamical Diophantine approximation <span class="status-badge past-badge">已结束</span></h3>
+                <div class="report-speaker">
+                    <i class="fas fa-user-tie"></i>
+                    <span>报告人:何育彬（汕头大学）</span>
+                </div>
+                <div class="report-meta">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>2025年08月30日 </span>
+                </div>
+                <div class="buttons-group">
+                    <a href="https://maths.whu.edu.cn/info/1115/138681.htm" class="btn btn-view"><i class="fas fa-eye"></i> 查看链接</a>
+                    <a href="#" class="btn"><i class="fas fa-download"></i> 下载PPT</a>
+                </div>
+            </div>
+
+        <div class="reports-container">
+            <div class="report-card past">
+                <h3 class="report-title">长程算子的支配理论：长程算子的（非）局域化现象与黎曼流形的共轭点存在性的联系 <span class="status-badge past-badge">已结束</span></h3>
+                <div class="report-speaker">
+                    <i class="fas fa-user-tie"></i>
+                    <span>报告人: 许地生（大湾区大学）</span>
+                </div>
+                <div class="report-meta">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>2025年07月31日 </span>
+                </div>
+                <div class="buttons-group">
+                    <a href="https://maths.whu.edu.cn/info/1115/138551.htm" class="btn btn-view"><i class="fas fa-eye"></i> 查看链接</a>
+                    <a href="#" class="btn"><i class="fas fa-download"></i> 下载PPT</a>
+                </div>
+            </div>
+
+            <div class="report-card past">
+                <h3 class="report-title">机器证明与AI新技术及其应用 <span class="status-badge past-badge">已结束</span></h3>
+                <div class="report-speaker">
+                    <i class="fas fa-user-tie"></i>
+                    <span>报告人: 陈绍示 研究员（中国科学院数学与系统科学研究院）</span>
+                </div>
+                <div class="report-meta">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>2025年07月16日 </span>
+                </div>
+                <div class="buttons-group">
+                    <a href="https://maths.whu.edu.cn/info/1115/138241.htm" class="btn btn-view"><i class="fas fa-eye"></i> 查看链接</a>
+                    <a href="#" class="btn"><i class="fas fa-download"></i> 下载PPT</a>
+                </div>
+            </div>
+
+            <div class="report-card past">
+                <h3 class="report-title">Entropy for noninvertible maps <span class="status-badge past-badge">已结束</span></h3>
+                <div class="report-speaker">
+                    <i class="fas fa-user-tie"></i>
+                    <span>报告人: 朱玉峻（厦门大学）</span>
+                </div>
+                <div class="report-meta">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>2025年05月13日 </span>
+                </div>
+                <div class="buttons-group">
+                    <a href="https://maths.whu.edu.cn/info/1115/135791.htm" class="btn btn-view"><i class="fas fa-eye"></i> 查看链接</a>
+                    <a href="#" class="btn"><i class="fas fa-download"></i> 下载PPT</a>
+                </div>
+            </div>
+            
+            <div class="report-card past">
+                <h3 class="report-title">分形发展的历史、现状和展望 <span class="status-badge past-badge">已结束</span></h3>
+                <div class="report-speaker">
+                    <i class="fas fa-user-tie"></i>
+                    <span>报告人: 文志英 教授（清华大学）</span>
+                </div>
+                <div class="report-meta">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>2025年04月17日 </span>
+                </div>
+                <div class="buttons-group">
+                    <a href="https://maths.whu.edu.cn/info/1115/135351.htm" class="btn btn-view"><i class="fas fa-eye"></i> 查看链接</a>
+                    <a href="#" class="btn"><i class="fas fa-download"></i> 下载PPT</a>
+                </div>
+            </div>
+
+            <div class="report-card past">
+                <h3 class="report-title">Scales: dimensions for infinite dimensional spaces <span class="status-badge past-badge">已结束</span></h3>
+                <div class="report-speaker">
+                    <i class="fas fa-user-tie"></i>
+                    <span>报告人: Mathieu Helfter（维也纳大学）</span>
+                </div>
+                <div class="report-meta">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>2025年04月10日 </span>
+                </div>
+                <div class="buttons-group">
+                    <a href="https://maths.whu.edu.cn/info/1115/135021.htm" class="btn btn-view"><i class="fas fa-eye"></i> 查看链接</a>
+                    <a href="#" class="btn"><i class="fas fa-download"></i> 下载PPT</a>
+                </div>
+            </div>
+
+            <div class="report-card past">
+                <h3 class="report-title">The Shrinking Target Problem: developing a manifold theory <span class="status-badge past-badge">已结束</span></h3>
+                <div class="report-speaker">
+                    <i class="fas fa-user-tie"></i>
+                    <span>报告人: Sanju Velani (York)</span>
+                </div>
+                <div class="report-meta">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>2025年03月26日</span>
+                </div>
+                <div class="buttons-group">
+                    <a href="https://maths.whu.edu.cn/info/1115/134481.htm" class="btn btn-view"><i class="fas fa-eye"></i> 查看链接</a>
+                    <a href="#" class="btn"><i class="fas fa-download"></i> 下载PPT</a>
+                </div>
+            </div>
+
+            <div class="report-card past">
+                <h3 class="report-title">Ergodic theory of expanding Thurston maps and their subsystems <span class="status-badge past-badge">已结束</span></h3>
+                <div class="report-speaker">
+                    <i class="fas fa-user-tie"></i>
+                    <span>报告人: 时向辉(北京大学，北京国际数学研究中心)</span>
+                </div>
+                <div class="report-meta">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>2025年03月18日 </span>
+                </div>
+                <div class="buttons-group">
+                    <a href="https://maths.whu.edu.cn/info/1115/131951.htm" class="btn btn-view"><i class="fas fa-eye"></i> 查看链接</a>
+                    <a href="#" class="btn"><i class="fas fa-download"></i> 下载PPT</a>
+                </div>
+            </div>
+
+            <div class="report-card past">
+                <h3 class="report-title">About the unit 1^1.2^2.3^3.4^4....((N-1)/2)^((N-1)/2) modulo a prime number N <span class="status-badge past-badge">已结束</span></h3>
+                <div class="report-speaker">
+                    <i class="fas fa-user-tie"></i>
+                    <span>报告人: Loïc Merel (Université Paris Cité)</span>
+                </div>
+                <div class="report-meta">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>2025年03月14日 </span>
+                </div>
+                <div class="buttons-group">
+                    <a href="https://maths.whu.edu.cn/info/1115/132031.htm" class="btn btn-view"><i class="fas fa-eye"></i> 查看链接</a>
+                    <a href="#" class="btn"><i class="fas fa-download"></i> 下载PPT</a>
+                </div>
+            </div>
+
+            <div class="report-card past">
+                <h3 class="report-title">Strong positive recurrence and exponential mixing for smooth surface diffeomorphisms <span class="status-badge past-badge">已结束</span></h3>
+                <div class="report-speaker">
+                    <i class="fas fa-user-tie"></i>
+                    <span>报告人: Jérôme Buzzi(Université Paris-Saclay)</span>
+                </div>
+                <div class="report-meta">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>2025年03月14日</span>
+                </div>
+                <div class="buttons-group">
+                    <a href="https://maths.whu.edu.cn/info/1115/132021.htm " class="btn btn-view"><i class="fas fa-eye"></i> 查看链接</a>
+                    <a href="#" class="btn"><i class="fas fa-download"></i> 下载PPT</a>
+                </div>
+            </div>
+
+            <div class="report-card past">
+                <h3 class="report-title">Harmonic Analysis of Multiplicative Chaos <span class="status-badge past-badge">已结束</span></h3>
+                <div class="report-speaker">
+                    <i class="fas fa-user-tie"></i>
+                    <span>报告人: 邱彦奇 研究员(国科大杭州高等研究院)</span>
+                </div>
+                <div class="report-meta">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>2025年02月26日</span>
+                </div>
+                <div class="buttons-group">
+                    <a href="https://maths.whu.edu.cn/info/1115/131671.htm" class="btn btn-view"><i class="fas fa-eye"></i> 查看链接</a>
+                    <a href="#" class="btn"><i class="fas fa-download"></i> 下载PPT</a>
+                </div>
+            </div>
+
+            <div class="report-card past">
+                <h3 class="report-title">由动力系统与群作用定义的分形的维数理论一瞥 <span class="status-badge past-badge">已结束</span></h3>
+                <div class="report-speaker">
+                    <i class="fas fa-user-tie"></i>
+                    <span>报告人: 许地生 助理教授(大湾区大学)</span>
+                </div>
+                <div class="report-meta">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>2025年02月25日</span>
+                </div>
+                <div class="buttons-group">
+                    <a href="https://maths.whu.edu.cn/info/1115/131631.htm " class="btn btn-view"><i class="fas fa-eye"></i> 查看链接</a>
+                    <a href="#" class="btn"><i class="fas fa-download"></i> 下载PPT</a>
+                </div>
+            </div>
+
+        <div style="text-align: center; margin-top: 40px; font-size: 1.1em;">
+            <p>更早的信息请访问
+                <a href="https://perso.math.u-pem.fr/liao.lingmin/SAP-WH.html" 
+                   style="color: var(--primary-color); 
+                          text-decoration: none;
+                          font-weight: bold;"
+                   target="_blank">
+                   https://perso.math.u-pem.fr/liao.lingmin/SAP-WH.html
+                </a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>
