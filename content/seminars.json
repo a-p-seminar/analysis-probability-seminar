@@ -126,6 +126,25 @@
           "size": 2139034
         }
       ]
+    },
+    {
+      "id": "talk-b4832df7-f9f6-4b45-8cc8-951f32b996a9",
+      "date": "2026-09-23",
+      "time": "15:30-16:30",
+      "startTime": "15:30",
+      "endTime": "16:30",
+      "title": "Maximal Gaps for Dilated Lacunary Integer Sequences",
+      "speaker": "杨博寒",
+      "affiliation": "上海数学与交叉学科研究院",
+      "affiliationZh": "上海数学与交叉学科研究院",
+      "affiliationEn": "",
+      "abstract": "Let $(a_n)$ be a lacunary sequence and let $G_N(x)$ denote the maximal gap of the finite orbit ${a_1x,\\ldots,a_Nx}\\subset\\mathbb T$. The maximal gap is equivalent to the finite-time covering radius of the orbit and may be viewed as a deterministic analogue of the classical random covering problem. I will present almost-sure asymptotics for $G_N(x)$ with respect to Lebesgue measure. In particular, we show that $G_N(x)$ has the optimal order $(\\log N)/N$. This is joint work with Yuval Peres.",
+      "location": "武大·雷军科技楼349报告厅",
+      "notes": "",
+      "sourceUrls": [
+        "https://maths.whu.edu.cn/info/1115/169642.htm"
+      ],
+      "attachments": []
     }
   ]
 }
