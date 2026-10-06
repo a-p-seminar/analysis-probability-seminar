@@ -1,11 +1,6 @@
-name: Check application
+name: Manual application checks
 on:
-  push:
-    paths-ignore:
-      - 'content/**'
-      - 'attachments/**'
-      - 'sources/**'
-  pull_request:
+  workflow_dispatch:
 permissions:
   contents: read
 jobs:
