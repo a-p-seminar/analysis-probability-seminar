@@ -132,13 +132,12 @@ function Admin() {
     if (!file || operationLock.current || busy) return;
     const validation = validateUpload(file);
     if (validation) { setError(validation); return; }
-    let name;
-    try { name = reportAttachmentName(draft, file.name); }
+    try { reportAttachmentName(draft, file.name, 'preview'); }
     catch (err) { setError(err.message); return; }
-    operationLock.current = true; setBusy('upload'); clearFeedback(); setUploadName(name);
+    operationLock.current = true; setBusy('upload'); clearFeedback(); setUploadName(file.name);
     const controller = new AbortController(); uploadController.current = controller;
     try {
-      const attachment = await uploadFile(file, { name, signal: controller.signal, onProgress: setProgress });
+      const attachment = await uploadFile(file, { talk: draft, signal: controller.signal, onProgress: state => { setProgress(state); if (state.name) setUploadName(state.name); } });
       setDraft(current => ({ ...current, attachments: [...(current.attachments || []), attachment] }));
       setMessage('文件已上传并通过校验。请保存报告以发布此附件。');
     } catch (err) { setError(err.name === 'AbortError' ? '上传已取消，报告内容已保留。' : err.message); setProgress(null); }

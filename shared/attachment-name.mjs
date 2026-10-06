@@ -32,15 +32,17 @@ export function safeAttachmentName(name) {
   return `${stem}${extension}`;
 }
 
-export function reportAttachmentName(talk, originalName) {
+export function reportAttachmentName(talk, originalName, id) {
   const { date, speaker, title } = talk || {};
   if (typeof date !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(date) || date.startsWith('0000') || !Number.isFinite(Date.parse(`${date}T00:00:00Z`)) || new Date(`${date}T00:00:00Z`).toISOString().slice(0, 10) !== date) {
     throw new Error('请先填写有效的报告日期，再上传附件。');
   }
   if (typeof speaker !== 'string' || !speaker.trim() || !cleanPart(speaker)) throw new Error('请先填写报告人，再上传附件。');
   if (typeof title !== 'string' || !title.trim() || !cleanPart(title)) throw new Error('请先填写报告标题，再上传附件。');
+  if (typeof id !== 'string' || !/^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$/.test(id)) throw new Error('附件 ID 无效。');
   const extension = extensionOf(originalName);
   const prefix = `${date.slice(2).replaceAll('-', '')}_${fitBytes(cleanPart(speaker), 48)}_`;
-  const shortTitle = fitBytes(cleanPart(title), MAX_NAME_BYTES - encoder.encode(prefix).length - extension.length);
-  return `${prefix}${shortTitle}${extension}`;
+  const suffix = `_${id}${extension}`;
+  const shortTitle = fitBytes(cleanPart(title).split(' ')[0], MAX_NAME_BYTES - encoder.encode(prefix + suffix).length);
+  return `${prefix}${shortTitle}${suffix}`;
 }

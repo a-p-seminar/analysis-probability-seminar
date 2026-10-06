@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
+import { reportAttachmentName } from '../shared/attachment-name.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const content = JSON.parse(readFileSync(path.join(root, 'content/seminars.json'), 'utf8'));
@@ -57,4 +58,26 @@ test('every owned attachment resolves inside attachments and matches its bytes a
     if (attachment.type === 'ppt') assert.equal(bytes.subarray(0, 8).toString('hex'), 'd0cf11e0a1b11ae1');
     if (attachment.type === 'pptx') assert.equal(bytes.subarray(0, 2).toString(), 'PK');
   }
+});
+
+test('owned files live directly in report-year directories with unique ID basenames', () => {
+  const paths = new Set();
+  for (const talk of content.talks) for (const attachment of talk.attachments) {
+    if (!attachment.path) continue;
+    assert.equal(attachment.path, `attachments/${talk.date.slice(0, 4)}/${attachment.name}`);
+    assert.equal(attachment.name, reportAttachmentName(talk, attachment.name, attachment.id));
+    assert.ok(!paths.has(attachment.path), attachment.path);
+    paths.add(attachment.path);
+  }
+});
+
+test('displayed report links retain only school announcements and exclude known mismatches', () => {
+  const corrections = JSON.parse(readFileSync(path.join(root, 'sources/source-corrections.json'), 'utf8'));
+  for (const talk of content.talks) for (const link of talk.sourceUrls) {
+    const url = new URL(link);
+    assert.ok(['maths.whu.edu.cn', 'maths.ccnu.edu.cn'].includes(url.hostname), link);
+    assert.match(url.pathname, /^\/info\/\d+\/\d+\.htm$/);
+    assert.ok(!corrections.find(c => c.talkId === talk.id)?.excludeUrls?.includes(link), link);
+  }
+  for (const id of ['2024-12-27-talk-1f508008', '2024-12-27-talk-acd99b7c']) assert.equal(content.talks.find(t => t.id === id).date, '2024-12-27');
 });

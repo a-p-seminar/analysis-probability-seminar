@@ -102,13 +102,13 @@ test('invalid calendar dates, unsafe URLs, duplicate ids and missing attachment 
 test('multipart upload enforces parts and bytes, then completes idempotently and exposes only public derived URLs', async t => {
   const f = await setup(t); await f.login();
   const bytes = Buffer.alloc(2 * 1024 * 1024 + 43, 32); bytes.write('%PDF-1.7\n');
-  const start = await f.request('/api/admin/uploads', 'POST', { name: '../../lecture.pdf', size: bytes.length });
+  const start = await f.request('/api/admin/uploads', 'POST', { name: '../../lecture.pdf', size: bytes.length, talk: content.talks[0] });
   assert.equal(start.status, 200); const { id, chunkSize } = await start.json(); assert.equal(chunkSize, 2 * 1024 * 1024);
   assert.equal((await f.request(`/api/admin/uploads/${id}/0`, 'PUT', bytes.subarray(0, chunkSize))).status, 200);
   assert.equal((await f.request(`/api/admin/uploads/${id}/complete`, 'POST')).status, 409);
   assert.equal((await f.request(`/api/admin/uploads/${id}/1`, 'PUT', bytes.subarray(chunkSize))).status, 200);
   const completed = await f.request(`/api/admin/uploads/${id}/complete`, 'POST'); assert.equal(completed.status, 200, await completed.clone().text());
-  const { attachment } = await completed.json(); assert.match(attachment.path, /^attachments\/\d{4}\/[a-f0-9-]+\/lecture\.pdf$/);
+  const { attachment } = await completed.json(); assert.equal(attachment.path, `attachments/2026/261004_Speaker_Full_${id}.pdf`);
   assert.deepEqual(await readFile(join(f.root, attachment.path)), bytes);
   assert.deepEqual(await (await f.request(`/api/admin/uploads/${id}/complete`, 'POST')).json(), { attachment });
   assert.equal((await f.store.list(`uploads/${id}/parts/`)).length, 0);
@@ -120,33 +120,35 @@ test('multipart upload enforces parts and bytes, then completes idempotently and
 
 test('upload limits, magic signatures, session ownership and cancellation are enforced', async t => {
   const f = await setup(t); await f.login();
-  for (const input of [{ name: 'bad.exe', size: 10 }, { name: 'huge.pdf', size: 50 * 1024 * 1024 + 1 }, { name: 'empty.pdf', size: 0 }]) assert.equal((await f.request('/api/admin/uploads', 'POST', input)).status, 400);
-  const { id } = await (await f.request('/api/admin/uploads', 'POST', { name: 'bad.pdf', size: 8 })).json();
+  for (const input of [{ name: 'bad.exe', size: 10 }, { name: 'huge.pdf', size: 50 * 1024 * 1024 + 1 }, { name: 'empty.pdf', size: 0 }]) assert.equal((await f.request('/api/admin/uploads', 'POST', { ...input, talk: content.talks[0] })).status, 400);
+  const { id } = await (await f.request('/api/admin/uploads', 'POST', { name: 'bad.pdf', size: 8, talk: content.talks[0] })).json();
   assert.equal((await f.request(`/api/admin/uploads/${id}/0`, 'PUT', Buffer.alloc(9))).status, 413);
   assert.equal((await f.request(`/api/admin/uploads/${id}/2`, 'PUT', Buffer.alloc(8))).status, 400);
   assert.equal((await f.request(`/api/admin/uploads/${id}/0`, 'PUT', Buffer.from('not pdf!'))).status, 200);
   assert.equal((await f.request(`/api/admin/uploads/${id}/complete`, 'POST')).status, 400);
   await f.login();
   assert.equal((await f.request(`/api/admin/uploads/${id}/complete`, 'POST')).status, 404);
-  const second = await (await f.request('/api/admin/uploads', 'POST', { name: 'valid.pdf', size: 8 })).json();
+  const second = await (await f.request('/api/admin/uploads', 'POST', { name: 'valid.pdf', size: 8, talk: content.talks[0] })).json();
   assert.equal((await f.request(`/api/admin/uploads/${second.id}`, 'DELETE')).status, 200);
   assert.equal((await f.request(`/api/admin/uploads/${second.id}/0`, 'PUT', Buffer.alloc(8))).status, 404);
 });
 
-test('renamed uploads keep their readable filename on disk and separate repeated names', async t => {
+test('uploads go directly under the report year and same-report files have distinct ID basenames', async t => {
   const f = await setup(t); await f.login();
-  const name = '230701_张三_Random walks and dimension.pdf';
+  const talk = { date: '2023-07-01', speaker: '张三', title: 'Random walks and dimension' };
   const paths = [];
   for (const bytes of [Buffer.from('%PDF-1.7\nFirst'), Buffer.from('%PDF-1.7\nSecond')]) {
-    const start = await f.request('/api/admin/uploads', 'POST', { name, size: bytes.length });
+    const start = await f.request('/api/admin/uploads', 'POST', { name: 'original.pdf', size: bytes.length, talk });
     assert.equal(start.status, 200);
-    const { id } = await start.json();
+    const { id, name } = await start.json();
+    assert.equal(name, `230701_张三_Random_${id}.pdf`);
     assert.equal((await f.request(`/api/admin/uploads/${id}/0`, 'PUT', bytes)).status, 200);
     const response = await f.request(`/api/admin/uploads/${id}/complete`, 'POST');
     assert.equal(response.status, 200);
     const { attachment } = await response.json();
     assert.equal(attachment.name, name);
     assert.equal(attachment.path.split('/').at(-1), name);
+    assert.equal(attachment.path, `attachments/2023/${name}`);
     assert.deepEqual(await readFile(join(f.root, attachment.path)), bytes);
     assert.ok(f.repository.publicUrl(attachment.path).endsWith(encodeURIComponent(name)));
     paths.push(attachment.path);
@@ -154,9 +156,17 @@ test('renamed uploads keep their readable filename on disk and separate repeated
   assert.notEqual(paths[0], paths[1]);
 });
 
+test('uploads reject missing or invalid report metadata before storing chunks', async t => {
+  const f = await setup(t); await f.login();
+  for (const talk of [undefined, {}, { date: '2023-02-29', speaker: 'Name', title: 'Title' }, { date: '2023-07-01', speaker: '', title: 'Title' }]) {
+    assert.equal((await f.request('/api/admin/uploads', 'POST', { name: 'lecture.pdf', size: 8, talk })).status, 400);
+  }
+  assert.deepEqual(await f.store.list('uploads/'), []);
+});
+
 test('expired staging and orphan chunks are rejected and removed from private storage', async t => {
   const f = await setup(t); await f.login();
-  const { id } = await (await f.request('/api/admin/uploads', 'POST', { name: 'expired.pdf', size: 8 })).json();
+  const { id } = await (await f.request('/api/admin/uploads', 'POST', { name: 'expired.pdf', size: 8, talk: content.talks[0] })).json();
   assert.equal((await f.request(`/api/admin/uploads/${id}/0`, 'PUT', Buffer.from('%PDF-1.7'))).status, 200);
   const record = await getJson(f.store, `uploads/${id}/meta`);
   await putJson(f.store, `uploads/${id}/meta`, { ...record.value, expires: Date.now() - 1 }, { onlyIfMatch: record.etag });
@@ -169,7 +179,7 @@ test('expired staging and orphan chunks are rejected and removed from private st
 test('concurrent completion returns one portable result and never writes partial bytes', async t => {
   const f = await setup(t); await f.login();
   const bytes = Buffer.from('%PDF-1.7\nComplete content');
-  const { id } = await (await f.request('/api/admin/uploads', 'POST', { name: 'parallel.pdf', size: bytes.length })).json();
+  const { id } = await (await f.request('/api/admin/uploads', 'POST', { name: 'parallel.pdf', size: bytes.length, talk: content.talks[0] })).json();
   await f.request(`/api/admin/uploads/${id}/0`, 'PUT', bytes);
   const results = await Promise.all([1, 2, 3].map(() => f.request(`/api/admin/uploads/${id}/complete`, 'POST')));
   assert.ok(results.some(response => response.status === 200));

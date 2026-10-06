@@ -64,7 +64,7 @@ export function createApi({ repository, store, env = process.env, passwords = cr
       }
       if (method === 'POST' && path === '/api/admin/uploads') {
         if (Date.now() - lastCleanup > 60_000) { await uploads.cleanup(); lastCleanup = Date.now(); }
-        return json(await uploads.start(await readJson(request, 4096), session));
+        return json(await uploads.start(await readJson(request, 65536), session));
       }
       const upload = path.match(/^\/api\/admin\/uploads\/([a-f0-9-]+)(?:\/([^/]+))?$/);
       if (upload) {

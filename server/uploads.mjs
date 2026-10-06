@@ -1,15 +1,15 @@
 import { randomUUID } from 'node:crypto';
 import { ApiError } from './errors.mjs';
 import { getJson, putJson, readBytes } from './private-store.mjs';
-import { safeAttachmentName } from '../shared/attachment-name.mjs';
+import { reportAttachmentName } from '../shared/attachment-name.mjs';
 
 export const CHUNK_SIZE = 2 * 1024 * 1024;
 const MAX_SIZE = 50 * 1024 * 1024;
 const TTL = 60 * 60 * 1000;
 const metaKey = id => `uploads/${id}/meta`;
 const partKey = (id, index) => `uploads/${id}/parts/${index}`;
-function safeName(name) {
-  try { return safeAttachmentName(name); }
+function reportName(talk, name, id) {
+  try { return reportAttachmentName(talk, name, id); }
   catch (error) { throw new ApiError(400, error.message); }
 }
 export function validFileSignature(bytes, type) {
@@ -54,11 +54,11 @@ export function createUploads(repository, store) {
       for (const prefix of ['sessions/', 'rates/']) for (const key of await store.list(prefix)) { const record = await getJson(store, key); if (record && record.value.exp <= Date.now()) await store.delete(key); }
     },
     async start(input, session) {
-      const name = safeName(input?.name), size = input?.size;
+      const id = randomUUID(), name = reportName(input?.talk, input?.name, id), size = input?.size;
       if (!Number.isSafeInteger(size) || size <= 0 || size > MAX_SIZE) throw new ApiError(400, 'File size must be between 1 byte and 50 MiB.');
-      const id = randomUUID(), type = name.split('.').at(-1).toLowerCase();
-      await putJson(store, metaKey(id), { id, name, type, size, owner: session.id, expires: Math.min(Date.now() + TTL, session.exp), state: 'pending', path: `attachments/${new Date().getUTCFullYear()}/${id}/${name}` }, { onlyIfNew: true });
-      return { id, chunkSize: CHUNK_SIZE };
+      const type = name.split('.').at(-1).toLowerCase();
+      await putJson(store, metaKey(id), { id, name, type, size, owner: session.id, expires: Math.min(Date.now() + TTL, session.exp), state: 'pending', path: `attachments/${input.talk.date.slice(0, 4)}/${name}` }, { onlyIfNew: true });
+      return { id, name, chunkSize: CHUNK_SIZE };
     },
     async chunk(id, rawIndex, request, session) {
       const { value } = await owned(id, session);
