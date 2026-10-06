@@ -2,6 +2,7 @@ node_modules/
 dist/
 dist-preview/
 .netlify/
+.vercel/
 .wrangler/
 .dev.vars
 .dev.vars.*

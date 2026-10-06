@@ -10,9 +10,17 @@ services:
     startCommand: node scripts/render-server.mjs
     healthCheckPath: /healthz
     autoDeployTrigger: commit
+    buildFilter:
+      ignoredPaths:
+        - content/**
+        - attachments/**
+        - sources/**
+        - docs/**
+        - tests/**
+        - README.md
     envVars:
       - key: NODE_VERSION
-        value: "24.21.0"
+        value: "24"
       - key: GITHUB_OWNER
         value: a-p-seminar
       - key: GITHUB_REPO

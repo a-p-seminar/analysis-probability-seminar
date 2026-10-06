@@ -2,9 +2,9 @@
 
 按用户要求，主页在每次打开或刷新时随机选择武大或华师背景，各 50% 概率。同一页面内筛选、搜索、展开摘要不会重新选择；不写入浏览器存储，也不请求后台或触发部署。随机选择允许连续访问时选中同一所学校。
 
-- 武大当前背景：`public/images/whu-enhanced.png`，通过内置 ImageGen 做清晰度和细节增强；原图保留于 `public/images/whu.jpg`。
+- 武大当前背景：`public/images/whu-enhanced.png`，通过内置 ImageGen 做清晰度和细节增强；未使用的原图已移至本地私有备份，Git 历史中仍可恢复。
 - 图片来源：https://github.com/a-p-seminar/Seminar-of-Analysis-and-Probability/blob/main/images/whu.jpg
-- 华师当前背景：`public/images/ccnu-autumn-enhanced.png`。源图由用户在本对话中提供（校园秋景全景图）；先按用户要求通过内置 ImageGen 移除右下角中文及网址水印，修补周围植被，再进行清晰度增强。去水印版本保留于 `public/images/ccnu-autumn.png`。AI 修补和增强可能与原图局部细节不同。
+- 华师当前背景：`public/images/ccnu-autumn-enhanced.png`。源图由用户在本对话中提供（校园秋景全景图）；先按用户要求通过内置 ImageGen 移除右下角中文及网址水印，修补周围植被，再进行清晰度增强。未使用的中间版本已移至本地私有备份，Git 历史中仍可恢复。AI 修补和增强可能与原图局部细节不同。
 - 样式参考：https://github.com/a-p-seminar/Seminar-of-Analysis-and-Probability/blob/main/index.html
 - 使用白色遮罩和半透明内容面板；报告卡片采用半透明白底、8px 圆角、左侧色条及悬停阴影。
 

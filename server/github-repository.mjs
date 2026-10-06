@@ -44,7 +44,7 @@ export function createGithubRepository({ env = process.env, fetchImpl = fetch } 
   }
   async function commit(path, bytes, baseCommit, message) {
     const parent = await api(`/git/commits/${baseCommit}`);
-    const blob = await api('/git/blobs', 'POST', env.CLOUDFLARE === 'true' ? githubBlobBody(bytes) : { encoding: 'base64', content: bytes.toString('base64') });
+    const blob = await api('/git/blobs', 'POST', env.VERCEL === '1' ? githubBlobBody(bytes) : { encoding: 'base64', content: bytes.toString('base64') });
     const tree = await api('/git/trees', 'POST', { base_tree: parent.tree.sha, tree: [{ path, mode: '100644', type: 'blob', sha: blob.sha }] });
     const next = await api('/git/commits', 'POST', { message: `${message} [skip netlify] [skip ci]`, tree: tree.sha, parents: [baseCommit] });
     await api(`/git/refs/heads/${pathEncode(branch)}`, 'PATCH', { sha: next.sha, force: false });

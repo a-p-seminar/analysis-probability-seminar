@@ -9,7 +9,7 @@ import { getJson, putJson, updateJson, readJson } from './private-store.mjs';
 const json = (data, status = 200, headers = {}) => new Response(JSON.stringify(data), { status, headers: { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store', 'x-content-type-options': 'nosniff', ...headers } });
 export function createApi({ repository, store, env = process.env, passwords = createAdminPassword(store, env.ADMIN_PASSWORD_HASH), uploadOptions }) {
   const production = env.NODE_ENV === 'production' || env.NETLIFY === 'true';
-  const hostedStore = ['netlify', 'cloudflare'].includes(store.mode) || (env.RENDER === 'true' && store.mode === 'render');
+  const hostedStore = store.mode === 'netlify' || (env.RENDER === 'true' && store.mode === 'render') || (env.VERCEL === '1' && store.mode === 'vercel');
   const configured = typeof env.SESSION_SECRET === 'string' && env.SESSION_SECRET.length >= 32 && (!production || (repository.mode === 'github' && hostedStore));
   const uploads = createUploads(repository, store, uploadOptions); let lastCleanup = 0;
   const sessionFor = async request => {
