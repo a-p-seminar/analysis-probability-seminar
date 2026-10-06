@@ -18,6 +18,11 @@ services:
         - docs/**
         - tests/**
         - README.md
+        - render.yaml
+        - api/**
+        - vercel.json
+        - server/vercel-*.mjs
+        - scripts/ignore-vercel-data-build.mjs
     envVars:
       - key: NODE_VERSION
         value: "24"

@@ -4,7 +4,7 @@
 
 ## 部署
 
-- **Render**：前后端由同一个 Node Web Service 提供，配置见 [Render 部署说明](docs/render-deployment.md) 和 `render.yaml`。
+- **Render**：[网站](https://ap-whucc.onrender.com/)与[后台](https://ap-whucc.onrender.com/admin.html)已上线，前后端由同一个 Node Web Service 提供，配置见 [Render 部署说明](docs/render-deployment.md) 和 `render.yaml`。
 - **Vercel**：Vite 静态页面加 Node API，私有会话与上传分片使用独立 Redis；配置见 [Vercel 部署说明](docs/vercel-deployment.md) 和 `vercel.json`。
 - **Netlify**：[现有网站](https://s-ap.netlify.app/)及[后台](https://s-ap.netlify.app/admin.html)保留，自动构建已暂停。只有用户要求恢复后才重新开启。
 
