@@ -54,7 +54,7 @@ pnpm dev
 
 线上后台通过 GitHub API 更新 `content/seminars.json` 和 `attachments/`。访客运行时获取最新 JSON，最多有约 15 秒缓存。报告数据和附件不打包进 `dist`。
 
-资料更新不需要重新部署。Render 已配置目录构建过滤器，GitHub 自动部署应用授权尚待确认；Vercel 使用忽略构建命令，Netlify 使用已有忽略规则并保持暂停。修改网页、后端或依赖才需要重新构建。当前各平台的实际状态见[部署记录](docs/deployment-status.md)。
+资料更新不需要重新部署。Render 已连接本仓库并开启代码提交自动部署，目录构建过滤器跳过报告、附件和文档；Vercel 使用忽略构建命令，Netlify 使用已有忽略规则并保持暂停。修改网页、后端或依赖才需要重新构建。当前各平台的实际状态见[部署记录](docs/deployment-status.md)。
 
 GitHub 检查工作流仅手动运行。日常上传不会自动运行整套浏览器测试，也不会创建测试报告。
 
