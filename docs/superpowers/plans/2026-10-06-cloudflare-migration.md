@@ -26,7 +26,7 @@
 - [x] Prepare a narrowly scoped GitHub change from the latest remote main; verify content and all attachment blob hashes are unchanged. Migration commit `9c9a309895bce473ea1c891f16144bdd387634cd` preserves all report/attachment blobs from `5f2fcd28d863ffcd5c2202bf88373fd018d7a55d`.
 - [ ] Configure the new project and GitHub integration. Obtain confirmation at any new access grant, then set backend secrets privately.
 - [x] Deploy and verify public data, login/session/logout, settings and upload staging. All 91 reports and 30 PDF hashes match; administrator UI login and report editing view load successfully. Password change and restoration, manual variable change session revocation, and logout pass. A transient 503 immediately after a settings update recovered; a subsequent fresh login/session/logout check passed. Evidence is stored privately without credential values.
-- [x] Record the new URLs and exact results in `docs/cloudflare-deployment.md`. The free account subdomain is now `apwhcc`; `https://s-ap.apwhcc.workers.dev` passes homepage/admin/viewer/content HTTP 200, archive equality, login, session and logout checks. GitHub automatic build integration remains pending the permanent Builds Configuration token confirmation.
+- [x] Record the new URLs and exact results in `docs/cloudflare-deployment.md`. The free account subdomain is now `whucc`; `https://ap.whucc.workers.dev` passes homepage/admin/viewer/content HTTP 200, archive equality, login, session and logout checks. GitHub automatic build integration remains pending the permanent Builds Configuration token confirmation.
 
 ## Verification commands
 

@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "s-ap",
+  "name": "ap",
   "main": "cloudflare/worker.mjs",
   "compatibility_date": "2026-10-06",
   "compatibility_flags": ["nodejs_compat"],
@@ -19,6 +19,6 @@
     "GITHUB_OWNER": "a-p-seminar",
     "GITHUB_REPO": "analysis-probability-seminar",
     "GITHUB_BRANCH": "main",
-    "CLOUDFLARE_WORKER_NAME": "s-ap"
+    "CLOUDFLARE_WORKER_NAME": "ap"
   }
 }

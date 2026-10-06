@@ -4,11 +4,11 @@
 
 ## 访问地址
 
-- 前台：<https://s-ap.apwhcc.workers.dev/>
-- 后台：<https://s-ap.apwhcc.workers.dev/admin.html>
-- Worker：`s-ap`
+- 前台：<https://ap.whucc.workers.dev/>
+- 后台：<https://ap.whucc.workers.dev/admin.html>
+- Worker：`ap`
 
-账号免费子域名已从数字名称改为 `apwhcc`。旧数字网址不再作为入口。新域名 HTTPS 已生效；主页、后台、PDF 阅读器与公共接口均返回 200，登录、会话和退出检查通过。域名变更后的报告内容仍与迁移前版本逐条一致。
+Worker 已从 `s-ap` 就地改名为 `ap`，账号免费子域名改为 `whucc`。Worker 的固定 ID、SQLite Durable Object 和全部绑定保留，后台的 `CLOUDFLARE_WORKER_NAME` 与 Wrangler 配置同步改为 `ap`。旧的 Cloudflare 地址不再作为入口。新域名 HTTPS 已生效；主页、后台、PDF 阅读器与公共接口均返回 200，登录、会话和退出检查通过。域名变更后的报告内容仍与迁移前版本逐条一致。
 
 ## 内容与附件
 
