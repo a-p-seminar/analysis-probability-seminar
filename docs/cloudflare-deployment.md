@@ -1,4 +1,6 @@
-# Cloudflare 部署记录
+# Cloudflare 部署记录（已停用）
+
+按用户要求，`ap` Worker、部署和配置已删除，账号 Worker 数量已确认为 0。当前使用 Netlify：[前台](https://s-ap.netlify.app/) · [后台](https://s-ap.netlify.app/admin.html)。正式报告和附件仍保存在 GitHub，未受影响。以下内容为此前迁移与验证的历史记录。
 
 项目：分析与概率讨论班。部署代码保存在 `a-p-seminar/analysis-probability-seminar` 的 `main` 分支。
 

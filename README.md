@@ -1,8 +1,8 @@
 # 分析与概率讨论班
 
-武汉大学 · 华中师范大学的分析与概率讨论班档案。前台展示完整报告，后台编辑资料并把讲义存入这个 GitHub 仓库。支持 Cloudflare Workers 和 Netlify，前后端在同一域名下运行。
+武汉大学 · 华中师范大学的分析与概率讨论班档案。前台展示完整报告，后台编辑资料并把讲义存入这个 GitHub 仓库。当前部署在 Netlify，前后端在同一域名下运行。
 
-Cloudflare 线上地址：[讲座档案](https://ap.whucc.workers.dev/) · [管理后台](https://ap.whucc.workers.dev/admin.html)。原 Netlify 项目继续保留。迁移时逐条核对了全部 91 场报告及 30 份 PDF，报告内容与附件文件指纹均与迁移前的 GitHub 版本一致。
+Netlify 线上地址：[讲座档案](https://s-ap.netlify.app/) · [管理后台](https://s-ap.netlify.app/admin.html)。Cloudflare Worker 与 Render 新建服务已按要求移除。已重新验证 91 场报告和 30 份 PDF，公开资料与 GitHub 一致，后台登录及 PDF 访问正常。
 
 **历史资料已完整迁移：两个原始网站有 56 场和 35 场报告，去掉 2 场重复后共有 89 场历史报告。** 当前档案还包括后台新增的杨博寒报告及此次补录的 Mumtaz Hussain 报告；已删除测试报告，共 91 场正式报告、30 份 PDF，覆盖 2023—2026 年。此后可继续通过后台更新。
 
@@ -57,7 +57,7 @@ pnpm test:e2e      # 浏览器验证，默认使用已安装的 Microsoft Edge
 
 浏览器测试使用独立临时数据，不会改动正式档案。Linux CI 可设置 `PLAYWRIGHT_CHANNEL=chromium` 并先安装 Playwright Chromium。
 
-## 部署到 Cloudflare Workers
+## Cloudflare 历史方案（已停用）
 
 创建一个新的 Worker，并关联这个 GitHub 仓库的 `main` 分支。Worker 名称须与 `wrangler.jsonc` 中的 `name` 一致。构建命令使用 `pnpm build`，部署命令使用 `pnpm deploy:cloudflare`；Node 使用 22.13 或更新版本，pnpm 版本由 `package.json` 固定。不要创建仅上传静态文件的项目，后台也需要运行 Worker。
 
@@ -90,7 +90,7 @@ node scripts/verify-cloudflare-runtime.mjs
 
 ## 部署到 Netlify
 
-另有 Render 免费静态预览：构建命令 `corepack pnpm install --frozen-lockfile && corepack pnpm build:preview`，发布目录 `dist-preview`，Node 22。`render.yaml` 记录对应配置。此预览只发布当前选中的报告和附件，支持筛选、会议链接和 PDF 阅读，不启用后台登录、编辑或上传；当前内容随代码部署更新。完整后台仍使用下方的 Netlify 方案。本地用 `node node_modules/@playwright/test/cli.js test --config playwright.preview.config.mjs` 验证预览构建。
+Render 部署已取消，新建的服务和项目已删除；不再使用 Render 预览。仓库保留相关适配代码，当前线上服务仅使用 Netlify。
 
 1. 在 Netlify 选择从 GitHub 导入项目，选择这个仓库的 `main` 分支。
 2. 构建配置已写在 `netlify.toml`：构建命令 `pnpm build`，发布目录 `dist`，函数目录 `netlify/functions`。无需额外数据库。

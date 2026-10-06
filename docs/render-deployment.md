@@ -1,4 +1,9 @@
-# Render deployment
+# Render deployment (canceled)
+
+The user canceled this deployment. The newly created `ap-whucc` service and
+project have been deleted. The live frontend and backend remain on Netlify:
+https://s-ap.netlify.app/. The instructions below are retained as an unused
+deployment template; no Render service is currently running.
 
 This is an additional deployment of the seminar archive. It does not replace
 the Cloudflare Worker. Both deployments use the same GitHub archive:
