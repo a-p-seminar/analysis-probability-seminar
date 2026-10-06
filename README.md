@@ -2,6 +2,8 @@
 
 武汉大学 · 华中师范大学的分析与概率讨论班档案。前台展示完整报告，后台编辑资料并把讲义存入这个 GitHub 仓库。支持 Cloudflare Workers 和 Netlify，前后端在同一域名下运行。
 
+Cloudflare 线上地址：[讲座档案](https://s-ap.apwhcc.workers.dev/) · [管理后台](https://s-ap.apwhcc.workers.dev/admin.html)。原 Netlify 项目继续保留。迁移时逐条核对了全部 91 场报告及 30 份 PDF，报告内容与附件文件指纹均与迁移前的 GitHub 版本一致。
+
 **历史资料已完整迁移：两个原始网站有 56 场和 35 场报告，去掉 2 场重复后共有 89 场历史报告。** 当前档案还包括后台新增的杨博寒报告及此次补录的 Mumtaz Hussain 报告；已删除测试报告，共 91 场正式报告、30 份 PDF，覆盖 2023—2026 年。此后可继续通过后台更新。
 
 原始资料来自 [讨论班原始主页](https://perso.math.u-pem.fr/liao.lingmin/SAP-WH.html) 和 [学术档案仓库](https://github.com/a-p-seminar/Seminar-of-Analysis-and-Probability)。逐条来源、去重依据、附件改名和文件指纹见 [迁移核对说明](sources/import-summary.md) 与 [完整核对清单](sources/import-report.json)。原来源中有 5 份附件已失效，4 场摘要未能确认，均保留记录并注明，未生成替代内容。讲座摘要和讲义的权利归原作者所有。
@@ -125,13 +127,13 @@ Netlify Blobs 用于私有会话、登录及改密限流、改密并发锁和临
 ## 为什么上传不会重新部署
 
 ```text
-访客浏览器 ──GET /api/content──> Netlify Function ──> GitHub 的实时 JSON
+访客浏览器 ──GET /api/content──> Cloudflare Worker / Netlify Function ──> GitHub 的实时 JSON
       │
       └── PDF 阅读器 ──> GitHub attachments/ 原始文件
 
-管理后台 ──登录 / 编辑 / 分片上传──> Netlify Function
+管理后台 ──登录 / 编辑 / 分片上传──> Cloudflare Worker / Netlify Function
                                       │
-                                      ├── Netlify Blobs：私有临时分片
+                                      ├── Durable Object / Netlify Blobs：私有会话和临时分片
                                       └── GitHub：JSON、附件和版本记录
 ```
 
@@ -148,6 +150,8 @@ Netlify Blobs 用于私有会话、登录及改密限流、改密并发锁和临
 | `src/viewer.jsx` | PDF 阅读器 |
 | `server/` | 验证、会话、上传、GitHub 与本地存储适配器 |
 | `netlify/functions/api.mjs` | Netlify 后端入口 |
+| `cloudflare/worker.mjs` | Cloudflare 前后端入口及 SQLite Durable Object |
+| `wrangler.jsonc` | Cloudflare 资源、路由与部署配置 |
 | `content/seminars.json` | 当前发布的结构化讲座资料（预览版 5 条） |
 | `attachments/` | 实际 PDF/PPT/PPTX 文件 |
 | `sources/` | 预览资料清单与附件来源 |
