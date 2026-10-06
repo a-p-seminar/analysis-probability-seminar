@@ -2,6 +2,8 @@
 
 Create a new Free Node Web Service from `a-p-seminar/analysis-probability-seminar`, branch `main`, using `render.yaml`. The homepage, administration interface, API and attachment proxy run together under the service's `onrender.com` URL. Use Singapore and the build/start commands in the template. Keep this service separate from existing projects.
 
+For automatic code deployments, first authorize Render's GitHub app for this repository and choose it through Git Provider. A public repository URL can be deployed manually but does not provide Git push webhooks. The current live service works through the public URL; GitHub app installation is pending user confirmation. Report and attachment updates work immediately through the API either way.
+
 | Environment variable | Configuration |
 | --- | --- |
 | `NODE_VERSION` | `24` |
