@@ -57,10 +57,15 @@
 .fractal-art { width: 100%; height: auto; display: block; }
 
 .public-page .archive-layout { display: block; padding-block: 22px 48px; scroll-margin-top: 100px; }
+.archive-main { --filter-top: 16px; }
+.filter-anchor { height: 1px; margin-bottom: -1px; }
 .floating-filters {
   position: sticky;
-  top: 16px;
+  top: var(--filter-top);
   z-index: 20;
+  pointer-events: none;
+}
+.filter-panel {
   display: flex;
   align-items: center;
   gap: 20px;
@@ -70,7 +75,30 @@
   background: rgba(255, 255, 255, .97);
   box-shadow: 0 5px 22px rgba(31, 57, 89, .06);
   backdrop-filter: blur(12px);
+  pointer-events: auto;
 }
+.filter-panel[hidden] { display: none; }
+.floating-filters.is-pinned { display: flex; justify-content: flex-end; }
+.floating-filters.is-pinned .filter-panel { position: absolute; top: 52px; right: 0; width: 100%; }
+.filter-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  height: 44px;
+  padding: 0 16px;
+  border: 1px solid #d4e3eb;
+  border-radius: 24px;
+  background: #f7fbff;
+  color: #2c6b82;
+  box-shadow: 0 4px 18px #19344c1a;
+  font-size: 13px;
+  pointer-events: auto;
+}
+.filter-toggle:hover, .filter-toggle[aria-expanded="true"] { background: #e9f3f9; }
+.filter-toggle svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; }
+.filter-chevron { width: 6px; height: 6px; border-right: 1px solid currentColor; border-bottom: 1px solid currentColor; transform: translateY(-2px) rotate(45deg); }
+.filter-toggle[aria-expanded="true"] .filter-chevron { transform: translateY(2px) rotate(225deg); }
 .public-page .floating-filters .search-field { height: 40px; border: 0; background: transparent; border-radius: 6px; }
 .public-page .search-field input { font-size: 13px; }
 .public-page .search-field input::placeholder { color: #8796a5; }
@@ -180,7 +208,8 @@
   .public-page .organizer strong { font-size: 13px; white-space: nowrap; }
   .organizer-name > span { font-size: 11px; }
   .public-page .archive-layout { padding-block: 8px 32px; }
-  .floating-filters { top: 8px; flex-wrap: wrap; gap: 6px; padding: 6px 8px 8px; border-radius: 10px; }
+  .archive-main { --filter-top: 8px; }
+  .filter-panel { flex-wrap: wrap; gap: 6px; padding: 6px 8px 8px; border-radius: 10px; }
   .public-page .floating-filters .search-field { flex-basis: 100%; height: 34px; padding-inline: 7px; }
   .public-page .search-field input { font-size: 12px; }
   .date-filters { width: 100%; }

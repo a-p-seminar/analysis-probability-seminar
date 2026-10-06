@@ -4,6 +4,7 @@ import { api } from './api.mjs';
 import { filterTalks, groupTalks, groupTalksByMonth, sortArchiveTalks, talkEndTime, talkStatus } from './archive-model.mjs';
 import { ArchiveRecord } from './ArchiveRecord.mjs';
 import { SeminarIntro } from './SeminarIntro.jsx';
+import { ArchiveFilters } from './ArchiveFilters.jsx';
 import 'katex/dist/katex.min.css';
 import './styles.css';
 import './metadata-icons.css';
@@ -63,13 +64,7 @@ function Archive() {
       <SeminarIntro site={site}/>
       <section className="archive-layout page-width" id="archive" aria-label="讲座档案">
         <div className="archive-main">
-          <div className="floating-filters" role="search" aria-label="筛选报告">
-            <label className="search-field"><span aria-hidden="true">⌕</span><input type="search" aria-label="搜索讲座、报告人或摘要" placeholder="搜索讲座、报告人、摘要…" value={query} onChange={e => setQuery(e.target.value)}/></label>
-            <div className="date-filters">
-              <label className="date-filter"><span>年份</span><select aria-label="按年份筛选" value={year} onChange={e => setYear(e.target.value)}><option value="">全部年份</option>{years.map(group => <option key={group.year} value={group.year}>{group.year} 年</option>)}</select></label>
-              <label className="date-filter"><span>月份</span><select aria-label="按月份筛选" value={month} onChange={e => setMonth(e.target.value)}><option value="">全部月份</option>{Array.from({ length: 12 }, (_, i) => <option key={i} value={String(i + 1).padStart(2, '0')}>{i + 1} 月</option>)}</select></label>
-            </div>
-          </div>
+          <ArchiveFilters years={years} year={year} month={month} query={query} onYearChange={setYear} onMonthChange={setMonth} onQueryChange={setQuery}/>
           <div className="results-meta" aria-live="polite"><span>{year || '全部年份'}{month ? ` · ${Number(month)} 月` : ''} <span className="results-separator">/</span> 共 {filtered.length} 场报告</span>{(year || month || query) && <button className="text-button" onClick={reset}>清除筛选 ×</button>}</div>
           {error && <div className="notice error" role="alert"><strong>暂时无法读取最新档案</strong><p>{error}{content ? ' 当前页面仍显示上一次成功读取的内容。' : ''}</p><button onClick={refresh}>重新读取</button></div>}
           {loading && !content && <div className="empty-state" role="status"><span className="loading-line"/>正在读取讨论班档案…</div>}
