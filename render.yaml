@@ -1,19 +1,29 @@
 services:
   - type: web
-    name: analysis-probability-seminar
-    runtime: static
-    repo: https://github.com/cimorn/analysis-probability-seminar
+    name: ap-whucc
+    runtime: node
+    plan: free
+    region: singapore
+    repo: https://github.com/a-p-seminar/analysis-probability-seminar
     branch: main
-    buildCommand: corepack pnpm install --frozen-lockfile && corepack pnpm build:preview
-    staticPublishPath: dist-preview
+    buildCommand: npx --yes pnpm@11.19.0 install --frozen-lockfile && npx --yes pnpm@11.19.0 build
+    startCommand: node scripts/render-server.mjs
+    healthCheckPath: /healthz
     autoDeployTrigger: commit
     envVars:
       - key: NODE_VERSION
-        value: "22"
-    headers:
-      - path: /*
-        name: X-Content-Type-Options
-        value: nosniff
-      - path: /preview/content.json
-        name: Cache-Control
-        value: no-cache
+        value: "24.21.0"
+      - key: GITHUB_OWNER
+        value: a-p-seminar
+      - key: GITHUB_REPO
+        value: analysis-probability-seminar
+      - key: GITHUB_BRANCH
+        value: main
+      - key: GITHUB_TOKEN
+        sync: false
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: RENDER_ENV_TOKEN
+        sync: false
