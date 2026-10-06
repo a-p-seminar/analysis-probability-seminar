@@ -265,7 +265,7 @@
 .status-section { margin-top: 24px; }
 .status-section + .status-section { margin-top: 38px; }
 .status-divider { display: flex; align-items: center; gap: 14px; }
-.status-divider h2 { margin: 0; font-size: 16px; font-weight: 600; color: #147e96; white-space: nowrap; }
+.status-divider h2 { margin: 0; font-size: 16px; font-weight: 700; color: #147e96; white-space: nowrap; }
 .status-divider > span { height: 1px; flex: 1; background: #d5e2e9; }
 .status-divider small { color: #8493a2; font-size: 11px; white-space: nowrap; }
 .status-ended .status-divider h2 { color: #61768a; }

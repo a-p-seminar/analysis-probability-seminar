@@ -52,7 +52,7 @@ function Archive() {
   const sorted = useMemo(() => sortArchiveTalks(filtered, now), [filtered, now]);
   const sections = useMemo(() => ['upcoming', 'ended'].map(status => {
     const groups = groupTalksByMonth(sorted.filter(talk => talkStatus(talk, now) === status));
-    return { status, label: status === 'upcoming' ? '即将举行' : '已结束', groups: status === 'upcoming' ? groups.reverse() : groups };
+    return { status, label: status === 'upcoming' ? '即将举行 (forthcoming)：' : '已经举行 (past)：', groups: status === 'upcoming' ? groups.reverse() : groups };
   }).filter(section => section.groups.length), [sorted, now]);
   const reset = () => { setYear(''); setMonth(''); setQuery(''); };
   const site = content?.site;
@@ -75,7 +75,7 @@ function Archive() {
           {loading && !content && <div className="empty-state" role="status"><span className="loading-line"/>正在读取讨论班档案…</div>}
           {!loading && content && !filtered.length && <div className="empty-state"><h3>没有找到符合条件的报告</h3><p>尝试其他关键词，或查看全部年份。</p><button className="outline-button" onClick={reset}>查看全部报告</button></div>}
           {sections.map(section => <section className={`status-section status-${section.status}`} key={section.status} aria-labelledby={`status-${section.status}`}>
-            <div className="status-divider"><h2 id={`status-${section.status}`}>{section.label}</h2><span aria-hidden="true"/><small>北京时间</small></div>
+            <div className="status-divider"><h2 id={`status-${section.status}`}><em>{section.label}</em></h2><span aria-hidden="true"/><small>北京时间</small></div>
             {section.groups.map(group => <section className="year-group month-group" key={group.month} aria-labelledby={`month-${section.status}-${group.month}`}><div className="year-heading month-heading"><h3 id={`month-${section.status}-${group.month}`}>{group.month}</h3><span>{group.talks.length} 场报告</span></div>{group.talks.map(talk => <ArchiveRecord talk={talk} key={talk.id}/>)}</section>)}
           </section>)}
         </div>
