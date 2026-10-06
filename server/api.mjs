@@ -7,10 +7,10 @@ import { createUploads } from './uploads.mjs';
 import { getJson, putJson, updateJson, readJson } from './private-store.mjs';
 
 const json = (data, status = 200, headers = {}) => new Response(JSON.stringify(data), { status, headers: { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store', 'x-content-type-options': 'nosniff', ...headers } });
-export function createApi({ repository, store, env = process.env, passwords = createAdminPassword(store, env.ADMIN_PASSWORD_HASH) }) {
+export function createApi({ repository, store, env = process.env, passwords = createAdminPassword(store, env.ADMIN_PASSWORD_HASH), uploadOptions }) {
   const production = env.NODE_ENV === 'production' || env.NETLIFY === 'true';
-  const configured = typeof env.SESSION_SECRET === 'string' && env.SESSION_SECRET.length >= 32 && (!production || (repository.mode === 'github' && store.mode === 'netlify'));
-  const uploads = createUploads(repository, store); let lastCleanup = 0;
+  const configured = typeof env.SESSION_SECRET === 'string' && env.SESSION_SECRET.length >= 32 && (!production || (repository.mode === 'github' && ['netlify', 'cloudflare'].includes(store.mode)));
+  const uploads = createUploads(repository, store, uploadOptions); let lastCleanup = 0;
   const sessionFor = async request => {
     const cookie = request.headers.get('cookie')?.split(';').map(value => value.trim()).find(value => value.startsWith('seminar_session='))?.slice(16);
     const session = verifySession(cookie, env.SESSION_SECRET);

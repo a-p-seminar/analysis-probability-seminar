@@ -1,6 +1,6 @@
 # 分析与概率讨论班
 
-武汉大学 · 华中师范大学的分析与概率讨论班档案。前台展示完整报告，后台编辑资料并把讲义存入这个 GitHub 仓库。网站适合部署到 Netlify。
+武汉大学 · 华中师范大学的分析与概率讨论班档案。前台展示完整报告，后台编辑资料并把讲义存入这个 GitHub 仓库。支持 Cloudflare Workers 和 Netlify，前后端在同一域名下运行。
 
 **历史资料已完整迁移：两个原始网站有 56 场和 35 场报告，去掉 2 场重复后共有 89 场历史报告。** 当前档案还包括后台新增的杨博寒报告及此次补录的 Mumtaz Hussain 报告；已删除测试报告，共 91 场正式报告、30 份 PDF，覆盖 2023—2026 年。此后可继续通过后台更新。
 
@@ -54,6 +54,37 @@ pnpm test:e2e      # 浏览器验证，默认使用已安装的 Microsoft Edge
 ```
 
 浏览器测试使用独立临时数据，不会改动正式档案。Linux CI 可设置 `PLAYWRIGHT_CHANNEL=chromium` 并先安装 Playwright Chromium。
+
+## 部署到 Cloudflare Workers
+
+创建一个新的 Worker，并关联这个 GitHub 仓库的 `main` 分支。Worker 名称须与 `wrangler.jsonc` 中的 `name` 一致。构建命令使用 `pnpm build`，部署命令使用 `pnpm deploy:cloudflare`；Node 使用 22.13 或更新版本，pnpm 版本由 `package.json` 固定。不要创建仅上传静态文件的项目，后台也需要运行 Worker。
+
+在 Worker 的 Settings → Variables and Secrets 配置下列变量。密码按你的需求使用可查看的明文变量；令牌和会话密钥使用 Secret，不放入构建变量、GitHub 或浏览器代码。
+
+| 环境变量 | 配置 |
+| --- | --- |
+| `ADMIN_PASSWORD` | 明文 Text，非空；没有字符数限制 |
+| `GITHUB_TOKEN` | Secret，仅此仓库的 Contents 读写令牌 |
+| `SESSION_SECRET` | Secret，至少 32 个字符的随机值 |
+| `CLOUDFLARE_ACCOUNT_ID` | Text，当前账号 ID |
+| `CLOUDFLARE_ENV_TOKEN` | Secret，允许读取和编辑此 Worker 的设置 |
+
+`GITHUB_OWNER`、`GITHUB_REPO`、`GITHUB_BRANCH` 和 `CLOUDFLARE_WORKER_NAME` 已在 Wrangler 中配置。`keep_vars` 保留在控制台设置的变量。首次部署会创建 `SeminarState` SQLite Durable Object，用于私有会话、限流、并发锁和临时上传；报告及最终附件仍存放在 GitHub。
+
+后台修改密码会同步更新 Cloudflare 的 `ADMIN_PASSWORD`。忘记密码时可直接修改控制台中的这个变量并部署变量变更；认证实时读取 Cloudflare API 中的最新密码和版本，旧会话自动失效。改密只替换密码绑定，其他变量、Secret、静态资源及 Durable Object 绑定继承原值。
+
+Cloudflare Git 构建的 Build watch paths 排除 `content/**`、`attachments/**`、`sources/**`，资料更新即时从 GitHub 读取，不必重复构建。修改代码和配置仍自动部署。后台提交也包含 `[skip netlify] [skip ci]`。
+
+迁移验证命令：
+
+```sh
+pnpm test
+pnpm build
+pnpm exec wrangler deploy --dry-run --outdir .local-data/cloudflare-deployment/bundle
+node scripts/verify-cloudflare-runtime.mjs
+```
+
+最后一项使用实际 workerd 和 SQLite Durable Object 验证 50 MiB 上传、字节指纹、登录、改密、环境变量变更及退出。外部 GitHub 和 Cloudflare API 在此测试中使用隔离的测试服务，测试附件不会进入正式仓库。
 
 ## 部署到 Netlify
 

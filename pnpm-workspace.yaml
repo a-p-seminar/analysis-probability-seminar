@@ -1,2 +1,5 @@
+allowBuilds:
+  esbuild: true
+  workerd: true
 minimumReleaseAgeExclude:
   - pdfjs-dist@6.4.299

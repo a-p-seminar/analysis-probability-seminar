@@ -1,0 +1,24 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "s-ap",
+  "main": "cloudflare/worker.mjs",
+  "compatibility_date": "2026-10-06",
+  "compatibility_flags": ["nodejs_compat"],
+  "keep_vars": true,
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "run_worker_first": true,
+    "html_handling": "none",
+    "not_found_handling": "none"
+  },
+  "durable_objects": { "bindings": [{ "name": "SEMINAR_STATE", "class_name": "SeminarState" }] },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["SeminarState"] }],
+  "vars": {
+    "NODE_ENV": "production",
+    "GITHUB_OWNER": "a-p-seminar",
+    "GITHUB_REPO": "analysis-probability-seminar",
+    "GITHUB_BRANCH": "main",
+    "CLOUDFLARE_WORKER_NAME": "s-ap"
+  }
+}

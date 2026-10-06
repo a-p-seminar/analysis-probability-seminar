@@ -2,6 +2,9 @@ node_modules/
 dist/
 dist-preview/
 .netlify/
+.wrangler/
+.dev.vars
+.dev.vars.*
 .local-data/
 .env
 .env.*

@@ -34,7 +34,8 @@ export function validFileSignature(bytes, type) {
   return cursor === end && names.has('[Content_Types].xml') && names.has('ppt/presentation.xml');
 }
 
-export function createUploads(repository, store) {
+export function createUploads(repository, store, { chunkSize = CHUNK_SIZE } = {}) {
+  if (!Number.isSafeInteger(chunkSize) || chunkSize < 65536 || chunkSize > CHUNK_SIZE) throw new Error('Invalid upload chunk size.');
   const removeParts = async id => { for (const key of await store.list(`uploads/${id}/parts/`)) await store.delete(key); };
   async function owned(id, session) {
     if (!/^[a-f0-9-]{36}$/.test(id)) throw new ApiError(404, 'Upload not found.');
@@ -58,16 +59,16 @@ export function createUploads(repository, store) {
       if (!Number.isSafeInteger(size) || size <= 0 || size > MAX_SIZE) throw new ApiError(400, 'File size must be between 1 byte and 50 MiB.');
       const type = name.split('.').at(-1).toLowerCase();
       await putJson(store, metaKey(id), { id, name, type, size, owner: session.id, expires: Math.min(Date.now() + TTL, session.exp), state: 'pending', path: `attachments/${input.talk.date.slice(0, 4)}/${name}` }, { onlyIfNew: true });
-      return { id, name, chunkSize: CHUNK_SIZE };
+      return { id, name, chunkSize };
     },
     async chunk(id, rawIndex, request, session) {
       const { value } = await owned(id, session);
       if (value.state !== 'pending') throw new ApiError(409, 'Upload is already completing or completed.');
       if (!/^\d{1,3}$/.test(rawIndex)) throw new ApiError(400, 'Invalid chunk index.');
-      const index = Number(rawIndex), count = Math.ceil(value.size / CHUNK_SIZE);
+      const index = Number(rawIndex), count = Math.ceil(value.size / chunkSize);
       if (index >= count) throw new ApiError(400, 'Invalid chunk index.');
       if (!(request.headers.get('content-type') || '').toLowerCase().startsWith('application/octet-stream')) throw new ApiError(415, 'Expected application/octet-stream.');
-      const expected = Math.min(CHUNK_SIZE, value.size - index * CHUNK_SIZE), bytes = await readBytes(request, expected);
+      const expected = Math.min(chunkSize, value.size - index * chunkSize), bytes = await readBytes(request, expected);
       if (bytes.length !== expected) throw new ApiError(400, 'Chunk byte count does not match.');
       const result = await store.put(partKey(id, index), bytes, { onlyIfNew: true });
       if (!result.modified && !(await store.get(partKey(id, index)))?.data.equals(bytes)) throw new ApiError(409, 'Chunk already exists with different bytes.');
@@ -80,13 +81,12 @@ export function createUploads(repository, store) {
       const claim = await putJson(store, metaKey(id), { ...metadata, state: 'committing', lockExpires: Date.now() + 90_000 }, { onlyIfMatch: record.etag });
       if (!claim.modified) throw new ApiError(409, 'Upload changed. Retry shortly.');
       try {
-        const chunks = [];
-        for (let i = 0; i < Math.ceil(metadata.size / CHUNK_SIZE); i++) {
-          const part = await store.get(partKey(id, i)), expected = Math.min(CHUNK_SIZE, metadata.size - i * CHUNK_SIZE);
+        const bytes = Buffer.allocUnsafe(metadata.size);
+        for (let i = 0; i < Math.ceil(metadata.size / chunkSize); i++) {
+          const part = await store.get(partKey(id, i)), expected = Math.min(chunkSize, metadata.size - i * chunkSize);
           if (!part || part.data.length !== expected) throw new ApiError(409, 'Some upload chunks are missing. Retry the upload.');
-          chunks.push(part.data);
+          part.data.copy(bytes, i * chunkSize);
         }
-        const bytes = Buffer.concat(chunks, metadata.size);
         if (!validFileSignature(bytes, metadata.type)) throw new ApiError(400, 'File contents do not match the PDF/PPT/PPTX extension.');
         await repository.upload(metadata.path, bytes);
         const attachment = { id, name: metadata.name, type: metadata.type, size: metadata.size, path: metadata.path };

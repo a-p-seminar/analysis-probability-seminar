@@ -35,7 +35,7 @@ export function createEnvironmentPassword({ source, store, secret }) {
         if (!await verifyPassword(input?.currentPassword, current.hash)) throw new ApiError(400, '当前密码不正确。');
         if (input.newPassword === input.currentPassword) throw new ApiError(400, '新密码不能与当前密码相同。');
         await source.write(input.newPassword);
-        if (!await verifyPassword(input.newPassword, (await read()).hash)) throw new ApiError(409, '密码已被其他页面修改，请使用 Netlify 中的当前密码重新登录。');
+        if (!await verifyPassword(input.newPassword, (await read()).hash)) throw new ApiError(409, '密码已被其他页面修改，请使用环境变量中的当前密码重新登录。');
       } finally {
         // A cleanup failure must not turn a confirmed password update into a failure.
         await release(owner).catch(() => {});
