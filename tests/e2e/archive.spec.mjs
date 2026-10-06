@@ -60,6 +60,8 @@ test('archive renders every source record, filters months and shows only real at
   await expect(page.locator('.archive-facts, .sidebar-note, .back-top, .talk-notes, .source-link')).toHaveCount(0);
   await expect(page.getByRole('link', { name: /原始记录/ })).toHaveCount(0);
   await expect(page.getByRole('link', { name: '关于讨论班' })).toHaveCount(0);
+  await page.getByRole('button', { name: '筛选', exact: true }).click();
+  await expect(page.getByLabel('按年份筛选')).toBeVisible();
   await page.getByLabel('按年份筛选').selectOption('2025');
   await page.getByLabel('按月份筛选').selectOption('09');
   await expect(page.locator('article.talk')).toHaveCount(content.talks.filter(t => t.date.startsWith('2025-09')).length);
@@ -330,7 +332,7 @@ test('admin publishes full records, uploads actual multipart PDF and updates arc
   await expect(card.locator('.attachment-link')).toHaveCount(1);
   const viewerUrl = new URL(await card.locator('.attachment-link').getAttribute('href'), 'http://127.0.0.1:5187');
   expect(viewerUrl.searchParams.get('name')).toBe(renamedName);
-  expect(viewerUrl.searchParams.get('file')).toBe(`/attachments/2026/${renamedName}`);
+  expect(decodeURIComponent(viewerUrl.searchParams.get('file'))).toBe(`/attachments/2026/${renamedName}`);
   const attachedFile = await page.request.get(viewerUrl.searchParams.get('file'));
   expect(attachedFile.ok()).toBe(true);
   expect(await attachedFile.body()).toEqual(await readFile(new URL('../../' + file.path, import.meta.url)));
