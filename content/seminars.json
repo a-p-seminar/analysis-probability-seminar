@@ -145,6 +145,31 @@
         "https://maths.whu.edu.cn/info/1115/169642.htm"
       ],
       "attachments": []
+    },
+    {
+      "id": "talk-3294b44b-5eb7-4ba6-a3f1-e6879f149b4d",
+      "date": "2026-10-14",
+      "time": "15:02-16:02",
+      "startTime": "15:02",
+      "endTime": "16:02",
+      "title": "测试",
+      "speaker": "测试",
+      "affiliation": "测试",
+      "affiliationZh": "测试",
+      "affiliationEn": "",
+      "abstract": "测试",
+      "location": "武大·测试",
+      "notes": "",
+      "sourceUrls": [],
+      "attachments": [
+        {
+          "id": "1da38d82-f4bf-4992-8df8-7ad69435c991",
+          "name": "261014_测试_测试.pdf",
+          "type": "pdf",
+          "size": 1258161,
+          "path": "attachments/2026/1da38d82-f4bf-4992-8df8-7ad69435c991/261014_测试_测试.pdf"
+        }
+      ]
     }
   ]
 }
