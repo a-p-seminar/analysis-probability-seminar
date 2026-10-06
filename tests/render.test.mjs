@@ -58,6 +58,7 @@ test('Render HTTP serves built pages, uses the HTTPS public origin and contains 
   const dist = join(root, 'dist'); await mkdir(join(dist, 'assets'), { recursive: true });
   await writeFile(join(dist, 'index.html'), '<h1>Seminar</h1>'); await writeFile(join(dist, 'admin.html'), '<h1>Admin</h1>');
   await writeFile(join(root, '.env'), 'PRIVATE'); await writeFile(join(dist, 'assets/app.js'), 'console.log(1)');
+  await writeFile(join(dist, 'assets/pdf.worker.mjs'), 'export const WorkerMessageHandler = {};');
   const calls = [];
   const server = createRenderServer({ origin: 'https://render.example', staticRoot: dist, api: async request => { calls.push(request.url); return Response.json({ ok: true }); } });
   await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
@@ -67,6 +68,7 @@ test('Render HTTP serves built pages, uses the HTTPS public origin and contains 
   assert.equal((await fetch(url + '/admin')).status, 200);
   assert.equal((await fetch(url + '/healthz')).status, 200);
   assert.match((await fetch(url + '/assets/app.js')).headers.get('cache-control'), /immutable/);
+  assert.match((await fetch(url + '/assets/pdf.worker.mjs')).headers.get('content-type'), /^text\/javascript/, 'module workers require a JavaScript MIME type when nosniff is enabled');
   await fetch(url + '/api/session'); assert.deepEqual(calls, ['https://render.example/api/session']);
   for (const path of ['/.env', '/.local-data/test', '/server/auth.mjs', '/attachments/..%2f.env', '/..%5c.env', '/assets/%2e%2e%2f%2e%2e%2f.env']) assert.equal((await fetch(url + path)).status, 404, path);
 });
