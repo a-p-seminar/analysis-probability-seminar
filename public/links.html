@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f3f7fb" />
+    <meta name="description" content="武汉大学与华中师范大学联合分析与概率讨论班网站入口。选择 Netlify 或 Render 访问报告档案。" />
+    <title>选择网站入口 · 分析与概率讨论班</title>
+    <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <style>
+      * { box-sizing: border-box; }
+      body { margin: 0; min-height: 100vh; min-height: 100svh; display: grid; place-items: center; padding: 24px 18px; background: #f3f7fb; color: #193e5a; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; }
+      main { width: min(100%, 440px); padding: 32px 28px 26px; background: #fff; border: 1px solid #dae5f0; border-radius: 22px; box-shadow: 0 12px 40px #1c4b7010; text-align: center; }
+      .logo { display: block; width: 92px; height: 92px; margin: 0 auto 18px; }
+      h1 { margin: 0 0 10px; font-size: 23px; font-weight: 600; letter-spacing: .06em; }
+      .universities { margin: 0; font-size: 13px; line-height: 1.8; color: #66809b; }
+      .prompt { margin: 27px 0 16px; font-size: 14px; color: #526d88; }
+      nav { display: grid; gap: 12px; text-align: left; }
+      .website { display: block; padding: 18px 20px; border: 1px solid #d8e4f0; border-radius: 12px; color: #193e5a; text-decoration: none; background: #f8fbfe; transition: border-color .15s, background .15s; }
+      .website:hover { border-color: #7aabc8; background: #edf5fb; }
+      a:focus-visible { outline: 3px solid #79b8d6; outline-offset: 4px; }
+      .name { display: block; font-size: 17px; font-weight: 600; }
+      .address { display: block; margin-top: 6px; font-size: 13px; color: #66809b; overflow-wrap: anywhere; }
+      .download { display: inline-block; margin-top: 25px; color: #6c839a; font-size: 12px; text-underline-offset: 4px; }
+      @media (max-width: 360px) { main { padding: 26px 20px 22px; } h1 { font-size: 21px; } }
+    </style>
+  </head>
+  <body>
+    <main>
+      <img class="logo" src="/icons/artwork.svg" alt="a · p 科赫雪花标志" width="92" height="92" />
+      <h1>分析与概率讨论班</h1>
+      <p class="universities">武汉大学 · 华中师范大学<br />Seminar of Analysis and Probability</p>
+      <p class="prompt">请选择网站入口</p>
+      <nav aria-label="网站入口">
+        <a class="website" href="https://s-ap.netlify.app/">
+          <span class="name">进入 Netlify 网站</span>
+          <span class="address">s-ap.netlify.app</span>
+        </a>
+        <a class="website" href="https://s-ap.onrender.com/">
+          <span class="name">进入 Render 网站</span>
+          <span class="address">s-ap.onrender.com</span>
+        </a>
+      </nav>
+      <a class="download" href="/s-ap-qr.png" download="s-ap-二维码.png">下载二维码</a>
+    </main>
+  </body>
+</html>

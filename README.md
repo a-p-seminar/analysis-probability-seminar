@@ -8,10 +8,13 @@
 | --- | --- |
 | 网站首页 | https://s-ap.onrender.com/ |
 | 管理后台 | https://s-ap.onrender.com/admin.html |
+| 扫码选择入口 | https://s-ap.onrender.com/links.html |
 | GitHub 仓库 | https://github.com/a-p-seminar/analysis-probability-seminar |
 | Render 控制台 | https://dashboard.render.com/web/srv-db2tnh4s728c73akq2s0 |
 
 当前使用 [Render 免费服务](https://render.com/docs/free)，闲置后首次打开可能需要等待约一分钟。Netlify 原项目保留，自动部署暂停。Vercel 已移除。GitHub 不运行测试工作流。
+
+分享网站时可以使用 [二维码 PNG](https://s-ap.onrender.com/s-ap-qr.png) 或 [打印用 SVG](https://s-ap.onrender.com/s-ap-qr.svg)。扫码后可选择 Netlify 或 Render。两个网站的地址在 `public/links.html` 中修改，选择页地址不变时无需更换二维码。
 
 ## 日常更新报告和讲义
 
