@@ -27,9 +27,9 @@
 
 ## 修改密码
 
-**知道当前密码：**登录后台，点击“修改密码”，填写当前密码、新密码和确认密码，保存后重新登录。
+**知道当前密码**：登录后台，点击“修改密码”，填写当前密码、新密码和确认密码，保存后重新登录。
 
-**忘记线上密码：**打开 Render 控制台，进入左侧 **Environment**，找到 `ADMIN_PASSWORD`，修改值并选择 [Save only](https://render.com/docs/configure-environment-variables)。本项目实时读取平台里的密码变量，改密不需要重新部署。Netlify 的密码在它自己的同名环境变量中修改，两边互不影响。
+**忘记线上密码**：打开 Render 控制台，进入左侧 **Environment**，找到 `ADMIN_PASSWORD`，修改值并选择 [Save only](https://render.com/docs/configure-environment-variables)。本项目实时读取平台里的密码变量，改密不需要重新部署。Netlify 的密码在它自己的同名环境变量中修改，两边互不影响。
 
 密码没有长度下限，不能为空或全为空格。密码值、`GITHUB_TOKEN`、`SESSION_SECRET` 和平台 API 令牌留在平台环境变量或本机私有配置中，不写入源码。
 
@@ -67,9 +67,9 @@ pnpm dev
 
 ## 美化后怎么上传
 
-**少量文字或样式修改：**在 GitHub 仓库打开对应文件，点击编辑，修改后提交到 `main`。图片通过 **Add file → Upload files** 上传到对应目录。
+**少量文字或样式修改**：在 GitHub 仓库打开对应文件，点击编辑，修改后提交到 `main`。图片通过 **Add file → Upload files** 上传到对应目录。
 
-**本地修改多个文件：**用 GitHub Desktop 克隆上方这个仓库，修改并预览页面。完成后运行一次 `pnpm build`，确认网页能打包；在 GitHub Desktop 中选择改过的源码和图片，填写提交说明，点击 **Commit to main**，再点击 **Push origin**。按钮位置见 [GitHub Desktop 官方操作说明](https://docs.github.com/en/desktop/making-changes-in-a-branch/committing-and-reviewing-changes-to-your-project-in-github-desktop)。
+**本地修改多个文件**：用 GitHub Desktop 克隆上方这个仓库，修改并预览页面。完成后运行一次 `pnpm build`，确认网页能打包；在 GitHub Desktop 中选择改过的源码和图片，填写提交说明，点击 **Commit to main**，再点击 **Push origin**。按钮位置见 [GitHub Desktop 官方操作说明](https://docs.github.com/en/desktop/making-changes-in-a-branch/committing-and-reviewing-changes-to-your-project-in-github-desktop)。
 
 上传的是 `src/`、`public/` 等源码文件；修改依赖时一起上传 `package.json` 和 `pnpm-lock.yaml`。`dist/`、`node_modules/`、`.env.local` 和 `.local-data/` 留在本机。
 
