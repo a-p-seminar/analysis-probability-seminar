@@ -1773,6 +1773,29 @@
       "notes": "",
       "sourceUrls": [],
       "attachments": []
+    },
+    {
+      "id": "talk-056eb563-6202-4b1f-8ed2-e93de28b6abc",
+      "date": "2026-10-31",
+      "time": "02:27-03:27",
+      "startTime": "02:27",
+      "endTime": "03:27",
+      "title": "1$\\to$2",
+      "speaker": "xx",
+      "affiliation": "xx",
+      "abstract": " 1$\\to$2 1$\\to$2 1$\\to$2 ",
+      "location": "武大·xxx",
+      "notes": "",
+      "sourceUrls": [],
+      "attachments": [
+        {
+          "id": "4af81628-51f7-4b90-8861-d70c56f6c5ee",
+          "name": "261031_xx_1$-to$2_4af81628-51f7-4b90-8861-d70c56f6c5ee.pdf",
+          "type": "pdf",
+          "size": 536171,
+          "path": "attachments/2026/261031_xx_1$-to$2_4af81628-51f7-4b90-8861-d70c56f6c5ee.pdf"
+        }
+      ]
     }
   ]
 }
