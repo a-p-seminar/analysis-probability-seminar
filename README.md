@@ -6,10 +6,10 @@
 
 | 用途 | 地址 |
 | --- | --- |
-| 网站首页 | https://ap-whucc.onrender.com/ |
-| 管理后台 | https://ap-whucc.onrender.com/admin.html |
+| 网站首页 | https://s-ap.onrender.com/ |
+| 管理后台 | https://s-ap.onrender.com/admin.html |
 | GitHub 仓库 | https://github.com/a-p-seminar/analysis-probability-seminar |
-| Render 控制台 | https://dashboard.render.com/web/srv-db2h31ui0phs73elsjmg |
+| Render 控制台 | https://dashboard.render.com/web/srv-db2tnh4s728c73akq2s0 |
 
 当前使用 [Render 免费服务](https://render.com/docs/free)，闲置后首次打开可能需要等待约一分钟。Netlify 原项目保留，自动部署暂停。Vercel 已移除。GitHub 不运行测试工作流。
 

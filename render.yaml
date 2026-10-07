@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: ap-whucc
+    name: s-ap
     runtime: node
     plan: free
     region: singapore
