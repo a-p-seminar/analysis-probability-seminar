@@ -11,10 +11,7 @@
     "dev": "node scripts/dev-server.mjs",
     "setup:admin": "node scripts/setup-admin.mjs",
     "build": "vite build",
-    "build:preview": "node scripts/build-preview.mjs",
-    "preview": "node scripts/dev-server.mjs --built",
-    "test": "node --test tests/*.test.mjs",
-    "test:e2e": "playwright test"
+    "preview": "node scripts/dev-server.mjs --built"
   },
   "dependencies": {
     "@netlify/blobs": "11.1.3",
@@ -24,7 +21,6 @@
     "react-dom": "19.3.0"
   },
   "devDependencies": {
-    "@playwright/test": "1.63.0",
     "vite": "8.3.2"
   }
 }

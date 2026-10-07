@@ -1,36 +1,59 @@
 # 分析与概率讨论班
 
-武汉大学 · 华中师范大学联合分析与概率讨论班档案。前台展示报告，后台编辑资料并把讲义存入 GitHub。Render、Vercel 和 Netlify 使用同一个仓库的 `main` 分支，报告与附件共享，密码和登录会话各自独立。
+武汉大学 · 华中师范大学联合分析与概率讨论班网站。首页展示报告，后台管理资料和讲义，正式数据保存在 GitHub。
 
-## 部署
+## 网站入口
 
-- **Render**：[网站](https://ap-whucc.onrender.com/)与[后台](https://ap-whucc.onrender.com/admin.html)已上线，前后端由同一个 Node Web Service 提供，配置见 [Render 部署说明](docs/render-deployment.md) 和 `render.yaml`。
-- **Vercel**：Vite 静态页面加 Node API，私有会话与上传分片使用独立 Redis；配置见 [Vercel 部署说明](docs/vercel-deployment.md) 和 `vercel.json`。
-- **Netlify**：[现有网站](https://s-ap.netlify.app/)及[后台](https://s-ap.netlify.app/admin.html)保留，自动构建已暂停。只有用户要求恢复后才重新开启。
+| 用途 | 地址 |
+| --- | --- |
+| 网站首页 | https://ap-whucc.onrender.com/ |
+| 管理后台 | https://ap-whucc.onrender.com/admin.html |
+| GitHub 仓库 | https://github.com/a-p-seminar/analysis-probability-seminar |
+| Render 控制台 | https://dashboard.render.com/web/srv-db2h31ui0phs73elsjmg |
 
-部署状态以平台实际结果为准；配置文件本身不代表服务已经上线。两套新服务使用免费方案，不自动购买升级。
+当前使用 [Render 免费服务](https://render.com/docs/free)，闲置后首次打开可能需要等待约一分钟。Netlify 原项目保留，自动部署暂停。Vercel 已移除。GitHub 不运行测试工作流。
 
-## 报告档案
+## 日常更新报告和讲义
 
-两个原始网站分别有 56 场和 35 场报告，去掉 2 场重复后共有 89 场历史报告。加上后来补录的杨博寒和 Mumtaz Hussain 报告，当前共 **91 场正式报告、30 份 PDF**，覆盖 2023—2026 年。
+1. 登录管理后台，选择已有报告，或点击“新建报告”。
+2. 填写标题、报告人、单位、日期和时间。单位选填，多个单位或中英文名称用 `/` 分隔。
+3. 所有时间均按北京时间。结束时间默认比开始时间晚一小时，可以单独调整。
+4. 有具体地点时填写学校和地点；没有地点就留空。粘贴完整摘要，公告链接填写对应报告的学校公告地址。
+5. 点击“上传文件”添加 PDF、PPT 或 PPTX，每份最大 50 MiB。上传完成后点击“保存报告”，附件才会随报告发布。
 
-原始资料来自[讨论班原始主页](https://perso.math.u-pem.fr/liao.lingmin/SAP-WH.html)和[学术档案仓库](https://github.com/a-p-seminar/Seminar-of-Analysis-and-Probability)。来源、去重、附件改名及文件指纹见[迁移核对说明](sources/import-summary.md)和[完整核对清单](sources/import-report.json)。原来源中有 5 份附件已失效，4 场摘要未能确认，均保留核对记录。讲座摘要和讲义的权利归原作者所有。
+保存后，资料和附件会直接写入 GitHub。刷新首页即可看到更新，缓存最多约 15 秒，资料更新不需要重新部署。
 
-## 页面与后台
+附件自动放入 `attachments/年份/`，文件名为 `YYMMDD_报告人_标题首词_附件ID.ext`。首页按月份展示全部报告，并根据结束时间自动归入“即将举行”或“已经举行”。
 
-- 展示全部报告，按北京时间的结束时间区分“即将举行 (forthcoming)”和“已经举行 (past)”，使用相同标题样式，按 `YYYY-MM` 分组。
-- 筛选支持关键词、年份与月份；手机和 iPad 可收起筛选及组织者说明。
-- 科赫雪花曲线内的 `a · p` 标志用于主页、后台和网站图标。
-- 每条报告显示题目、报告人、单位、日期时间及地点。单位使用一个可选输入框，以 `/` 分隔多个单位或中英文名称。无具体地点时隐藏学校和地点。
-- 摘要可展开，支持 TeX；公告链接限定为报告对应的学校数学学院公告。
-- 单份 PDF 显示“PDF”，多份显示“PDF I”“PDF II”等；独立阅读器支持缩略图、缩放、下载和打印。PPT/PPTX 保留下载，不自动转 PDF。
-- 后台支持新增、修改、删除、上传附件和修改密码。结束时间默认比开始时间晚一小时，并校验时间先后。
-- 附件每份最大 50 MiB，分片上传。文件位于 `attachments/年份/YYMMDD_报告人_报告名第一个单词_附件ID.ext`，年份下不再创建 ID 子目录。
-- 保存时检查版本，防止较旧的页面覆盖另一位编辑者的更新。
+## 修改密码
 
-## 本地运行
+**知道当前密码：**登录后台，点击“修改密码”，填写当前密码、新密码和确认密码，保存后重新登录。
 
-需要 Node.js 22.13 或更新版本，pnpm 版本由 `package.json` 固定。
+**忘记线上密码：**打开 Render 控制台，进入左侧 **Environment**，找到 `ADMIN_PASSWORD`，修改值并选择 [Save only](https://render.com/docs/configure-environment-variables)。本项目实时读取平台里的密码变量，改密不需要重新部署。Netlify 的密码在它自己的同名环境变量中修改，两边互不影响。
+
+密码没有长度下限，不能为空或全为空格。密码值、`GITHUB_TOKEN`、`SESSION_SECRET` 和平台 API 令牌留在平台环境变量或本机私有配置中，不写入源码。
+
+## 美化网页
+
+根据需要修改下列文件：
+
+| 想调整的内容 | 文件 |
+| --- | --- |
+| 首页字体、字号、颜色、间距、手机和 iPad 排版 | `src/archive.css`、`src/styles.css` |
+| 首页内容、标题区和筛选 | `src/main.jsx`、`src/SeminarIntro.jsx`、`src/ArchiveFilters.jsx` |
+| 后台表单排版与字号 | `src/admin.css` |
+| 后台字段和按钮 | `src/admin.jsx` |
+| 科赫雪花曲线与 `a · p` 标志 | `src/FractalArtwork.jsx` |
+| 浏览器图标与苹果设备图标 | `public/icons/` |
+| 武大背景 | `public/images/whu-enhanced.png` |
+| 华师背景 | `public/images/ccnu-autumn-enhanced.png` |
+| PDF 阅读页面 | `src/viewer.jsx`、`src/viewer.css` |
+
+更换背景时使用同名图片；调整字号和间距时修改对应 CSS。先在本地打开页面查看效果，再上传改动。
+
+## 本地查看效果
+
+安装 Node.js 24 和 pnpm 11.19.0，在项目目录运行：
 
 ```sh
 pnpm install
@@ -38,48 +61,22 @@ pnpm setup:admin
 pnpm dev
 ```
 
-前台为 `http://127.0.0.1:5173/`，后台为 `http://127.0.0.1:5173/admin.html`。本地使用 `content/seminars.json` 和 `attachments/`，本地编辑不会自动同步 GitHub。
+打开 `http://127.0.0.1:5173/`，后台地址是 `http://127.0.0.1:5173/admin.html`。首次生成的本地登录密码在 `.local-data/admin-login.txt`，本地配置在 `.env.local`。
 
-首次初始化将登录密码保存在 `.local-data/admin-login.txt`，哈希及会话密钥保存在 `.env.local`。这些文件均被 Git 忽略。不要将密码、令牌、环境变量或 `.local-data/` 上传到仓库。
+本地后台修改的是本机的 `content/seminars.json` 和 `attachments/`。更新正式报告请使用线上后台。
 
-## 密码
+## 美化后怎么上传
 
-线上密码保存在各平台自己的明文 `ADMIN_PASSWORD` 环境变量中，可以在平台控制台查看或修改。后台“修改密码”只更新当前平台的密码变量。认证实时读取平台 API，修改后旧会话失效，不需要重新构建。
+**少量文字或样式修改：**在 GitHub 仓库打开对应文件，点击编辑，修改后提交到 `main`。图片通过 **Add file → Upload files** 上传到对应目录。
 
-密码没有字符数下限，但不能为空或全为空格。`SESSION_SECRET`、平台环境变量 API 令牌及 GitHub 令牌必须保密，不能添加 `VITE_` 前缀。平台接口不可用时拒绝管理员登录，公开报告仍可读取。各平台密码的修改不会同步到其他平台。
+**本地修改多个文件：**用 GitHub Desktop 克隆上方这个仓库，修改并预览页面。完成后运行一次 `pnpm build`，确认网页能打包；在 GitHub Desktop 中选择改过的源码和图片，填写提交说明，点击 **Commit to main**，再点击 **Push origin**。按钮位置见 [GitHub Desktop 官方操作说明](https://docs.github.com/en/desktop/making-changes-in-a-branch/committing-and-reviewing-changes-to-your-project-in-github-desktop)。
 
-本地改密使用私有哈希记录，不会回写 `.env.local`，也不会影响线上密码。
+上传的是 `src/`、`public/` 等源码文件；修改依赖时一起上传 `package.json` 和 `pnpm-lock.yaml`。`dist/`、`node_modules/`、`.env.local` 和 `.local-data/` 留在本机。
 
-## 资料更新与构建
+Render 会自动获取 `main` 的代码修改并部署。打开 Render 控制台的 **Deploys**，看到最新记录为 **Live** 后刷新网站。后台更新报告、上传讲义或只修改 README 时不会触发构建。Netlify 继续保持暂停。
 
-线上后台通过 GitHub API 更新 `content/seminars.json` 和 `attachments/`。访客运行时获取最新 JSON，最多有约 15 秒缓存。报告数据和附件不打包进 `dist`。
+## 资料和备份
 
-资料更新不需要重新部署。Render 已连接本仓库并开启代码提交自动部署，目录构建过滤器跳过报告、附件和文档；Vercel 使用忽略构建命令，Netlify 使用已有忽略规则并保持暂停。修改网页、后端或依赖才需要重新构建。当前各平台的实际状态见[部署记录](docs/deployment-status.md)。
+正式报告在 `content/seminars.json`，正式讲义在 `attachments/`，历史来源和迁移核对记录在 `sources/`。这些内容保留在仓库中。
 
-GitHub 检查工作流仅手动运行。日常上传不会自动运行整套浏览器测试，也不会创建测试报告。
-
-```sh
-pnpm build                    # 生产构建
-pnpm preview                  # 本地生产预览
-node --test tests/render.test.mjs tests/vercel.test.mjs  # 新部署适配器检查
-pnpm test                     # 需要时手动运行完整单元测试
-pnpm test:e2e                 # 需要时手动运行浏览器测试
-```
-
-## 项目结构
-
-| 路径 | 用途 |
-| --- | --- |
-| `src/main.jsx` | 公开讲座档案 |
-| `src/admin.jsx` | 管理后台 |
-| `src/viewer.jsx` | PDF 阅读器 |
-| `server/` | 会话、密码、上传及存储适配器 |
-| `scripts/render-server.mjs` | Render 前后端入口 |
-| `api/seminar.mjs` | Vercel 后端入口 |
-| `netlify/functions/api.mjs` | Netlify 后端入口 |
-| `content/seminars.json` | 当前正式报告资料 |
-| `attachments/` | 正式 PDF/PPT/PPTX 文件 |
-| `sources/` | 导入来源与核对证据 |
-| `tests/` | 按需运行的功能、安全和浏览器检查 |
-
-已停用的 Cloudflare Worker、Wrangler 依赖、未引用的原始背景图及测试附件已从项目中移除；私有本地备份和 Git 历史仍可恢复。
+测试脚本、旧开发计划和 Vercel 配置已移除。删除前的文件可以从 GitHub 提交历史恢复；本机清理备份保存在被 Git 忽略的 `.local-data/` 中。

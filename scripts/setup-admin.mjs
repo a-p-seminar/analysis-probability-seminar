@@ -35,10 +35,10 @@ await writeFile(credentials, [
   `密码：${password}`,
   '',
   '本地模式仅修改本机数据，不会自动推送 GitHub。',
-  '上线时把 .env.local 的 ADMIN_PASSWORD_HASH 和 SESSION_SECRET 配置到 Netlify。',
-  'GitHub 写入令牌另行在 Netlify 配置，不能放入网页代码。',
+  '线上密码在托管平台的 ADMIN_PASSWORD 环境变量中修改，本地配置只供本机运行。',
+  'GitHub 写入令牌另行在托管平台配置，不能放入网页代码。',
   '此文件和 .env.local 均已被 .gitignore 排除，请妥善保存。',
   '',
 ].join('\n'), { mode: 0o600 });
 console.log(`Administrator configured. Private login details: ${credentials}`);
-console.log(`Netlify administrator environment values: ${envPath}`);
+console.log(`Private local configuration: ${envPath}`);

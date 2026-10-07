@@ -1,7 +1,6 @@
 import { createHash } from 'node:crypto';
 import { ApiError, conflict } from './errors.mjs';
 import { validAttachmentPath } from './content.mjs';
-import { githubBlobBody } from './github-blob-body.mjs';
 
 const pathEncode = path => path.split('/').map(encodeURIComponent).join('/');
 const blobSha = bytes => createHash('sha1').update(`blob ${bytes.length}\0`).update(bytes).digest('hex');
@@ -14,8 +13,7 @@ export function createGithubRepository({ env = process.env, fetchImpl = fetch } 
   async function api(path, method = 'GET', body, { missing = false, raw = false } = {}) {
     let response;
     try {
-      const streamed = body instanceof ReadableStream;
-      response = await fetchImpl(`${base}${path}`, { method, headers: { accept: raw ? 'application/vnd.github.raw+json' : 'application/vnd.github+json', authorization: `Bearer ${token}`, 'x-github-api-version': '2022-11-28', 'user-agent': 'Seminar-Archive', ...(body === undefined ? {} : { 'content-type': 'application/json' }) }, ...(body === undefined ? {} : { body: streamed ? body : JSON.stringify(body), ...(streamed ? { duplex: 'half' } : {}) }), signal: AbortSignal.timeout(streamed ? 90000 : 25000) });
+      response = await fetchImpl(`${base}${path}`, { method, headers: { accept: raw ? 'application/vnd.github.raw+json' : 'application/vnd.github+json', authorization: `Bearer ${token}`, 'x-github-api-version': '2022-11-28', 'user-agent': 'Seminar-Archive', ...(body === undefined ? {} : { 'content-type': 'application/json' }) }, ...(body === undefined ? {} : { body: JSON.stringify(body) }), signal: AbortSignal.timeout(25000) });
     } catch { throw new ApiError(503, 'GitHub storage is temporarily unavailable.'); }
     if (response.status === 404 && missing) return null;
     if (method === 'PATCH' && [409, 422].includes(response.status)) throw conflict();
@@ -44,7 +42,7 @@ export function createGithubRepository({ env = process.env, fetchImpl = fetch } 
   }
   async function commit(path, bytes, baseCommit, message) {
     const parent = await api(`/git/commits/${baseCommit}`);
-    const blob = await api('/git/blobs', 'POST', env.VERCEL === '1' ? githubBlobBody(bytes) : { encoding: 'base64', content: bytes.toString('base64') });
+    const blob = await api('/git/blobs', 'POST', { encoding: 'base64', content: bytes.toString('base64') });
     const tree = await api('/git/trees', 'POST', { base_tree: parent.tree.sha, tree: [{ path, mode: '100644', type: 'blob', sha: blob.sha }] });
     const next = await api('/git/commits', 'POST', { message: `${message} [skip netlify] [skip ci]`, tree: tree.sha, parents: [baseCommit] });
     await api(`/git/refs/heads/${pathEncode(branch)}`, 'PATCH', { sha: next.sha, force: false });
