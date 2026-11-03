@@ -1773,6 +1773,23 @@
       "notes": "",
       "sourceUrls": [],
       "attachments": []
+    },
+    {
+      "id": "talk-952f275c-26d7-4bac-b2ee-37d80abd9fce",
+      "date": "2026-11-04",
+      "time": "10:15-11:15",
+      "startTime": "10:15",
+      "endTime": "11:15",
+      "title": "On the parameter-dependency of Mittag-Leffler functions",
+      "speaker": "Thomas Simon",
+      "affiliation": "Université de Lille (France)",
+      "abstract": "We investigate the monotonicity of the Mittag-Leﬄer function Eα with respect to the fractional parameter α. In particular, we show that the mapping α → Eα(Γ(1 + α)x)decreases on (0, 1) for all x ∈ R∗, that the mapping α → Eα(xα) decreases on (0, α∗) forall x > 0 and some critical parameter α∗ ∈ (8, 9) and that the mapping α → Eα(−xα)decreases on (0, 1) for all x ≥ 1 but not for all x > 0. Analogous results are presentedfor the two parameter Mittag-Leﬄer functions Eα,β with β ≥ α, with an emphasis onthe extremal case β = α. Time permitting, we shall discuss several applications of theseresults to Abelian integral equations and subdiﬀusions. This is a joint work with KenierCastillo (Coimbra) and Rui Ferreira (Porto).\n",
+      "location": "武大·数学与统计学院601报告厅",
+      "notes": "",
+      "sourceUrls": [
+        "https://maths.whu.edu.cn/info/1115/171012.htm"
+      ],
+      "attachments": []
     }
   ]
 }
