@@ -1790,6 +1790,23 @@
         "https://maths.whu.edu.cn/info/1115/171012.htm"
       ],
       "attachments": []
+    },
+    {
+      "id": "talk-09cb7983-2bc5-4cf3-8589-c12f1ae5ea08",
+      "date": "2026-10-28",
+      "time": "16:00-18:00",
+      "startTime": "16:00",
+      "endTime": "18:00",
+      "title": "Gibbs Measures in Machine Learning",
+      "speaker": "Utkir Rozikov",
+      "affiliation": "乌兹别克斯坦科学院院士",
+      "abstract": "  Machine learning often involves large, complex systems that require us to model uncertainty and draw inferences from data. Gibbs measures provide a mathematical framework for probabilistic modeling in such settings. In this talk, I will introduce Gibbs measures, explain their origins in statistical physics, and discuss their role in modern machine learning methods.",
+      "location": "武大·数学与统计学院A644报告厅",
+      "notes": "",
+      "sourceUrls": [
+        "https://maths.whu.edu.cn/info/1114/171142.htm"
+      ],
+      "attachments": []
     }
   ]
 }
