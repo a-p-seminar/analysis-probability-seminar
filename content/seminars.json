@@ -1807,6 +1807,23 @@
         "https://maths.whu.edu.cn/info/1114/171142.htm"
       ],
       "attachments": []
+    },
+    {
+      "id": "talk-808544c7-32fc-4722-bc81-cd528fd4dd47",
+      "date": "2026-10-21",
+      "time": "17:45-18:45",
+      "startTime": "17:45",
+      "endTime": "18:45",
+      "title": "On the Dynamical Manin Mumford problem for polynomial endomorphisms of the plane",
+      "speaker": "Matteo Ruggeiero",
+      "affiliation": "Université Paris Cité",
+      "abstract": "\nThe Dynamical Manin-Mumford problem is a dynamical question inspired by classical results from arithmetic geometry.\n\nIn the setting of regular polynomial endomorphisms of C^2 of degree d>=2, it tasks to determine whether an algebraic curve containing infinitely many preperiodic points must be itself preperiodic.\n\nIn a work in collaboration with Romain Dujardin and Charles Favre, we prove this conclusion to hold, provided that: (★) the dynamics at infinity has no superattracting periodic points.\n\nThe proof is an interesting blend of techniques from arithmetic geometry and complex/non-archimedean dynamics.",
+      "location": "武大·雷军科技类644报告厅",
+      "notes": "",
+      "sourceUrls": [
+        "https://maths.whu.edu.cn/info/1115/170662.htm"
+      ],
+      "attachments": []
     }
   ]
 }
